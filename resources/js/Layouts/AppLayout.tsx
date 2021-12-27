@@ -5,12 +5,12 @@ import classNames from 'classnames';
 import React, { PropsWithChildren, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
 import useTypedPage from '@/Hooks/useTypedPage';
-import JetApplicationMark from '@/Jetstream/ApplicationMark';
-import JetBanner from '@/Jetstream/Banner';
-import JetDropdown from '@/Jetstream/Dropdown';
-import JetDropdownLink from '@/Jetstream/DropdownLink';
-import JetNavLink from '@/Jetstream/NavLink';
-import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink';
+import ApplicationMark from '@Components/ApplicationMark';
+import Banner from '@Components/Banner';
+import Dropdown from '@Components/Dropdown';
+import DropdownLink from '@Components/DropdownLink';
+import NavLink from '@Components/NavLink';
+import ResponsiveNavLink from '@Components/ResponsiveNavLink';
 import { Team } from '@/types';
 
 interface Props {
@@ -50,7 +50,7 @@ export default function AppLayout({
     <div>
       <Head title={title} />
 
-      <JetBanner />
+      <Banner />
 
       <div className="min-h-screen bg-gray-100">
         <nav className="bg-white border-b border-gray-100">
@@ -61,18 +61,18 @@ export default function AppLayout({
                 {/* <!-- Logo --> */}
                 <div className="flex-shrink-0 flex items-center">
                   <InertiaLink href={route('dashboard')}>
-                    <JetApplicationMark className="block h-9 w-auto" />
+                    <ApplicationMark className="block h-9 w-auto" />
                   </InertiaLink>
                 </div>
 
                 {/* <!-- Navigation Links --> */}
                 <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                  <JetNavLink
+                  <NavLink
                     href={route('dashboard')}
                     active={route().current('dashboard')}
                   >
                     Dashboard
-                  </JetNavLink>
+                  </NavLink>
                 </div>
               </div>
 
@@ -80,7 +80,7 @@ export default function AppLayout({
                 <div className="ml-3 relative">
                   {/* <!-- Teams Dropdown --> */}
                   {page.props.jetstream.hasTeamFeatures ? (
-                    <JetDropdown
+                    <Dropdown
                       align="right"
                       width="60"
                       renderTrigger={() => (
@@ -116,18 +116,18 @@ export default function AppLayout({
                             </div>
 
                             {/* <!-- Team Settings --> */}
-                            <JetDropdownLink
+                            <DropdownLink
                               href={route('teams.show', [
                                 page.props.user.current_team!,
                               ])}
                             >
                               Team Settings
-                            </JetDropdownLink>
+                            </DropdownLink>
 
                             {page.props.jetstream.canCreateTeams ? (
-                              <JetDropdownLink href={route('teams.create')}>
+                              <DropdownLink href={route('teams.create')}>
                                 Create New Team
-                              </JetDropdownLink>
+                              </DropdownLink>
                             ) : null}
 
                             <div className="border-t border-gray-100"></div>
@@ -142,7 +142,7 @@ export default function AppLayout({
                                 onSubmit={e => switchToTeam(e, team)}
                                 key={team.id}
                               >
-                                <JetDropdownLink as="button">
+                                <DropdownLink as="button">
                                   <div className="flex items-center">
                                     {team.id ==
                                       page.props.user.current_team_id && (
@@ -160,19 +160,19 @@ export default function AppLayout({
                                     )}
                                     <div>{team.name}</div>
                                   </div>
-                                </JetDropdownLink>
+                                </DropdownLink>
                               </form>
                             ))}
                           </>
                         ) : null}
                       </div>
-                    </JetDropdown>
+                    </Dropdown>
                   ) : null}
                 </div>
 
                 {/* <!-- Settings Dropdown --> */}
                 <div className="ml-3 relative">
-                  <JetDropdown
+                  <Dropdown
                     align="right"
                     width="48"
                     renderTrigger={() =>
@@ -214,23 +214,23 @@ export default function AppLayout({
                       Manage Account
                     </div>
 
-                    <JetDropdownLink href={route('profile.show')}>
+                    <DropdownLink href={route('profile.show')}>
                       Profile
-                    </JetDropdownLink>
+                    </DropdownLink>
 
                     {page.props.jetstream.hasApiFeatures ? (
-                      <JetDropdownLink href={route('api-tokens.index')}>
+                      <DropdownLink href={route('api-tokens.index')}>
                         API Tokens
-                      </JetDropdownLink>
+                      </DropdownLink>
                     ) : null}
 
                     <div className="border-t border-gray-100"></div>
 
                     {/* <!-- Authentication --> */}
                     <form onSubmit={logout}>
-                      <JetDropdownLink as="button">Log Out</JetDropdownLink>
+                      <DropdownLink as="button">Log Out</DropdownLink>
                     </form>
-                  </JetDropdown>
+                  </Dropdown>
                 </div>
               </div>
 
@@ -282,12 +282,12 @@ export default function AppLayout({
             })}
           >
             <div className="pt-2 pb-3 space-y-1">
-              <JetResponsiveNavLink
+              <ResponsiveNavLink
                 href={route('dashboard')}
                 active={route().current('dashboard')}
               >
                 Dashboard
-              </JetResponsiveNavLink>
+              </ResponsiveNavLink>
             </div>
 
             {/* <!-- Responsive Settings Options --> */}
@@ -314,27 +314,25 @@ export default function AppLayout({
               </div>
 
               <div className="mt-3 space-y-1">
-                <JetResponsiveNavLink
+                <ResponsiveNavLink
                   href={route('profile.show')}
                   active={route().current('profile.show')}
                 >
                   Profile
-                </JetResponsiveNavLink>
+                </ResponsiveNavLink>
 
                 {page.props.jetstream.hasApiFeatures ? (
-                  <JetResponsiveNavLink
+                  <ResponsiveNavLink
                     href={route('api-tokens.index')}
                     active={route().current('api-tokens.index')}
                   >
                     API Tokens
-                  </JetResponsiveNavLink>
+                  </ResponsiveNavLink>
                 ) : null}
 
                 {/* <!-- Authentication --> */}
                 <form method="POST" onSubmit={logout}>
-                  <JetResponsiveNavLink as="button">
-                    Log Out
-                  </JetResponsiveNavLink>
+                  <ResponsiveNavLink as="button">Log Out</ResponsiveNavLink>
                 </form>
 
                 {/* <!-- Team Management --> */}
@@ -347,22 +345,22 @@ export default function AppLayout({
                     </div>
 
                     {/* <!-- Team Settings --> */}
-                    <JetResponsiveNavLink
+                    <ResponsiveNavLink
                       href={route('teams.show', [
                         page.props.user.current_team!,
                       ])}
                       active={route().current('teams.show')}
                     >
                       Team Settings
-                    </JetResponsiveNavLink>
+                    </ResponsiveNavLink>
 
                     {page.props.jetstream.canCreateTeams ? (
-                      <JetResponsiveNavLink
+                      <ResponsiveNavLink
                         href={route('teams.create')}
                         active={route().current('teams.create')}
                       >
                         Create New Team
-                      </JetResponsiveNavLink>
+                      </ResponsiveNavLink>
                     ) : null}
 
                     <div className="border-t border-gray-200"></div>
@@ -373,7 +371,7 @@ export default function AppLayout({
                     </div>
                     {page.props.user?.all_teams?.map(team => (
                       <form onSubmit={e => switchToTeam(e, team)} key={team.id}>
-                        <JetResponsiveNavLink as="button">
+                        <ResponsiveNavLink as="button">
                           <div className="flex items-center">
                             {team.id == page.props.user.current_team_id && (
                               <svg
@@ -390,7 +388,7 @@ export default function AppLayout({
                             )}
                             <div>{team.name}</div>
                           </div>
-                        </JetResponsiveNavLink>
+                        </ResponsiveNavLink>
                       </form>
                     ))}
                   </>
