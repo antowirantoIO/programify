@@ -1,18 +1,51 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.16.5",
+    "@inertiajs/inertia": "^0.10.1",
+    "@inertiajs/progress": "^0.2.6",
+    "@prettier/plugin-php": "^0.17.6",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.0",
+    "@types/lodash": "^4.14.178",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@types/ziggy-js": "^1.3.0",
+    "autoprefixer": "^10.4.0",
+    "axios": "^0.21.4",
+    "laravel-mix": "^6.0.39",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.5",
+    "postcss-import": "^12.0.1",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.7",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@inertiajs/inertia-react": "^0.7.1",
+    "classnames": "^2.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ziggy-js": "^1.4.2"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabs": false,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "printWidth": 80,
+    "arrowParens": "avoid"
+  }
 }
