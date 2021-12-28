@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Series;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,11 @@ class CreateEpisodesTable extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->float('duration');
+            $table->integer('episode');
+            $table->foreignIdFor(Series::class);
             $table->timestamps();
         });
     }

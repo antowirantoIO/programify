@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     use HasFactory;
+
+    public function episode()
+    {
+        return $this->belongsTo(Episode::class);
+    }
+
+    public function exercises()
+    {
+        return $this->hasMany(Exercise::class);
+    }
 }
