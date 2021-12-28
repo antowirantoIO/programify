@@ -13,7 +13,7 @@ class StoreSkillRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('skill.store');
     }
 
     /**

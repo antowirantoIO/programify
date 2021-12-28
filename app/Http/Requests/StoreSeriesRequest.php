@@ -13,7 +13,7 @@ class StoreSeriesRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('series.store');
     }
 
     /**

@@ -15,7 +15,8 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('lesson.index');
+        // TODO: Create some amazing
     }
 
     /**
@@ -25,7 +26,8 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('lesson.create');
+        // TODO: Create some amazing
     }
 
     /**
@@ -36,7 +38,8 @@ class LessonController extends Controller
      */
     public function store(StoreLessonRequest $request)
     {
-        //
+        $this->authorize('lesson.store');
+        // TODO: Create some amazing
     }
 
     /**
@@ -47,7 +50,8 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        $this->authorize('lesson.show');
+        // TODO: Create some amazing
     }
 
     /**
@@ -58,7 +62,8 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //
+        $this->authorize('lesson.edit');
+        // TODO: Create some amazing
     }
 
     /**
@@ -70,7 +75,8 @@ class LessonController extends Controller
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-        //
+        $this->authorize('lesson.update');
+        // TODO: Create some amazing
     }
 
     /**
@@ -81,6 +87,7 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $this->authorize('lesson.destroy');
+        // TODO: Create some amazing
     }
 }

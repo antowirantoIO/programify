@@ -15,7 +15,8 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('exercise.index');
+        // TODO: Create some amazing
     }
 
     /**
@@ -25,7 +26,8 @@ class ExerciseController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('exercise.create');
+        // TODO: Create some amazing
     }
 
     /**
@@ -36,7 +38,8 @@ class ExerciseController extends Controller
      */
     public function store(StoreExerciseRequest $request)
     {
-        //
+        $this->authorize('exercise.store');
+        // TODO: Create some amazing
     }
 
     /**
@@ -47,7 +50,8 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
-        //
+        $this->authorize('exercise.show');
+        // TODO: Create some amazing
     }
 
     /**
@@ -58,7 +62,8 @@ class ExerciseController extends Controller
      */
     public function edit(Exercise $exercise)
     {
-        //
+        $this->authorize('exercise.edit');
+        // TODO: Create some amazing
     }
 
     /**
@@ -70,7 +75,8 @@ class ExerciseController extends Controller
      */
     public function update(UpdateExerciseRequest $request, Exercise $exercise)
     {
-        //
+        $this->authorize('exercise.update');
+        // TODO: Create some amazing
     }
 
     /**
@@ -81,6 +87,7 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
-        //
+        $this->authorize('exercise.destroy');
+        // TODO: Create some amazing
     }
 }

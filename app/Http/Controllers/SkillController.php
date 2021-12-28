@@ -15,7 +15,8 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('skill.index');
+        // TODO: Create Some Amazing
     }
 
     /**
@@ -25,7 +26,8 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('skill.create');
+        // TODO: Create Some Amazing
     }
 
     /**
@@ -36,7 +38,8 @@ class SkillController extends Controller
      */
     public function store(StoreSkillRequest $request)
     {
-        //
+        $this->authorize('skill.store');
+        // TODO: Create Some Amazing
     }
 
     /**
@@ -47,7 +50,8 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-        //
+        $this->authorize('skill.show');
+        // TODO: Create Some Amazing
     }
 
     /**
@@ -58,7 +62,8 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
-        //
+        $this->authorize('skill.edit');
+        // TODO: Create Some Amazing
     }
 
     /**
@@ -70,7 +75,8 @@ class SkillController extends Controller
      */
     public function update(UpdateSkillRequest $request, Skill $skill)
     {
-        //
+        $this->authorize('skill.update');
+        // TODO: Create Some Amazing
     }
 
     /**
@@ -81,6 +87,7 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill)
     {
-        //
+        $this->authorize('skill.destroy');
+        // TODO: Create Some Amazing
     }
 }

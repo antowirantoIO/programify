@@ -13,7 +13,7 @@ class UpdateExerciseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('exercise.update');
     }
 
     /**

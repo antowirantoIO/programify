@@ -15,7 +15,8 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('episode.index');
+        // TODO: Create some amazing
     }
 
     /**
@@ -25,7 +26,8 @@ class EpisodeController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('episode.create');
+        // TODO: Create some amazing
     }
 
     /**
@@ -36,7 +38,8 @@ class EpisodeController extends Controller
      */
     public function store(StoreEpisodeRequest $request)
     {
-        //
+        $this->authorize('episode.store');
+        // TODO: Create some amazing
     }
 
     /**
@@ -47,7 +50,8 @@ class EpisodeController extends Controller
      */
     public function show(Episode $episode)
     {
-        //
+        $this->authorize('episode.show');
+        // TODO: Create some amazing
     }
 
     /**
@@ -58,7 +62,8 @@ class EpisodeController extends Controller
      */
     public function edit(Episode $episode)
     {
-        //
+        $this->authorize('episode.edit');
+        // TODO: Create some amazing
     }
 
     /**
@@ -70,7 +75,8 @@ class EpisodeController extends Controller
      */
     public function update(UpdateEpisodeRequest $request, Episode $episode)
     {
-        //
+        $this->authorize('episode.update');
+        // TODO: Create some amazing
     }
 
     /**
@@ -81,6 +87,7 @@ class EpisodeController extends Controller
      */
     public function destroy(Episode $episode)
     {
-        //
+        $this->authorize('episode.destroy');
+        // TODO: Create some amazing
     }
 }

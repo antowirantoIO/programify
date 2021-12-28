@@ -13,7 +13,7 @@ class StoreEpisodeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('episode.store');
     }
 
     /**

@@ -15,7 +15,8 @@ class PathController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('path.index');
+        // TODO: Create some amazing
     }
 
     /**
@@ -25,7 +26,8 @@ class PathController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('path.create');
+        // TODO: Create some amazing
     }
 
     /**
@@ -36,7 +38,8 @@ class PathController extends Controller
      */
     public function store(StorePathRequest $request)
     {
-        //
+        $this->authorize('path.store');
+        // TODO: Create some amazing
     }
 
     /**
@@ -47,7 +50,8 @@ class PathController extends Controller
      */
     public function show(Path $path)
     {
-        //
+        $this->authorize('path.show');
+        // TODO: Create some amazing
     }
 
     /**
@@ -58,7 +62,8 @@ class PathController extends Controller
      */
     public function edit(Path $path)
     {
-        //
+        $this->authorize('path.edit');
+        // TODO: Create some amazing
     }
 
     /**
@@ -70,7 +75,8 @@ class PathController extends Controller
      */
     public function update(UpdatePathRequest $request, Path $path)
     {
-        //
+        $this->authorize('path.update');
+        // TODO: Create some amazing
     }
 
     /**
@@ -81,6 +87,7 @@ class PathController extends Controller
      */
     public function destroy(Path $path)
     {
-        //
+        $this->authorize('path.destroy');
+        // TODO: Create some amazing
     }
 }

@@ -13,7 +13,7 @@ class StoreExerciseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('exersice.store');
     }
 
     /**

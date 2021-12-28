@@ -15,7 +15,8 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('series.index');
+        // TODO: Create some amazing
     }
 
     /**
@@ -25,7 +26,8 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('series.create');
+        // TODO: Create some amazing
     }
 
     /**
@@ -36,7 +38,8 @@ class SeriesController extends Controller
      */
     public function store(StoreSeriesRequest $request)
     {
-        //
+        $this->authorize('series.store');
+        // TODO: Create some amazing
     }
 
     /**
@@ -47,7 +50,8 @@ class SeriesController extends Controller
      */
     public function show(Series $series)
     {
-        //
+        $this->authorize('series.show');
+        // TODO: Create some amazing
     }
 
     /**
@@ -58,7 +62,8 @@ class SeriesController extends Controller
      */
     public function edit(Series $series)
     {
-        //
+        $this->authorize('series.edit');
+        // TODO: Create some amazing
     }
 
     /**
@@ -70,7 +75,8 @@ class SeriesController extends Controller
      */
     public function update(UpdateSeriesRequest $request, Series $series)
     {
-        //
+        $this->authorize('series.update');
+        // TODO: Create some amazing
     }
 
     /**
@@ -81,6 +87,7 @@ class SeriesController extends Controller
      */
     public function destroy(Series $series)
     {
-        //
+        $this->authorize('series.destroy');
+        // TODO: Create some amazing
     }
 }

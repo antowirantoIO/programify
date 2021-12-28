@@ -13,7 +13,7 @@ class StorePathRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('path.store');
     }
 
     /**

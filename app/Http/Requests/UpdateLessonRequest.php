@@ -13,7 +13,7 @@ class UpdateLessonRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->authorize('lesson.update');
     }
 
     /**
