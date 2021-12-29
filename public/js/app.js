@@ -8585,15 +8585,21 @@ function ActionSection(_a) {
       description = _a.description,
       children = _a.children;
   return react_1["default"].createElement("div", {
-    className: "md:grid md:grid-cols-3 md:gap-6"
+    className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 gap-6 lg:grid-cols-12"
+  }, react_1["default"].createElement("div", {
+    className: "lg:col-span-9 lg:order-none"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white rounded-xl border shadow-sm"
   }, react_1["default"].createElement(SectionTitle_1["default"], {
     title: title,
     description: description
   }), react_1["default"].createElement("div", {
-    className: "mt-5 md:mt-0 md:col-span-2"
+    className: "rounded-b-xl undefined"
   }, react_1["default"].createElement("div", {
-    className: "px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg"
-  }, children)));
+    className: "p-4"
+  }, children))))));
 }
 
 exports["default"] = ActionSection;
@@ -8987,7 +8993,7 @@ function Button(_a) {
       props = __rest(_a, ["children"]);
 
   return react_1["default"].createElement("button", __assign({}, props, {
-    className: (0, classnames_1["default"])('inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition', props.className)
+    className: (0, classnames_1["default"])('px-6 py-[11px] focus:ring focus:ring-gray-500 bg-gray-900 hover:bg-gray-800 text-white rounded-xl font-medium transition duration-150 focus:outline-none', props.className)
   }), children);
 }
 
@@ -9682,8 +9688,6 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var SectionTitle_1 = __importDefault(__webpack_require__(/*! @Components/SectionTitle */ "./resources/js/Components/SectionTitle.tsx"));
@@ -9696,12 +9700,20 @@ function FormSection(_a) {
       children = _a.children;
   var hasActions = !!renderActions;
   return react_1["default"].createElement("div", {
-    className: "md:grid md:grid-cols-3 md:gap-6"
+    className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 gap-6 lg:grid-cols-12"
+  }, react_1["default"].createElement("div", {
+    className: "lg:col-span-9 lg:order-none"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white rounded-xl border shadow-sm"
   }, react_1["default"].createElement(SectionTitle_1["default"], {
     title: title,
     description: description
   }), react_1["default"].createElement("div", {
-    className: "mt-5 md:mt-0 md:col-span-2"
+    className: "rounded-b-xl undefined"
+  }, react_1["default"].createElement("div", {
+    className: "p-4"
   }, react_1["default"].createElement("form", {
     onSubmit: function onSubmit(e) {
       e.preventDefault();
@@ -9709,12 +9721,10 @@ function FormSection(_a) {
       _onSubmit();
     }
   }, react_1["default"].createElement("div", {
-    className: (0, classnames_1["default"])('px-4 py-5 bg-white sm:p-6 shadow', hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md')
-  }, react_1["default"].createElement("div", {
     className: "grid grid-cols-6 gap-6"
-  }, children)), hasActions && react_1["default"].createElement("div", {
-    className: "flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md"
-  }, renderActions === null || renderActions === void 0 ? void 0 : renderActions()))));
+  }, children), hasActions && react_1["default"].createElement("div", {
+    className: "flex items-center pt-3 sm:rounded-bl-md sm:rounded-br-md"
+  }, renderActions === null || renderActions === void 0 ? void 0 : renderActions()))))))));
 }
 
 exports["default"] = FormSection;
@@ -9797,7 +9807,7 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var Input = (0, react_1.forwardRef)(function (props, ref) {
   return react_1["default"].createElement("input", __assign({}, props, {
     ref: ref,
-    className: (0, classnames_1["default"])('border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 rounded-xl shadow-sm', props.className)
+    className: (0, classnames_1["default"])('form-text h-11 py-0.5 w-full focus:outline-none focus:ring focus:ring-primary-200/50 shadow-sm focus:border-primary-500 border-gray-200 caret-primary-400 selection:bg-primary-200 selection:text-primary-700 rounded-xl transition duration-200 ease-in undefined', props.className)
   }));
 });
 exports["default"] = Input;
@@ -10210,14 +10220,16 @@ function SectionTitle(_a) {
   var title = _a.title,
       description = _a.description;
   return react_1["default"].createElement("div", {
-    className: "md:col-span-1"
+    className: "grid gap-4 items-center px-4 py-3 rounded-t-xl border-b bg-gray-50/40 sm:grid-cols-12"
+  }, react_1["default"].createElement("div", {
+    className: "col-span-12 sm:col-span-8"
   }, react_1["default"].createElement("div", {
     className: "px-4 sm:px-0"
   }, react_1["default"].createElement("h3", {
     className: "text-lg font-medium text-gray-900"
   }, title), react_1["default"].createElement("p", {
     className: "mt-1 text-sm text-gray-600"
-  }, description)));
+  }, description))));
 }
 
 exports["default"] = SectionTitle;
@@ -11773,15 +11785,15 @@ function UpdatePasswordForm() {
     title: 'Update Password',
     description: 'Ensure your account is using a long, random password to stay secure.',
     renderActions: function renderActions() {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ActionMessage_1["default"], {
-        on: form.recentlySuccessful,
-        className: "mr-3"
-      }, "Saved."), react_1["default"].createElement(Button_1["default"], {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
         className: (0, classnames_1["default"])({
           'opacity-25': form.processing
         }),
         disabled: form.processing
-      }, "Save"));
+      }, "Save"), react_1["default"].createElement(ActionMessage_1["default"], {
+        on: form.recentlySuccessful,
+        className: "ml-3"
+      }, "Saved."));
     }
   }, react_1["default"].createElement("div", {
     className: "col-span-9 sm:col-span-8"
@@ -11897,25 +11909,11 @@ var inertia_1 = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@i
 
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
-var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
-
-var FormSection_1 = __importDefault(__webpack_require__(/*! @Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
-
-var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./resources/js/Components/Input.tsx"));
-
-var InputError_1 = __importDefault(__webpack_require__(/*! @Components/InputError */ "./resources/js/Components/InputError.tsx"));
-
-var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
-
-var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
+var _Example_1 = __importDefault(__webpack_require__(/*! ./_Example */ "./resources/js/Partials/Profile/_Example.tsx"));
 
 function UpdateProfileInformationForm(_a) {
   var user = _a.user;
@@ -11990,97 +11988,392 @@ function UpdateProfileInformationForm(_a) {
     }
   }
 
-  return react_1["default"].createElement(FormSection_1["default"], {
-    onSubmit: updateProfileInformation,
-    title: 'Profile Information',
-    description: "Update your account's profile information and email address.",
-    renderActions: function renderActions() {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ActionMessage_1["default"], {
-        on: form.recentlySuccessful,
-        className: "mr-3"
-      }, "Saved."), react_1["default"].createElement(Button_1["default"], {
-        className: (0, classnames_1["default"])({
-          'opacity-25': form.processing
-        }),
-        disabled: form.processing
-      }, "Save"));
-    }
-  }, page.props.jetstream.managesProfilePhotos ? react_1["default"].createElement("div", {
-    className: "col-span-9 sm:col-span-8"
-  }, react_1["default"].createElement("input", {
-    type: "file",
-    className: "hidden",
-    ref: photoRef,
-    onChange: updatePhotoPreview
-  }), react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "photo",
-    value: "Photo"
-  }), photoPreview ? // <!-- New Profile Photo Preview -->
-  react_1["default"].createElement("div", {
-    className: "mt-2"
-  }, react_1["default"].createElement("span", {
-    className: "block w-20 h-20 rounded-full",
-    style: {
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center center',
-      backgroundImage: "url('".concat(photoPreview, "')")
-    }
-  })) : // <!-- Current Profile Photo -->
-  react_1["default"].createElement("div", {
-    className: "mt-2"
-  }, react_1["default"].createElement("img", {
-    src: user.profile_photo_url,
-    alt: user.name,
-    className: "object-cover w-20 h-20 rounded-full"
-  })), react_1["default"].createElement(SecondaryButton_1["default"], {
-    className: "mt-2 mr-2",
-    type: "button",
-    onClick: selectNewPhoto
-  }, "Select A New Photo"), user.profile_photo_path ? react_1["default"].createElement(SecondaryButton_1["default"], {
-    type: "button",
-    className: "mt-2",
-    onClick: deletePhoto
-  }, "Remove Photo") : null, react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.photo,
-    className: "mt-2"
-  })) : null, react_1["default"].createElement("div", {
-    className: "col-span-9 sm:col-span-8"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "name",
-    value: "Name"
-  }), react_1["default"].createElement(Input_1["default"], {
-    id: "name",
-    type: "text",
-    className: "block mt-1 w-full",
-    value: form.data.name,
-    onChange: function onChange(e) {
-      return form.setData('name', e.currentTarget.value);
-    },
-    autoComplete: "name"
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.name,
-    className: "mt-2"
-  })), react_1["default"].createElement("div", {
-    className: "col-span-9 sm:col-span-8"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "email",
-    value: "Email"
-  }), react_1["default"].createElement(Input_1["default"], {
-    id: "email",
-    type: "email",
-    className: "block mt-1 w-full",
-    value: form.data.email,
-    onChange: function onChange(e) {
-      return form.setData('email', e.currentTarget.value);
-    }
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.email,
-    className: "mt-2"
-  })));
+  return (// <FormSection
+    //   onSubmit={updateProfileInformation}
+    //   title={'Profile Information'}
+    //   description={`Update your account's profile information and email address.`}
+    //   renderActions={() => (
+    //     <>
+    //       <ActionMessage on={form.recentlySuccessful} className="mr-3">
+    //         Saved.
+    //       </ActionMessage>
+    //       <Button
+    //         className={classNames({ 'opacity-25': form.processing })}
+    //         disabled={form.processing}
+    //       >
+    //         Save
+    //       </Button>
+    //     </>
+    //   )}
+    // >
+    //   {/* <!-- Profile Photo --> */}
+    //   {page.props.jetstream.managesProfilePhotos ? (
+    //     <div className="col-span-9 sm:col-span-8">
+    //       {/* <!-- Profile Photo File Input --> */}
+    //       <input
+    //         type="file"
+    //         className="hidden"
+    //         ref={photoRef}
+    //         onChange={updatePhotoPreview}
+    //       />
+    //       <Label htmlFor="photo" value="Photo" />
+    //       {photoPreview ? (
+    //         // <!-- New Profile Photo Preview -->
+    //         <div className="mt-2">
+    //           <span
+    //             className="block w-20 h-20 rounded-full"
+    //             style={{
+    //               backgroundSize: 'cover',
+    //               backgroundRepeat: 'no-repeat',
+    //               backgroundPosition: 'center center',
+    //               backgroundImage: `url('${photoPreview}')`,
+    //             }}
+    //           ></span>
+    //         </div>
+    //       ) : (
+    //         // <!-- Current Profile Photo -->
+    //         <div className="mt-2">
+    //           <img
+    //             src={user.profile_photo_url}
+    //             alt={user.name}
+    //             className="object-cover w-20 h-20 rounded-full"
+    //           />
+    //         </div>
+    //       )}
+    //       <SecondaryButton
+    //         className="mt-2 mr-2"
+    //         type="button"
+    //         onClick={selectNewPhoto}
+    //       >
+    //         Select A New Photo
+    //       </SecondaryButton>
+    //       {user.profile_photo_path ? (
+    //         <SecondaryButton
+    //           type="button"
+    //           className="mt-2"
+    //           onClick={deletePhoto}
+    //         >
+    //           Remove Photo
+    //         </SecondaryButton>
+    //       ) : null}
+    //       <InputError message={form.errors.photo} className="mt-2" />
+    //     </div>
+    //   ) : null}
+    //   {/* <!-- Name --> */}
+    //   <div className="col-span-9 sm:col-span-8">
+    //     <Label htmlFor="name" value="Name" />
+    //     <Input
+    //       id="name"
+    //       type="text"
+    //       className="block mt-1 w-full"
+    //       value={form.data.name}
+    //       onChange={e => form.setData('name', e.currentTarget.value)}
+    //       autoComplete="name"
+    //     />
+    //     <InputError message={form.errors.name} className="mt-2" />
+    //   </div>
+    //   {/* <!-- Email --> */}
+    //   <div className="col-span-9 sm:col-span-8">
+    //     <Label htmlFor="email" value="Email" />
+    //     <Input
+    //       id="email"
+    //       type="email"
+    //       className="block mt-1 w-full"
+    //       value={form.data.email}
+    //       onChange={e => form.setData('email', e.currentTarget.value)}
+    //     />
+    //     <InputError message={form.errors.email} className="mt-2" />
+    //   </div>
+    // </FormSection>
+    react_1["default"].createElement(_Example_1["default"], null)
+  );
 }
 
 exports["default"] = UpdateProfileInformationForm;
+
+/***/ }),
+
+/***/ "./resources/js/Partials/Profile/_Example.tsx":
+/*!****************************************************!*\
+  !*** ./resources/js/Partials/Profile/_Example.tsx ***!
+  \****************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var SectionTitle_1 = __importDefault(__webpack_require__(/*! @/Components/SectionTitle */ "./resources/js/Components/SectionTitle.tsx"));
+
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+function _Example() {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+    className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 gap-6 lg:grid-cols-12"
+  }, react_1["default"].createElement("div", {
+    className: "lg:col-span-9 lg:order-none"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white rounded-xl border shadow-sm"
+  }, react_1["default"].createElement(SectionTitle_1["default"], {
+    title: "Update Profile Information",
+    description: "The information you enter will appear on the profile page,\n                    so make sure to make it nice so the others can get to know\n                    you better."
+  }), react_1["default"].createElement("div", {
+    className: "rounded-b-xl undefined"
+  }, react_1["default"].createElement("div", {
+    className: "p-4"
+  }, react_1["default"].createElement("form", null, react_1["default"].createElement("div", {
+    className: "grid gap-x-4 md:grid-cols-2"
+  }, react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "Name"), react_1["default"].createElement("div", {
+    className: "flex flex-col items-start"
+  }, react_1["default"].createElement("input", {
+    type: "text",
+    className: "form-text h-11 py-0.5 w-full focus:outline-none focus:ring focus:ring-primary-100/60 shadow-sm focus:border-primary-400 border-gray-200 caret-primary-300 selection:bg-primary-100 selection:text-primary-700 rounded-xl transition duration-200 ease-in undefined",
+    placeholder: "Jane Doe",
+    name: "name",
+    id: "name"
+  })), react_1["default"].createElement("div", {
+    className: "mt-2 text-sm text-rose-500"
+  })), react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "Username"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, "parsinta.com/"), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "janedoe",
+    name: "username",
+    id: "username",
+    defaultValue: "antowiranto"
+  })), react_1["default"].createElement("div", {
+    className: "mt-2 text-sm text-rose-500"
+  }))), react_1["default"].createElement("div", {
+    className: "grid gap-x-4"
+  }, react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "Email"), react_1["default"].createElement("div", {
+    className: "flex flex-col items-start"
+  }, react_1["default"].createElement("input", {
+    type: "email",
+    className: "form-text h-11 py-0.5 w-full focus:outline-none focus:ring focus:ring-primary-100/60 shadow-sm focus:border-primary-400 border-gray-200 caret-primary-300 selection:bg-primary-100 selection:text-primary-700 rounded-xl transition duration-200 ease-in undefined",
+    placeholder: "Jane Doe",
+    name: "email",
+    id: "email",
+    defaultValue: "antow0808@gmail.com"
+  })), react_1["default"].createElement("div", {
+    className: "mt-2 text-sm text-rose-500"
+  }))), react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "A bit about you"), react_1["default"].createElement("textarea", {
+    className: "w-full rounded-xl border-gray-200 shadow-sm transition duration-200 resize-none undefined selection:bg-primary-100 selection:text-primary-700 form-text focus:shadow-none focus:outline-none focus:ring focus:ring-primary-100/60 focus:border-primary-400",
+    placeholder: "Tell us about your self . . .",
+    name: "about",
+    id: "about",
+    defaultValue: ''
+  })), react_1["default"].createElement("div", {
+    className: "grid gap-x-6 md:grid-cols-2"
+  }, react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "Job Title"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    className: "w-4 icon-work"
+  }, react_1["default"].createElement("path", {
+    className: "primary",
+    d: "M10 14.92V16a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1.08c2.83-.24 5.53-.96 8-2.1V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.18a23.85 23.85 0 0 0 8 2.1z"
+  }), react_1["default"].createElement("path", {
+    className: "secondary",
+    d: "M14 12.92V12a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.92a23.85 23.85 0 0 1-8-2.1V8c0-1.1.9-2 2-2h3V5a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1h3a2 2 0 0 1 2 2v2.82a23.85 23.85 0 0 1-8 2.1zM15 6V5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1h6z"
+  }))), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "Software Engineer",
+    name: "job_title",
+    id: "job_title"
+  }))), react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "At"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    className: "w-5 icon-location-pin"
+  }, react_1["default"].createElement("path", {
+    className: "primary",
+    d: "M5.64 16.36a9 9 0 1 1 12.72 0l-5.65 5.66a1 1 0 0 1-1.42 0l-5.65-5.66zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+  }), react_1["default"].createElement("path", {
+    className: "secondary",
+    d: "M12 1a9 9 0 0 1 6.36 15.36l-5.65 5.66a1 1 0 0 1-.71.3V13a3 3 0 0 0 0-6V1z"
+  }))), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "Somewhere",
+    name: "city",
+    id: "city"
+  })))), react_1["default"].createElement("div", {
+    className: "grid gap-x-6 md:grid-cols-2"
+  }, react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "website"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, "http://"), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "parsinta.com",
+    name: "website",
+    id: "website"
+  }))), react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "github"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-github",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+  }))), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "janedoe",
+    name: "github",
+    id: "github"
+  })))), react_1["default"].createElement("div", {
+    className: "grid gap-x-6 md:grid-cols-2"
+  }, react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "Twitter"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-twitter",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+  }))), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "janedoe",
+    name: "twitter",
+    id: "twitter"
+  })))), react_1["default"].createElement("div", {
+    className: "grid gap-x-6 md:grid-cols-2"
+  }, react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "instagram"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-instagram",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+  }))), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "janedoe",
+    name: "instagram",
+    id: "instagram"
+  }))), react_1["default"].createElement("div", {
+    className: "mb-6"
+  }, react_1["default"].createElement("label", {
+    className: "block mb-1 text-sm text-gray-600 capitalize undefined"
+  }, "Facebook"), react_1["default"].createElement("div", {
+    className: "selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300"
+  }, react_1["default"].createElement("span", {
+    className: "flex items-center px-4 h-12 bg-gray-50 border-r border-gray-200"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-facebook",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+  }))), react_1["default"].createElement("input", {
+    type: "text",
+    className: "w-full border-0 form-text focus:outline-none focus:ring-0",
+    placeholder: "janedoe",
+    name: "facebook",
+    id: "facebook"
+  })))), react_1["default"].createElement("div", {
+    className: "flex gap-x-3 mb-6"
+  }, react_1["default"].createElement("input", {
+    type: "checkbox",
+    className: "mt-1 text-primary-500 shadow-sm focus:outline-none border-gray-200 rounded w-[18px] h-[18px] ring-offset-0 focus:ring-offset-0 focus:ring-0 focus:shadow-none",
+    id: "public"
+  }), react_1["default"].createElement("label", {
+    htmlFor: "public",
+    className: "select-none"
+  }, react_1["default"].createElement("span", {
+    className: "font-medium text-gray-600"
+  }, "Pribadi"), react_1["default"].createElement("div", {
+    className: "text-sm text-gray-600"
+  }, "Akun tidak akan bisa dilihat oleh siapapun kecuali diri Anda sendiri."))), react_1["default"].createElement("button", {
+    type: "submit",
+    className: "px-6 py-[11px] focus:ring focus:ring-gray-500 bg-gray-900 hover:bg-gray-800 text-white rounded-xl font-medium transition duration-150 focus:outline-none undefined"
+  }, "Update Profile")))))))));
+}
+
+exports["default"] = _Example;
 
 /***/ }),
 

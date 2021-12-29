@@ -47,16 +47,16 @@ export default function UpdatePasswordForm() {
       }
       renderActions={() => (
         <>
-          <ActionMessage on={form.recentlySuccessful} className="mr-3">
-            Saved.
-          </ActionMessage>
-
           <Button
             className={classNames({ 'opacity-25': form.processing })}
             disabled={form.processing}
           >
             Save
           </Button>
+
+          <ActionMessage on={form.recentlySuccessful} className="ml-3">
+            Saved.
+          </ActionMessage>
         </>
       )}
     >
