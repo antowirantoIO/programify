@@ -4,19 +4,22 @@ import React from 'react';
 
 export default function Create() {
   return (
-    <AppLayout
-      title="Create Team"
-      renderHeader={() => (
-        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-          Create Team
-        </h2>
-      )}
-    >
-      <div>
-        <div className="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-          <CreateTeamForm />
-        </div>
+    <div>
+      <div className="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <CreateTeamForm />
       </div>
-    </AppLayout>
+    </div>
   );
 }
+
+Create.layout = (page: JSX.Element) => (
+  <AppLayout
+    children={page}
+    title="Create Team"
+    renderHeader={() => (
+      <h2 className="text-xl font-semibold leading-tight text-gray-800">
+        Create Team
+      </h2>
+    )}
+  />
+);

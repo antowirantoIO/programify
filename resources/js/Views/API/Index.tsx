@@ -15,16 +15,18 @@ export default function ApiTokenIndex({
   defaultPermissions,
 }: Props) {
   return (
-    <AppLayout title={'API Tokens'}>
-      <div>
-        <div className="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-          <APITokenManager
-            tokens={tokens}
-            availablePermissions={availablePermissions}
-            defaultPermissions={defaultPermissions}
-          />
-        </div>
+    <div>
+      <div className="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <APITokenManager
+          tokens={tokens}
+          availablePermissions={availablePermissions}
+          defaultPermissions={defaultPermissions}
+        />
       </div>
-    </AppLayout>
+    </div>
   );
 }
+
+ApiTokenIndex.layout = (page: JSX.Element) => (
+  <AppLayout children={page} title={'API Tokens'} />
+);

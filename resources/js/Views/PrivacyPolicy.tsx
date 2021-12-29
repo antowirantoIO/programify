@@ -12,15 +12,15 @@ export default function PrivacyPolicy({ policy }: Props) {
     <div>
       <Head title="Privacy Policy" />
 
-      <div className="font-sans text-gray-900 antialiased">
+      <div className="font-sans antialiased text-gray-900">
         <div className="pt-4 bg-gray-100">
-          <div className="min-h-screen flex flex-col items-center pt-6 sm:pt-0">
+          <div className="flex flex-col items-center pt-6 min-h-screen sm:pt-0">
             <div>
               <AuthenticationCardLogo />
             </div>
 
             <div
-              className="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose"
+              className="overflow-hidden p-6 mt-6 w-full bg-white shadow-md sm:max-w-2xl sm:rounded-lg prose"
               dangerouslySetInnerHTML={{ __html: policy }}
             />
           </div>
