@@ -9,7 +9,7 @@ import Button from '@Components/Button';
 import Checkbox from '@Components/Checkbox';
 import Input from '@Components/Input';
 import Label from '@Components/Label';
-import ValidationErrors from '@Components/ValidationErrors';
+import InputError from '@/Components/InputError';
 
 export default function Register() {
   const page = useTypedPage();
@@ -33,21 +33,20 @@ export default function Register() {
     <AuthenticationCard>
       <Head title="Register" />
 
-      <ValidationErrors className="mb-4" />
-
-      <form onSubmit={onSubmit}>
+      <form noValidate onSubmit={onSubmit}>
         <div>
           <Label htmlFor="name">Name</Label>
           <Input
             id="name"
             type="text"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.name}
             onChange={e => form.setData('name', e.currentTarget.value)}
             required
             autoFocus
             autoComplete="name"
           />
+          <InputError message={form.errors.name} className="pt-2" />
         </div>
 
         <div className="mt-4">
@@ -55,11 +54,12 @@ export default function Register() {
           <Input
             id="email"
             type="email"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.email}
             onChange={e => form.setData('email', e.currentTarget.value)}
             required
           />
+          <InputError message={form.errors.email} className="pt-2" />
         </div>
 
         <div className="mt-4">
@@ -67,12 +67,13 @@ export default function Register() {
           <Input
             id="password"
             type="password"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.password}
             onChange={e => form.setData('password', e.currentTarget.value)}
             required
             autoComplete="new-password"
           />
+          <InputError message={form.errors.password} className="pt-2" />
         </div>
 
         <div className="mt-4">
@@ -80,13 +81,17 @@ export default function Register() {
           <Input
             id="password_confirmation"
             type="password"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.password_confirmation}
             onChange={e =>
               form.setData('password_confirmation', e.currentTarget.value)
             }
             required
             autoComplete="new-password"
+          />
+          <InputError
+            message={form.errors.password_confirmation}
+            className="pt-2"
           />
         </div>
 
@@ -106,7 +111,7 @@ export default function Register() {
                   <a
                     target="_blank"
                     href={route('terms.show')}
-                    className="underline text-sm text-gray-600 hover:text-gray-900"
+                    className="text-sm text-gray-600 underline hover:text-gray-900"
                   >
                     Terms of Service
                   </a>
@@ -114,7 +119,7 @@ export default function Register() {
                   <a
                     target="_blank"
                     href={route('policy.show')}
-                    className="underline text-sm text-gray-600 hover:text-gray-900"
+                    className="text-sm text-gray-600 underline hover:text-gray-900"
                   >
                     Privacy Policy
                   </a>
@@ -124,10 +129,10 @@ export default function Register() {
           </div>
         )}
 
-        <div className="flex items-center justify-end mt-4">
+        <div className="flex justify-end items-center mt-4">
           <InertiaLink
             href={route('login')}
-            className="underline text-sm text-gray-600 hover:text-gray-900"
+            className="text-sm text-gray-600 underline hover:text-gray-900"
           >
             Already registered?
           </InertiaLink>

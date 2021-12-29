@@ -7,7 +7,7 @@ import AuthenticationCard from '@Components/AuthenticationCard';
 import Button from '@Components/Button';
 import Input from '@Components/Input';
 import Label from '@Components/Label';
-import ValidationErrors from '@Components/ValidationErrors';
+import InputError from '@/Components/InputError';
 
 export default function ConfirmPassword() {
   const route = useRoute();
@@ -31,21 +31,20 @@ export default function ConfirmPassword() {
         before continuing.
       </div>
 
-      <ValidationErrors className="mb-4" />
-
       <form onSubmit={onSubmit}>
         <div>
           <Label htmlFor="password">Password</Label>
           <Input
             id="password"
             type="password"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.password}
             onChange={e => form.setData('password', e.currentTarget.value)}
             required
             autoComplete="current-password"
             autoFocus
           />
+          <InputError message={form.errors.password} className="py-2" />
         </div>
 
         <div className="flex justify-end mt-4">

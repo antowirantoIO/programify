@@ -9,6 +9,7 @@ import Checkbox from '@Components/Checkbox';
 import Input from '@Components/Input';
 import Label from '@Components/Label';
 import ValidationErrors from '@Components/ValidationErrors';
+import InputError from '@/Components/InputError';
 
 interface Props {
   canResetPassword: boolean;
@@ -34,24 +35,23 @@ export default function Login({ canResetPassword, status }: Props) {
     <AuthenticationCard>
       <Head title="login" />
 
-      <ValidationErrors className="mb-4" />
-
       {status && (
-        <div className="mb-4 font-medium text-sm text-green-600">{status}</div>
+        <div className="mb-4 text-sm font-medium text-green-600">{status}</div>
       )}
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} noValidate>
         <div>
           <Label htmlFor="email">Email</Label>
           <Input
             id="email"
             type="email"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.email}
             onChange={e => form.setData('email', e.currentTarget.value)}
             required
             autoFocus
           />
+          <InputError message={form.errors.email} className="pt-2" />
         </div>
 
         <div className="mt-4">
@@ -59,12 +59,13 @@ export default function Login({ canResetPassword, status }: Props) {
           <Input
             id="password"
             type="password"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={form.data.password}
             onChange={e => form.setData('password', e.currentTarget.value)}
             required
             autoComplete="current-password"
           />
+          <InputError message={form.errors.password} className="pt-2" />
         </div>
 
         <div className="mt-4">
@@ -80,22 +81,22 @@ export default function Login({ canResetPassword, status }: Props) {
           </label>
         </div>
 
-        <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4">
+        <div className="flex flex-col mt-4 space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0">
           {canResetPassword && (
             <div>
               <InertiaLink
                 href={route('password.request')}
-                className="underline text-sm text-gray-600 hover:text-gray-900"
+                className="text-sm text-gray-600 underline hover:text-gray-900"
               >
                 Forgot your password?
               </InertiaLink>
             </div>
           )}
 
-          <div className="flex items-center justify-end">
+          <div className="flex justify-end items-center">
             <InertiaLink
               href={route('register')}
-              className="underline text-sm text-gray-600 hover:text-gray-900"
+              className="text-sm text-gray-600 underline hover:text-gray-900"
             >
               Need an account?
             </InertiaLink>
