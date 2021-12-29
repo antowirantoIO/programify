@@ -10224,56 +10224,6 @@ exports["default"] = SectionTitle;
 
 /***/ }),
 
-/***/ "./resources/js/Components/ValidationErrors.tsx":
-/*!******************************************************!*\
-  !*** ./resources/js/Components/ValidationErrors.tsx ***!
-  \******************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-function ValidationErrors(_a) {
-  var className = _a.className;
-  var props = (0, inertia_react_1.usePage)().props;
-  var errors = props.errors;
-  var hasErrors = Object.keys(errors).length > 0;
-
-  if (!hasErrors) {
-    return null;
-  }
-
-  return react_1["default"].createElement("div", {
-    className: className
-  }, react_1["default"].createElement("div", {
-    className: "font-medium text-red-600"
-  }, "Whoops! Something went wrong."), react_1["default"].createElement("ul", {
-    className: "mt-3 list-disc list-inside text-sm text-red-600"
-  }, Object.keys(errors).map(function (key) {
-    return react_1["default"].createElement("li", {
-      key: key
-    }, errors[key]);
-  })));
-}
-
-exports["default"] = ValidationErrors;
-
-/***/ }),
-
 /***/ "./resources/js/Components/Welcome.tsx":
 /*!*********************************************!*\
   !*** ./resources/js/Components/Welcome.tsx ***!
@@ -11009,13 +10959,13 @@ function APITokenManager(_a) {
       }, "Create"));
     }
   }, react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "name"
   }, "Name"), react_1["default"].createElement(Input_1["default"], {
     id: "name",
     type: "text",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: createApiTokenForm.data.name,
     onChange: function onChange(e) {
       return createApiTokenForm.setData('name', e.currentTarget.value);
@@ -11029,7 +10979,7 @@ function APITokenManager(_a) {
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "permissions"
   }, "Permissions"), react_1["default"].createElement("div", {
-    className: "mt-2 grid grid-cols-1 md:grid-cols-2 gap-4"
+    className: "grid grid-cols-1 gap-4 mt-2 md:grid-cols-2"
   }, availablePermissions.map(function (permission) {
     return react_1["default"].createElement("div", {
       key: permission
@@ -11059,19 +11009,19 @@ function APITokenManager(_a) {
     className: "space-y-6"
   }, tokens.map(function (token) {
     return react_1["default"].createElement("div", {
-      className: "flex items-center justify-between",
+      className: "flex justify-between items-center",
       key: token.id
     }, react_1["default"].createElement("div", null, token.name), react_1["default"].createElement("div", {
       className: "flex items-center"
     }, token.last_used_ago && react_1["default"].createElement("div", {
       className: "text-sm text-gray-400"
     }, "Last used ", token.last_used_ago), availablePermissions.length > 0 ? react_1["default"].createElement("button", {
-      className: "cursor-pointer ml-6 text-sm text-gray-400 underline",
+      className: "ml-6 text-sm text-gray-400 underline cursor-pointer",
       onClick: function onClick() {
         return manageApiTokenPermissions(token);
       }
     }, "Permissions") : null, react_1["default"].createElement("button", {
-      className: "cursor-pointer ml-6 text-sm text-red-500",
+      className: "ml-6 text-sm text-red-500 cursor-pointer",
       onClick: function onClick() {
         return confirmApiTokenDeletion(token);
       }
@@ -11084,7 +11034,7 @@ function APITokenManager(_a) {
   }, react_1["default"].createElement(DialogModal_1["default"].Content, {
     title: 'API Token'
   }, react_1["default"].createElement("div", null, "Please copy your new API token. For your security, it won't be shown again."), react_1["default"].createElement("div", {
-    className: "mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500"
+    className: "px-4 py-2 mt-4 font-mono text-sm text-gray-500 bg-gray-100 rounded"
   }, (_d = (_c = (_b = page.props) === null || _b === void 0 ? void 0 : _b.jetstream) === null || _c === void 0 ? void 0 : _c.flash) === null || _d === void 0 ? void 0 : _d.token)), react_1["default"].createElement(DialogModal_1["default"].Footer, null, react_1["default"].createElement(SecondaryButton_1["default"], {
     onClick: function onClick() {
       return setDisplayingToken(false);
@@ -11097,7 +11047,7 @@ function APITokenManager(_a) {
   }, react_1["default"].createElement(DialogModal_1["default"].Content, {
     title: 'API Token Permissions'
   }, react_1["default"].createElement("div", {
-    className: "grid grid-cols-1 md:grid-cols-2 gap-4"
+    className: "grid grid-cols-1 gap-4 md:grid-cols-2"
   }, availablePermissions.map(function (permission) {
     return react_1["default"].createElement("div", {
       key: permission
@@ -11834,13 +11784,13 @@ function UpdatePasswordForm() {
       }, "Save"));
     }
   }, react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "current_password"
   }, "Current Password"), react_1["default"].createElement(Input_1["default"], {
     id: "current_password",
     type: "password",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     ref: currentPasswordRef,
     value: form.data.current_password,
     onChange: function onChange(e) {
@@ -11851,13 +11801,13 @@ function UpdatePasswordForm() {
     message: form.errors.current_password,
     className: "mt-2"
   })), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "password"
   }, "New Password"), react_1["default"].createElement(Input_1["default"], {
     id: "password",
     type: "password",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.password,
     onChange: function onChange(e) {
       return form.setData('password', e.currentTarget.value);
@@ -11868,13 +11818,13 @@ function UpdatePasswordForm() {
     message: form.errors.password,
     className: "mt-2"
   })), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "password_confirmation"
   }, "Confirm Password"), react_1["default"].createElement(Input_1["default"], {
     id: "password_confirmation",
     type: "password",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.password_confirmation,
     onChange: function onChange(e) {
       return form.setData('password_confirmation', e.currentTarget.value);
@@ -12056,7 +12006,7 @@ function UpdateProfileInformationForm(_a) {
       }, "Save"));
     }
   }, page.props.jetstream.managesProfilePhotos ? react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement("input", {
     type: "file",
     className: "hidden",
@@ -12069,7 +12019,7 @@ function UpdateProfileInformationForm(_a) {
   react_1["default"].createElement("div", {
     className: "mt-2"
   }, react_1["default"].createElement("span", {
-    className: "block rounded-full w-20 h-20",
+    className: "block w-20 h-20 rounded-full",
     style: {
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
@@ -12082,7 +12032,7 @@ function UpdateProfileInformationForm(_a) {
   }, react_1["default"].createElement("img", {
     src: user.profile_photo_url,
     alt: user.name,
-    className: "rounded-full h-20 w-20 object-cover"
+    className: "object-cover w-20 h-20 rounded-full"
   })), react_1["default"].createElement(SecondaryButton_1["default"], {
     className: "mt-2 mr-2",
     type: "button",
@@ -12095,14 +12045,14 @@ function UpdateProfileInformationForm(_a) {
     message: form.errors.photo,
     className: "mt-2"
   })) : null, react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "name",
     value: "Name"
   }), react_1["default"].createElement(Input_1["default"], {
     id: "name",
     type: "text",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.name,
     onChange: function onChange(e) {
       return form.setData('name', e.currentTarget.value);
@@ -12112,14 +12062,14 @@ function UpdateProfileInformationForm(_a) {
     message: form.errors.name,
     className: "mt-2"
   })), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-9 sm:col-span-8"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "email",
     value: "Email"
   }), react_1["default"].createElement(Input_1["default"], {
     id: "email",
     type: "email",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.email,
     onChange: function onChange(e) {
       return form.setData('email', e.currentTarget.value);
@@ -12961,7 +12911,7 @@ var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./re
 
 var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
 
-var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.tsx"));
+var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
 
 function ConfirmPassword() {
   var route = (0, useRoute_1["default"])();
@@ -12982,16 +12932,14 @@ function ConfirmPassword() {
     title: "Secure Area"
   }), react_1["default"].createElement("div", {
     className: "mb-4 text-sm text-gray-600"
-  }, "This is a secure area of the application. Please confirm your password before continuing."), react_1["default"].createElement(ValidationErrors_1["default"], {
-    className: "mb-4"
-  }), react_1["default"].createElement("form", {
+  }, "This is a secure area of the application. Please confirm your password before continuing."), react_1["default"].createElement("form", {
     onSubmit: onSubmit
   }, react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "password"
   }, "Password"), react_1["default"].createElement(Input_1["default"], {
     id: "password",
     type: "password",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.password,
     onChange: function onChange(e) {
       return form.setData('password', e.currentTarget.value);
@@ -12999,6 +12947,9 @@ function ConfirmPassword() {
     required: true,
     autoComplete: "current-password",
     autoFocus: true
+  }), react_1["default"].createElement(InputError_1["default"], {
+    message: form.errors.password,
+    className: "py-2"
   })), react_1["default"].createElement("div", {
     className: "flex justify-end mt-4"
   }, react_1["default"].createElement(Button_1["default"], {
@@ -13048,7 +12999,7 @@ var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./re
 
 var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
 
-var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.tsx"));
+var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
 
 function ForgotPassword(_a) {
   var status = _a.status;
@@ -13067,25 +13018,26 @@ function ForgotPassword(_a) {
   }), react_1["default"].createElement("div", {
     className: "mb-4 text-sm text-gray-600"
   }, "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one."), status && react_1["default"].createElement("div", {
-    className: "mb-4 font-medium text-sm text-green-600"
-  }, status), react_1["default"].createElement(ValidationErrors_1["default"], {
-    className: "mb-4"
-  }), react_1["default"].createElement("form", {
+    className: "mb-4 text-sm font-medium text-green-600"
+  }, status), react_1["default"].createElement("form", {
     onSubmit: onSubmit
   }, react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "email"
   }, "Email"), react_1["default"].createElement(Input_1["default"], {
     id: "email",
     type: "email",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.email,
     onChange: function onChange(e) {
       return form.setData('email', e.currentTarget.value);
     },
     required: true,
     autoFocus: true
+  }), react_1["default"].createElement(InputError_1["default"], {
+    message: form.errors.email,
+    className: "py-2"
   })), react_1["default"].createElement("div", {
-    className: "flex items-center justify-end mt-4"
+    className: "flex justify-end items-center mt-4"
   }, react_1["default"].createElement(Button_1["default"], {
     className: (0, classnames_1["default"])({
       'opacity-25': form.processing
@@ -13161,8 +13113,7 @@ function Login(_a) {
   }), status && react_1["default"].createElement("div", {
     className: "mb-4 text-sm font-medium text-green-600"
   }, status), react_1["default"].createElement("form", {
-    onSubmit: onSubmit,
-    noValidate: true
+    onSubmit: onSubmit
   }, react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "email"
   }, "Email"), react_1["default"].createElement(Input_1["default"], {
@@ -13293,7 +13244,6 @@ function Register() {
   return react_1["default"].createElement(AuthenticationCard_1["default"], null, react_1["default"].createElement(inertia_react_1.Head, {
     title: "Register"
   }), react_1["default"].createElement("form", {
-    noValidate: true,
     onSubmit: onSubmit
   }, react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "name"
@@ -13594,7 +13544,7 @@ var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./re
 
 var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
 
-var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.tsx"));
+var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
 
 function TwoFactorChallenge() {
   var route = (0, useRoute_1["default"])();
@@ -13635,29 +13585,30 @@ function TwoFactorChallenge() {
     title: "Two-Factor Confirmation"
   }), react_1["default"].createElement("div", {
     className: "mb-4 text-sm text-gray-600"
-  }, recovery ? 'Please confirm access to your account by entering one of your emergency recovery codes.' : 'Please confirm access to your account by entering the authentication code provided by your authenticator application.'), react_1["default"].createElement(ValidationErrors_1["default"], {
-    className: "mb-4"
-  }), react_1["default"].createElement("form", {
+  }, recovery ? 'Please confirm access to your account by entering one of your emergency recovery codes.' : 'Please confirm access to your account by entering the authentication code provided by your authenticator application.'), react_1["default"].createElement("form", {
     onSubmit: onSubmit
   }, recovery ? react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "recovery_code"
   }, "Recovery Code"), react_1["default"].createElement(Input_1["default"], {
     id: "recovery_code",
     type: "text",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.recovery_code,
     onChange: function onChange(e) {
       return form.setData('recovery_code', e.currentTarget.value);
     },
     ref: recoveryCodeRef,
     autoComplete: "one-time-code"
+  }), react_1["default"].createElement(InputError_1["default"], {
+    message: form.errors.recovery_code,
+    className: "py-2"
   })) : react_1["default"].createElement("div", null, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "code"
   }, "Code"), react_1["default"].createElement(Input_1["default"], {
     id: "code",
     type: "text",
     inputMode: "numeric",
-    className: "mt-1 block w-full",
+    className: "block mt-1 w-full",
     value: form.data.code,
     onChange: function onChange(e) {
       return form.setData('code', e.currentTarget.value);
@@ -13665,11 +13616,14 @@ function TwoFactorChallenge() {
     autoFocus: true,
     autoComplete: "one-time-code",
     ref: codeRef
+  }), react_1["default"].createElement(InputError_1["default"], {
+    message: form.errors.code,
+    className: "py-2"
   })), react_1["default"].createElement("div", {
-    className: "flex items-center justify-end mt-4"
+    className: "flex justify-end items-center mt-4"
   }, react_1["default"].createElement("button", {
     type: "button",
-    className: "text-sm text-gray-600 hover:text-gray-900 underline cursor-pointer",
+    className: "text-sm text-gray-600 underline cursor-pointer hover:text-gray-900",
     onClick: toggleRecovery
   }, recovery ? 'Use an authentication code' : 'Use a recovery code'), react_1["default"].createElement(Button_1["default"], {
     className: (0, classnames_1["default"])('ml-4', {

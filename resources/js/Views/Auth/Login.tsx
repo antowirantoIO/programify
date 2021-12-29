@@ -39,7 +39,7 @@ export default function Login({ canResetPassword, status }: Props) {
         <div className="mb-4 text-sm font-medium text-green-600">{status}</div>
       )}
 
-      <form onSubmit={onSubmit} noValidate>
+      <form onSubmit={onSubmit}>
         <div>
           <Label htmlFor="email">Email</Label>
           <Input

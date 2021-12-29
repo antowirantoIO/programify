@@ -33,7 +33,7 @@ export default function Register() {
     <AuthenticationCard>
       <Head title="Register" />
 
-      <form noValidate onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <div>
           <Label htmlFor="name">Name</Label>
           <Input

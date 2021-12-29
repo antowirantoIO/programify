@@ -121,12 +121,12 @@ export default function APITokenManager({
         )}
       >
         {/* <!-- Token Name --> */}
-        <div className="col-span-6 sm:col-span-4">
+        <div className="col-span-9 sm:col-span-8">
           <Label htmlFor="name">Name</Label>
           <Input
             id="name"
             type="text"
-            className="mt-1 block w-full"
+            className="block mt-1 w-full"
             value={createApiTokenForm.data.name}
             onChange={e =>
               createApiTokenForm.setData('name', e.currentTarget.value)
@@ -144,7 +144,7 @@ export default function APITokenManager({
           <div className="col-span-6">
             <Label htmlFor="permissions">Permissions</Label>
 
-            <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2">
               {availablePermissions.map(permission => (
                 <div key={permission}>
                   <label className="flex items-center">
@@ -200,7 +200,7 @@ export default function APITokenManager({
               <div className="space-y-6">
                 {tokens.map(token => (
                   <div
-                    className="flex items-center justify-between"
+                    className="flex justify-between items-center"
                     key={token.id}
                   >
                     <div>{token.name}</div>
@@ -214,7 +214,7 @@ export default function APITokenManager({
 
                       {availablePermissions.length > 0 ? (
                         <button
-                          className="cursor-pointer ml-6 text-sm text-gray-400 underline"
+                          className="ml-6 text-sm text-gray-400 underline cursor-pointer"
                           onClick={() => manageApiTokenPermissions(token)}
                         >
                           Permissions
@@ -222,7 +222,7 @@ export default function APITokenManager({
                       ) : null}
 
                       <button
-                        className="cursor-pointer ml-6 text-sm text-red-500"
+                        className="ml-6 text-sm text-red-500 cursor-pointer"
                         onClick={() => confirmApiTokenDeletion(token)}
                       >
                         Delete
@@ -247,7 +247,7 @@ export default function APITokenManager({
             again.
           </div>
 
-          <div className="mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500">
+          <div className="px-4 py-2 mt-4 font-mono text-sm text-gray-500 bg-gray-100 rounded">
             {page.props?.jetstream?.flash?.token}
           </div>
         </DialogModal.Content>
@@ -264,7 +264,7 @@ export default function APITokenManager({
         onClose={() => setManagingPermissionsFor(null)}
       >
         <DialogModal.Content title={'API Token Permissions'}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {availablePermissions.map(permission => (
               <div key={permission}>
                 <label className="flex items-center">

@@ -60,12 +60,12 @@ export default function UpdatePasswordForm() {
         </>
       )}
     >
-      <div className="col-span-6 sm:col-span-4">
+      <div className="col-span-9 sm:col-span-8">
         <Label htmlFor="current_password">Current Password</Label>
         <Input
           id="current_password"
           type="password"
-          className="mt-1 block w-full"
+          className="block mt-1 w-full"
           ref={currentPasswordRef}
           value={form.data.current_password}
           onChange={e =>
@@ -76,12 +76,12 @@ export default function UpdatePasswordForm() {
         <InputError message={form.errors.current_password} className="mt-2" />
       </div>
 
-      <div className="col-span-6 sm:col-span-4">
+      <div className="col-span-9 sm:col-span-8">
         <Label htmlFor="password">New Password</Label>
         <Input
           id="password"
           type="password"
-          className="mt-1 block w-full"
+          className="block mt-1 w-full"
           value={form.data.password}
           onChange={e => form.setData('password', e.currentTarget.value)}
           autoComplete="new-password"
@@ -90,12 +90,12 @@ export default function UpdatePasswordForm() {
         <InputError message={form.errors.password} className="mt-2" />
       </div>
 
-      <div className="col-span-6 sm:col-span-4">
+      <div className="col-span-9 sm:col-span-8">
         <Label htmlFor="password_confirmation">Confirm Password</Label>
         <Input
           id="password_confirmation"
           type="password"
-          className="mt-1 block w-full"
+          className="block mt-1 w-full"
           value={form.data.password_confirmation}
           onChange={e =>
             form.setData('password_confirmation', e.currentTarget.value)
