@@ -8850,7 +8850,7 @@ function Banner() {
   var message = ((_b = props.jetstream.flash) === null || _b === void 0 ? void 0 : _b.banner) || '';
   return react_1["default"].createElement("div", null, show && message ? react_1["default"].createElement("div", {
     className: (0, classnames_1["default"])({
-      'bg-indigo-500': style == 'success',
+      'bg-primary-500': style == 'success',
       'bg-red-700': style == 'danger'
     })
   }, react_1["default"].createElement("div", {
@@ -8861,7 +8861,7 @@ function Banner() {
     className: "w-0 flex-1 flex items-center min-w-0"
   }, react_1["default"].createElement("span", {
     className: (0, classnames_1["default"])('flex p-2 rounded-lg', {
-      'bg-indigo-600': style == 'success',
+      'bg-primary-600': style == 'success',
       'bg-red-600': style == 'danger'
     })
   }, function () {
@@ -8904,7 +8904,7 @@ function Banner() {
   }, react_1["default"].createElement("button", {
     type: "button",
     className: (0, classnames_1["default"])('-mr-1 flex p-2 rounded-md focus:outline-none sm:-mr-2 transition', {
-      'hover:bg-indigo-600 focus:bg-indigo-600': style == 'success',
+      'hover:bg-primary-600 focus:bg-primary-600': style == 'success',
       'hover:bg-red-600 focus:bg-red-600': style == 'danger'
     }),
     "aria-label": "Dismiss",
@@ -9038,7 +9038,7 @@ function Checkbox(props) {
   return react_1["default"].createElement("input", __assign({
     type: "checkbox"
   }, props, {
-    className: (0, classnames_1["default"])('rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50', props.className)
+    className: (0, classnames_1["default"])('rounded border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50', props.className)
   }));
 }
 
@@ -9794,13 +9794,13 @@ var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var JetInput = (0, react_1.forwardRef)(function (props, ref) {
+var Input = (0, react_1.forwardRef)(function (props, ref) {
   return react_1["default"].createElement("input", __assign({}, props, {
     ref: ref,
-    className: (0, classnames_1["default"])('border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm', props.className)
+    className: (0, classnames_1["default"])('border-gray-300 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 rounded-xl shadow-sm', props.className)
   }));
 });
-exports["default"] = JetInput;
+exports["default"] = Input;
 
 /***/ }),
 
@@ -10017,7 +10017,7 @@ function NavLink(_a) {
   var active = _a.active,
       href = _a.href,
       children = _a.children;
-  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-primary-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -10072,7 +10072,7 @@ function ResponsiveNavLink(_a) {
       children = _a.children,
       props = __rest(_a, ["active", "href", "children"]);
 
-  var classes = active ? 'block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition' : 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition';
+  var classes = active ? 'block pl-3 pr-4 py-2 border-l-4 border-primary-400 text-base font-medium text-primary-700 bg-primary-50 focus:outline-none focus:text-primary-800 focus:bg-primary-100 focus:border-primary-700 transition' : 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition';
   return react_1["default"].createElement("div", null, 'as' in props && props.as === 'button' ? react_1["default"].createElement("button", {
     className: (0, classnames_1["default"])('w-full text-left', classes)
   }, children) : react_1["default"].createElement(inertia_react_1.InertiaLink, {
@@ -10333,9 +10333,9 @@ function Welcome() {
   }, "Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end."), react_1["default"].createElement("a", {
     href: "https://laravel.com/docs"
   }, react_1["default"].createElement("div", {
-    className: "mt-3 flex items-center text-sm font-semibold text-indigo-700"
+    className: "mt-3 flex items-center text-sm font-semibold text-primary-700"
   }, react_1["default"].createElement("div", null, "Explore the documentation"), react_1["default"].createElement("div", {
-    className: "ml-1 text-indigo-500"
+    className: "ml-1 text-primary-500"
   }, react_1["default"].createElement("svg", {
     viewBox: "0 0 20 20",
     fill: "currentColor",
@@ -10371,9 +10371,9 @@ function Welcome() {
   }, "Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process."), react_1["default"].createElement("a", {
     href: "https://laracasts.com"
   }, react_1["default"].createElement("div", {
-    className: "mt-3 flex items-center text-sm font-semibold text-indigo-700"
+    className: "mt-3 flex items-center text-sm font-semibold text-primary-700"
   }, react_1["default"].createElement("div", null, "Start watching Laracasts"), react_1["default"].createElement("div", {
-    className: "ml-1 text-indigo-500"
+    className: "ml-1 text-primary-500"
   }, react_1["default"].createElement("svg", {
     viewBox: "0 0 20 20",
     fill: "currentColor",
@@ -12906,18 +12906,23 @@ function ApiTokenIndex(_a) {
   var tokens = _a.tokens,
       availablePermissions = _a.availablePermissions,
       defaultPermissions = _a.defaultPermissions;
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: 'API Tokens'
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+    className: "py-10 mx-auto max-w-7xl sm:px-6 lg:px-8"
   }, react_1["default"].createElement(APITokenManager_1["default"], {
     tokens: tokens,
     availablePermissions: availablePermissions,
     defaultPermissions: defaultPermissions
-  }))));
+  })));
 }
 
 exports["default"] = ApiTokenIndex;
+
+ApiTokenIndex.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: 'API Tokens'
+  });
+};
 
 /***/ }),
 
@@ -13750,23 +13755,28 @@ var Welcome_1 = __importDefault(__webpack_require__(/*! @Components/Welcome */ "
 var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.tsx"));
 
 function Dashboard() {
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: "Dashboard",
-    renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Dashboard");
-    }
-  }, react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", {
     className: "py-12"
   }, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto sm:px-6 lg:px-8"
+    className: "mx-auto max-w-7xl sm:px-6 lg:px-8"
   }, react_1["default"].createElement("div", {
-    className: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
-  }, react_1["default"].createElement(Welcome_1["default"], null)))));
+    className: "overflow-hidden bg-white shadow-xl sm:rounded-lg"
+  }, react_1["default"].createElement(Welcome_1["default"], null))));
 }
 
 exports["default"] = Dashboard;
+
+Dashboard.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: "Dashboard",
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("h2", {
+        className: "text-xl font-semibold leading-tight text-gray-800"
+      }, "Dashboard");
+    }
+  });
+};
 
 /***/ }),
 
@@ -13801,13 +13811,13 @@ function PrivacyPolicy(_a) {
   return react_1["default"].createElement("div", null, react_1["default"].createElement(inertia_react_1.Head, {
     title: "Privacy Policy"
   }), react_1["default"].createElement("div", {
-    className: "font-sans text-gray-900 antialiased"
+    className: "font-sans antialiased text-gray-900"
   }, react_1["default"].createElement("div", {
     className: "pt-4 bg-gray-100"
   }, react_1["default"].createElement("div", {
-    className: "min-h-screen flex flex-col items-center pt-6 sm:pt-0"
+    className: "flex flex-col items-center pt-6 min-h-screen sm:pt-0"
   }, react_1["default"].createElement("div", null, react_1["default"].createElement(AuthenticationCardLogo_1["default"], null)), react_1["default"].createElement("div", {
-    className: "w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose",
+    className: "overflow-hidden p-6 mt-6 w-full bg-white shadow-md sm:max-w-2xl sm:rounded-lg prose",
     dangerouslySetInnerHTML: {
       __html: policy
     }
@@ -13858,14 +13868,7 @@ var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */
 function Show(_a) {
   var sessions = _a.sessions;
   var page = (0, useTypedPage_1["default"])();
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: 'Profile',
-    renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "text-xl font-semibold leading-tight text-gray-800"
-      }, "Profile");
-    }
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
     className: "py-10 mx-auto max-w-7xl sm:px-6 lg:px-8"
   }, page.props.jetstream.canUpdateProfileInformation ? react_1["default"].createElement("div", null, react_1["default"].createElement(UpdateProfileInformationForm_1["default"], {
     user: page.props.user
@@ -13879,10 +13882,22 @@ function Show(_a) {
     sessions: sessions
   })), page.props.jetstream.hasAccountDeletionFeatures ? react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
     className: "mt-10 sm:mt-0"
-  }, react_1["default"].createElement(DeleteUserForm_1["default"], null))) : null)));
+  }, react_1["default"].createElement(DeleteUserForm_1["default"], null))) : null));
 }
 
 exports["default"] = Show;
+
+Show.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: 'Profile',
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("h2", {
+        className: "text-xl font-semibold leading-tight text-gray-800"
+      }, "Profile");
+    }
+  });
+};
 
 /***/ }),
 
@@ -13912,19 +13927,24 @@ var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 function Create() {
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: "Create Team",
-    renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Create Team");
-    }
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-  }, react_1["default"].createElement(CreateTeamForm_1["default"], null))));
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+    className: "py-10 mx-auto max-w-7xl sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(CreateTeamForm_1["default"], null)));
 }
 
 exports["default"] = Create;
+
+Create.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: "Create Team",
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("h2", {
+        className: "text-xl font-semibold leading-tight text-gray-800"
+      }, "Create Team");
+    }
+  });
+};
 
 /***/ }),
 
@@ -13963,15 +13983,8 @@ function Show(_a) {
   var team = _a.team,
       availableRoles = _a.availableRoles,
       permissions = _a.permissions;
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: "Team Settings",
-    renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Team Settings");
-    }
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+    className: "py-10 mx-auto max-w-7xl sm:px-6 lg:px-8"
   }, react_1["default"].createElement(UpdateTeamNameForm_1["default"], {
     team: team,
     permissions: permissions
@@ -13985,10 +13998,22 @@ function Show(_a) {
     className: "mt-10 sm:mt-0"
   }, react_1["default"].createElement(DeleteTeamForm_1["default"], {
     team: team
-  }))) : null)));
+  }))) : null));
 }
 
 exports["default"] = Show;
+
+Show.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: "Team Settings",
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("h2", {
+        className: "text-xl font-semibold leading-tight text-gray-800"
+      }, "Team Settings");
+    }
+  });
+};
 
 /***/ }),
 

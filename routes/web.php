@@ -9,6 +9,9 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\WelcomeContoller;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+
+URL::forceScheme('https');
 
 Route::get('/', WelcomeContoller::class)->name('welcome');
 
