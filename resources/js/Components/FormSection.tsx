@@ -19,7 +19,7 @@ export default function FormSection({
   const hasActions = !!renderActions;
 
   return (
-    <div className="mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl">
+    <div className="px-1 mx-auto max-w-screen-lg md:px-0 lg:max-w-screen-2xl xl:max-w-screen-xl">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <div className="lg:col-span-9 lg:order-none">
           <div className="bg-white rounded-xl border shadow-sm">
