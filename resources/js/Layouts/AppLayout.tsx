@@ -401,7 +401,7 @@ export default function AppLayout({
         {/* <!-- Page Heading --> */}
         {renderHeader ? (
           <header className="bg-white shadow">
-            <div className="px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="px-4 py-20 bg-gradient-to-br from-gray-900 to-primary-900 mx-auto max-w-7xl sm:px-6 lg:px-8">
               {renderHeader()}
             </div>
           </header>
