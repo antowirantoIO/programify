@@ -8585,7 +8585,7 @@ function ActionSection(_a) {
       description = _a.description,
       children = _a.children;
   return react_1["default"].createElement("div", {
-    className: "px-1 mx-auto max-w-screen-lg md:px-0 lg:max-w-screen-2xl xl:max-w-screen-xl"
+    className: "mx-auto max-w-screen-lg px- md:px-0 lg:max-w-screen-2xl xl:max-w-screen-xl"
   }, react_1["default"].createElement("div", {
     className: "grid grid-cols-1 gap-6 lg:grid-cols-12"
   }, react_1["default"].createElement("div", {
@@ -9700,7 +9700,7 @@ function FormSection(_a) {
       children = _a.children;
   var hasActions = !!renderActions;
   return react_1["default"].createElement("div", {
-    className: "px-1 mx-auto max-w-screen-lg md:px-0 lg:max-w-screen-2xl xl:max-w-screen-xl"
+    className: "mx-auto max-w-screen-lg md:px-0 lg:max-w-screen-2xl xl:max-w-screen-xl"
   }, react_1["default"].createElement("div", {
     className: "grid grid-cols-1 gap-6 lg:grid-cols-12"
   }, react_1["default"].createElement("div", {
@@ -10223,13 +10223,11 @@ function SectionTitle(_a) {
     className: "grid gap-4 items-center px-4 py-3 rounded-t-xl border-b bg-gray-50/40 sm:grid-cols-12"
   }, react_1["default"].createElement("div", {
     className: "col-span-12 sm:col-span-8"
-  }, react_1["default"].createElement("div", {
-    className: "px-4 sm:px-0"
   }, react_1["default"].createElement("h3", {
     className: "text-lg font-medium text-gray-900"
   }, title), react_1["default"].createElement("p", {
     className: "mt-1 text-sm text-gray-600"
-  }, description))));
+  }, description)));
 }
 
 exports["default"] = SectionTitle;
@@ -10773,7 +10771,7 @@ function AppLayout(_a) {
   })) : null)))), renderHeader ? react_1["default"].createElement("header", {
     className: "bg-white shadow"
   }, react_1["default"].createElement("div", {
-    className: "px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8"
+    className: "px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8"
   }, renderHeader())) : null, react_1["default"].createElement("main", null, children)));
 }
 
@@ -11234,7 +11232,7 @@ function DeleteUserForm() {
     title: 'Delete Account',
     description: 'Permanently delete your account.'
   }, react_1["default"].createElement("div", {
-    className: "max-w-xl text-sm text-gray-600"
+    className: "w-full text-sm text-gray-600"
   }, "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain."), react_1["default"].createElement("div", {
     className: "mt-5"
   }, react_1["default"].createElement(DangerButton_1["default"], {
@@ -11395,7 +11393,7 @@ function LogoutOtherBrowserSessions(_a) {
     title: 'Browser Sessions',
     description: 'Manage and log out your active sessions on other browsers and devices.'
   }, react_1["default"].createElement("div", {
-    className: "max-w-xl text-sm text-gray-600"
+    className: "w-full text-sm text-gray-600"
   }, "If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password."), sessions.length > 0 ? react_1["default"].createElement("div", {
     className: "mt-5 space-y-6"
   }, sessions.map(function (session, i) {
@@ -11622,9 +11620,9 @@ function TwoFactorAuthenticationForm() {
   }, "You have enabled two factor authentication.") : react_1["default"].createElement("h3", {
     className: "text-lg font-medium text-gray-900"
   }, "You have not enabled two factor authentication."), react_1["default"].createElement("div", {
-    className: "mt-3 max-w-xl text-sm text-gray-600"
+    className: "mt-3 w-full text-sm text-gray-600"
   }, react_1["default"].createElement("p", null, "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.")), twoFactorEnabled ? react_1["default"].createElement("div", null, qrCode ? react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "mt-4 max-w-xl text-sm text-gray-600"
+    className: "mt-4 w-full text-sm text-gray-600"
   }, react_1["default"].createElement("p", {
     className: "font-semibold"
   }, "Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.")), react_1["default"].createElement("div", {
@@ -11633,7 +11631,7 @@ function TwoFactorAuthenticationForm() {
       __html: qrCode || ''
     }
   })) : null, recoveryCodes.length > 0 ? react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "mt-4 max-w-xl text-sm text-gray-600"
+    className: "mt-4 w-full text-sm text-gray-600"
   }, react_1["default"].createElement("p", {
     className: "font-semibold"
   }, "Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.")), react_1["default"].createElement("div", {
@@ -13859,7 +13857,7 @@ function Show(_a) {
   var sessions = _a.sessions;
   var page = (0, useTypedPage_1["default"])();
   return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "py-10 mx-auto max-w-7xl sm:px-6 lg:px-8"
+    className: "px-4 py-5 mx-auto max-w-7xl sm:px-5 lg:px-6"
   }, page.props.jetstream.canUpdateProfileInformation ? react_1["default"].createElement("div", null, react_1["default"].createElement(UpdateProfileInformationForm_1["default"], {
     user: page.props.user
   }), react_1["default"].createElement(SectionBorder_1["default"], null)) : null, page.props.jetstream.canUpdatePassword ? react_1["default"].createElement("div", {
@@ -13882,9 +13880,53 @@ Show.layout = function (page) {
     children: page,
     title: 'Profile',
     renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "text-xl font-semibold leading-tight text-gray-800"
-      }, "Profile");
+      return react_1["default"].createElement("div", null, react_1["default"].createElement("nav", {
+        className: "flex",
+        "aria-label": "Breadcrumb"
+      }, react_1["default"].createElement("ol", {
+        className: "inline-flex items-center space-x-1 md:space-x-2"
+      }, react_1["default"].createElement("li", {
+        className: "inline-flex items-center"
+      }, react_1["default"].createElement("a", {
+        href: "#",
+        className: "inline-flex items-center text-sm text-gray-700 hover:text-gray-900"
+      }, react_1["default"].createElement("svg", {
+        className: "mr-2 w-4 h-4",
+        fill: "currentColor",
+        viewBox: "0 0 20 20",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, react_1["default"].createElement("path", {
+        d: "M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+      })), "Home")), react_1["default"].createElement("li", null, react_1["default"].createElement("div", {
+        className: "flex items-center"
+      }, react_1["default"].createElement("svg", {
+        className: "w-6 h-6 text-gray-400",
+        fill: "currentColor",
+        viewBox: "0 0 20 20",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), react_1["default"].createElement("a", {
+        href: "#",
+        className: "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900"
+      }, "Settings"))), react_1["default"].createElement("li", {
+        "aria-current": "page"
+      }, react_1["default"].createElement("div", {
+        className: "flex items-center"
+      }, react_1["default"].createElement("svg", {
+        className: "w-6 h-6 text-gray-400",
+        fill: "currentColor",
+        viewBox: "0 0 20 20",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), react_1["default"].createElement("span", {
+        className: "ml-1 text-sm font-medium text-gray-400"
+      }, "User Information"))))));
     }
   });
 };

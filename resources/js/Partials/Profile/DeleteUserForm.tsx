@@ -42,7 +42,7 @@ export default function DeleteUserForm() {
       title={'Delete Account'}
       description={'Permanently delete your account.'}
     >
-      <div className="max-w-xl text-sm text-gray-600">
+      <div className="w-full text-sm text-gray-600">
         Once your account is deleted, all of its resources and data will be
         permanently deleted. Before deleting your account, please download any
         data or information that you wish to retain.

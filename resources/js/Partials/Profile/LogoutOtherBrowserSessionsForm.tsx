@@ -51,7 +51,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
         'Manage and log out your active sessions on other browsers and devices.'
       }
     >
-      <div className="max-w-xl text-sm text-gray-600">
+      <div className="w-full text-sm text-gray-600">
         If necessary, you may log out of all of your other browser sessions
         across all of your devices. Some of your recent sessions are listed
         below; however, this list may not be exhaustive. If you feel your

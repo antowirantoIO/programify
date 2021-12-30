@@ -72,7 +72,7 @@ export default function TwoFactorAuthenticationForm() {
         </h3>
       )}
 
-      <div className="mt-3 max-w-xl text-sm text-gray-600">
+      <div className="mt-3 w-full text-sm text-gray-600">
         <p>
           When two factor authentication is enabled, you will be prompted for a
           secure, random token during authentication. You may retrieve this
@@ -84,7 +84,7 @@ export default function TwoFactorAuthenticationForm() {
         <div>
           {qrCode ? (
             <div>
-              <div className="mt-4 max-w-xl text-sm text-gray-600">
+              <div className="mt-4 w-full text-sm text-gray-600">
                 <p className="font-semibold">
                   Two factor authentication is now enabled. Scan the following
                   QR code using your phone's authenticator application.
@@ -100,7 +100,7 @@ export default function TwoFactorAuthenticationForm() {
 
           {recoveryCodes.length > 0 ? (
             <div>
-              <div className="mt-4 max-w-xl text-sm text-gray-600">
+              <div className="mt-4 w-full text-sm text-gray-600">
                 <p className="font-semibold">
                   Store these recovery codes in a secure password manager. They
                   can be used to recover access to your account if your two
