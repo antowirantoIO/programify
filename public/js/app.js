@@ -8514,76 +8514,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/Components/ActionMessage.tsx":
-/*!***************************************************!*\
-  !*** ./resources/js/Components/ActionMessage.tsx ***!
-  \***************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var react_hot_toast_1 = __importStar(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
-
-function ActionMessage(_a) {
-  var on = _a.on,
-      message = _a.message;
-  return react_1["default"].createElement("div", null, react_1["default"].createElement(react_hot_toast_1.Toaster, {
-    position: "bottom-right",
-    reverseOrder: false
-  }), on ? react_hot_toast_1["default"].success(message) : null);
-}
-
-exports["default"] = ActionMessage;
-
-/***/ }),
-
 /***/ "./resources/js/Components/ActionSection.tsx":
 /*!***************************************************!*\
   !*** ./resources/js/Components/ActionSection.tsx ***!
@@ -10877,8 +10807,6 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var ActionSection_1 = __importDefault(__webpack_require__(/*! @Components/ActionSection */ "./resources/js/Components/ActionSection.tsx"));
 
 var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
@@ -10902,6 +10830,8 @@ var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./re
 var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
 
 var SectionBorder_1 = __importDefault(__webpack_require__(/*! @Components/SectionBorder */ "./resources/js/Components/SectionBorder.tsx"));
+
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
 
 function APITokenManager(_a) {
   var _b, _c, _d;
@@ -10939,6 +10869,7 @@ function APITokenManager(_a) {
       onSuccess: function onSuccess() {
         setDisplayingToken(true);
         createApiTokenForm.reset();
+        react_hot_toast_1["default"].success('API Token Created');
       }
     });
   }
@@ -10957,7 +10888,8 @@ function APITokenManager(_a) {
       preserveScroll: true,
       preserveState: true,
       onSuccess: function onSuccess() {
-        return setManagingPermissionsFor(null);
+        setManagingPermissionsFor(null);
+        react_hot_toast_1["default"].error('API Token Updated');
       }
     });
   }
@@ -10975,7 +10907,8 @@ function APITokenManager(_a) {
       preserveScroll: true,
       preserveState: true,
       onSuccess: function onSuccess() {
-        return setApiTokenBeingDeleted(null);
+        setApiTokenBeingDeleted(null);
+        react_hot_toast_1["default"].success('API Token Destroyed');
       }
     });
   }
@@ -10985,10 +10918,7 @@ function APITokenManager(_a) {
     title: 'Create API Token',
     description: 'API tokens allow third-party services to authenticate with our application on your behalf.',
     renderActions: function renderActions() {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ActionMessage_1["default"], {
-        on: createApiTokenForm.recentlySuccessful,
-        message: "API Created Successfuly"
-      }), react_1["default"].createElement(Button_1["default"], {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
         className: (0, classnames_1["default"])({
           'opacity-25': createApiTokenForm.processing
         }),
@@ -11212,6 +11142,8 @@ var InputError_1 = __importDefault(__webpack_require__(/*! @Components/InputErro
 
 var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
 
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
+
 function DeleteUserForm() {
   var route = (0, useRoute_1["default"])();
 
@@ -11237,12 +11169,14 @@ function DeleteUserForm() {
     form["delete"](route('current-user.destroy'), {
       preserveScroll: true,
       onSuccess: function onSuccess() {
-        return closeModal();
+        closeModal();
+        react_hot_toast_1["default"].success('Account Destroyed');
       },
       onError: function onError() {
         var _a;
 
-        return (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+        (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+        react_hot_toast_1["default"].error('Something Wrong');
       },
       onFinish: function onFinish() {
         return form.reset();
@@ -11358,8 +11292,6 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var ActionSection_1 = __importDefault(__webpack_require__(/*! @Components/ActionSection */ "./resources/js/Components/ActionSection.tsx"));
 
 var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
@@ -11371,6 +11303,8 @@ var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./re
 var InputError_1 = __importDefault(__webpack_require__(/*! @Components/InputError */ "./resources/js/Components/InputError.tsx"));
 
 var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
+
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
 
 function LogoutOtherBrowserSessions(_a) {
   var sessions = _a.sessions;
@@ -11398,12 +11332,14 @@ function LogoutOtherBrowserSessions(_a) {
     form["delete"](route('other-browser-sessions.destroy'), {
       preserveScroll: true,
       onSuccess: function onSuccess() {
-        return closeModal();
+        closeModal();
+        react_hot_toast_1["default"].success('Logouted Other Session');
       },
       onError: function onError() {
         var _a;
 
-        return (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+        (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+        react_hot_toast_1["default"].error('Something Wrong');
       },
       onFinish: function onFinish() {
         return form.reset();
@@ -11470,10 +11406,7 @@ function LogoutOtherBrowserSessions(_a) {
     className: "flex items-center mt-5"
   }, react_1["default"].createElement(Button_1["default"], {
     onClick: confirmLogout
-  }, "Log Out Other Browser Sessions"), react_1["default"].createElement(ActionMessage_1["default"], {
-    on: form.recentlySuccessful,
-    message: "Logout Browser Session Successfuly"
-  })), react_1["default"].createElement(DialogModal_1["default"], {
+  }, "Log Out Other Browser Sessions")), react_1["default"].createElement(DialogModal_1["default"], {
     isOpen: confirmingLogout,
     onClose: closeModal
   }, react_1["default"].createElement(DialogModal_1["default"].Content, {
@@ -11760,8 +11693,6 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
 
 var FormSection_1 = __importDefault(__webpack_require__(/*! @Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
@@ -11771,6 +11702,8 @@ var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./re
 var InputError_1 = __importDefault(__webpack_require__(/*! @Components/InputError */ "./resources/js/Components/InputError.tsx"));
 
 var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
+
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
 
 function UpdatePasswordForm() {
   var route = (0, useRoute_1["default"])();
@@ -11787,10 +11720,13 @@ function UpdatePasswordForm() {
       errorBag: 'updatePassword',
       preserveScroll: true,
       onSuccess: function onSuccess() {
-        return form.reset();
+        form.reset();
+        react_hot_toast_1["default"].success('Password Changed');
       },
       onError: function onError() {
         var _a, _b;
+
+        react_hot_toast_1["default"].error('Something Wrong');
 
         if (form.errors.password) {
           form.reset('password', 'password_confirmation');
@@ -11815,10 +11751,7 @@ function UpdatePasswordForm() {
           'opacity-25': form.processing
         }),
         disabled: form.processing
-      }, "Save"), react_1["default"].createElement(ActionMessage_1["default"], {
-        on: form.recentlySuccessful,
-        message: "Password Change Successfuly"
-      }));
+      }, "Save"));
     }
   }, react_1["default"].createElement("div", {
     className: "col-span-9 sm:col-span-8"
@@ -11940,8 +11873,6 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
 
 var FormSection_1 = __importDefault(__webpack_require__(/*! @Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
@@ -11953,6 +11884,8 @@ var InputError_1 = __importDefault(__webpack_require__(/*! @Components/InputErro
 var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
 
 var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
+
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
 
 function UpdateProfileInformationForm(_a) {
   var user = _a.user;
@@ -11976,7 +11909,8 @@ function UpdateProfileInformationForm(_a) {
       errorBag: 'updateProfileInformation',
       preserveScroll: true,
       onSuccess: function onSuccess() {
-        return clearPhotoFileInput();
+        clearPhotoFileInput();
+        react_hot_toast_1["default"].success('User Profile Updated');
       }
     });
   }
@@ -12014,6 +11948,7 @@ function UpdateProfileInformationForm(_a) {
       onSuccess: function onSuccess() {
         setPhotoPreview(null);
         clearPhotoFileInput();
+        react_hot_toast_1["default"].success('Profile Photo Deleted');
       }
     });
   }
@@ -12037,10 +11972,7 @@ function UpdateProfileInformationForm(_a) {
           'opacity-25': form.processing
         }),
         disabled: form.processing
-      }, "Save"), react_1["default"].createElement(ActionMessage_1["default"], {
-        on: form.recentlySuccessful,
-        message: "Profile Updated Successfuly"
-      }));
+      }, "Save"));
     }
   }, page.props.jetstream.managesProfilePhotos ? react_1["default"].createElement("div", {
     className: "col-span-9 sm:col-span-8"
@@ -12114,8 +12046,7 @@ function UpdateProfileInformationForm(_a) {
   }), react_1["default"].createElement(InputError_1["default"], {
     message: form.errors.email,
     className: "mt-2"
-  }))) // <_Example/>
-  ;
+  })));
 }
 
 exports["default"] = UpdateProfileInformationForm;
@@ -12392,8 +12323,6 @@ var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./
 
 var useTypedPage_1 = __importDefault(__webpack_require__(/*! @/Hooks/useTypedPage */ "./resources/js/Hooks/useTypedPage.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var ActionSection_1 = __importDefault(__webpack_require__(/*! @Components/ActionSection */ "./resources/js/Components/ActionSection.tsx"));
 
 var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
@@ -12423,6 +12352,8 @@ var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./nod
 var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
 
 function TeamMemberManager(_a) {
   var team = _a.team,
@@ -12462,7 +12393,8 @@ function TeamMemberManager(_a) {
       errorBag: 'addTeamMember',
       preserveScroll: true,
       onSuccess: function onSuccess() {
-        return addTeamMemberForm.reset();
+        addTeamMemberForm.reset();
+        react_hot_toast_1["default"].success('Teams Member Added');
       }
     });
   }
@@ -12487,7 +12419,8 @@ function TeamMemberManager(_a) {
     updateRoleForm.put(route('team-members.update', [team, managingRoleFor]), {
       preserveScroll: true,
       onSuccess: function onSuccess() {
-        return setCurrentlyManagingRole(false);
+        setCurrentlyManagingRole(false);
+        react_hot_toast_1["default"].success('Teams Role Member Updated');
       }
     });
   }
@@ -12514,7 +12447,8 @@ function TeamMemberManager(_a) {
       preserveScroll: true,
       preserveState: true,
       onSuccess: function onSuccess() {
-        return setTeamMemberBeingRemoved(null);
+        setTeamMemberBeingRemoved(null);
+        react_hot_toast_1["default"].success('Teams Member Destoyed');
       }
     });
   }
@@ -12532,10 +12466,7 @@ function TeamMemberManager(_a) {
     title: 'Add Team Member',
     description: 'Add a new team member to your team, allowing them to collaborate with you.',
     renderActions: function renderActions() {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ActionMessage_1["default"], {
-        on: addTeamMemberForm.recentlySuccessful,
-        message: "Tems Updated Successfuly"
-      }), react_1["default"].createElement(Button_1["default"], {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
         className: (0, classnames_1["default"])({
           'opacity-25': addTeamMemberForm.processing
         }),
@@ -12779,8 +12710,6 @@ Object.defineProperty(exports, "__esModule", ({
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var Button_1 = __importDefault(__webpack_require__(/*! @Components/Button */ "./resources/js/Components/Button.tsx"));
 
 var FormSection_1 = __importDefault(__webpack_require__(/*! @Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
@@ -12797,6 +12726,8 @@ var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
+
 function UpdateTeamNameForm(_a) {
   var team = _a.team,
       permissions = _a.permissions;
@@ -12808,7 +12739,10 @@ function UpdateTeamNameForm(_a) {
   function updateTeamName() {
     form.put(route('teams.update', [team]), {
       errorBag: 'updateTeamName',
-      preserveScroll: true
+      preserveScroll: true,
+      onSuccess: function onSuccess() {
+        react_hot_toast_1["default"].success('Teams Updated');
+      }
     });
   }
 
@@ -12817,10 +12751,7 @@ function UpdateTeamNameForm(_a) {
     title: 'Team Name',
     description: "The team's name and owner information.",
     renderActions: permissions.canUpdateTeam ? function () {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ActionMessage_1["default"], {
-        on: form.recentlySuccessful,
-        message: "Name Teams Updated Successfuly"
-      }), react_1["default"].createElement(Button_1["default"], {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
         className: (0, classnames_1["default"])({
           'opacity-25': form.processing
         }),
@@ -13125,7 +13056,7 @@ var Input_1 = __importDefault(__webpack_require__(/*! @Components/Input */ "./re
 
 var Label_1 = __importDefault(__webpack_require__(/*! @Components/Label */ "./resources/js/Components/Label.tsx"));
 
-var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
+var InputError_1 = __importDefault(__webpack_require__(/*! @Components/InputError */ "./resources/js/Components/InputError.tsx"));
 
 function Login(_a) {
   var canResetPassword = _a.canResetPassword,
@@ -13141,7 +13072,7 @@ function Login(_a) {
     e.preventDefault();
     form.post(route('login'), {
       onFinish: function onFinish() {
-        return form.reset('password');
+        form.reset('password');
       }
     });
   }

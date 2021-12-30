@@ -2,12 +2,12 @@ import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@Components/ActionMessage';
 import Button from '@Components/Button';
 import FormSection from '@Components/FormSection';
 import Input from '@Components/Input';
 import InputError from '@Components/InputError';
 import Label from '@Components/Label';
+import toast from 'react-hot-toast';
 
 export default function UpdatePasswordForm() {
   const route = useRoute();
@@ -23,8 +23,12 @@ export default function UpdatePasswordForm() {
     form.put(route('user-password.update'), {
       errorBag: 'updatePassword',
       preserveScroll: true,
-      onSuccess: () => form.reset(),
+      onSuccess: () => {
+        form.reset();
+        toast.success('Password Changed');
+      },
       onError: () => {
+        toast.error('Something Wrong');
         if (form.errors.password) {
           form.reset('password', 'password_confirmation');
           passwordRef.current?.focus();
@@ -53,11 +57,6 @@ export default function UpdatePasswordForm() {
           >
             Save
           </Button>
-
-          <ActionMessage
-            on={form.recentlySuccessful}
-            message="Password Change Successfuly"
-          />
         </>
       )}
     >

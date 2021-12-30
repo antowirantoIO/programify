@@ -1,6 +1,5 @@
 import useRoute from '@/Hooks/useRoute';
 import useTypedPage from '@/Hooks/useTypedPage';
-import ActionMessage from '@Components/ActionMessage';
 import ActionSection from '@Components/ActionSection';
 import Button from '@Components/Button';
 import ConfirmationModal from '@Components/ConfirmationModal';
@@ -24,6 +23,7 @@ import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface UserMembership extends User {
   membership: {
@@ -66,7 +66,10 @@ export default function TeamMemberManager({
     addTeamMemberForm.post(route('team-members.store', [team]), {
       errorBag: 'addTeamMember',
       preserveScroll: true,
-      onSuccess: () => addTeamMemberForm.reset(),
+      onSuccess: () => {
+        addTeamMemberForm.reset();
+        toast.success('Teams Member Added');
+      },
     });
   }
 
@@ -88,7 +91,10 @@ export default function TeamMemberManager({
     }
     updateRoleForm.put(route('team-members.update', [team, managingRoleFor]), {
       preserveScroll: true,
-      onSuccess: () => setCurrentlyManagingRole(false),
+      onSuccess: () => {
+        setCurrentlyManagingRole(false);
+        toast.success('Teams Role Member Updated');
+      },
     });
   }
 
@@ -116,7 +122,10 @@ export default function TeamMemberManager({
         errorBag: 'removeTeamMember',
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => setTeamMemberBeingRemoved(null),
+        onSuccess: () => {
+          setTeamMemberBeingRemoved(null);
+          toast.success('Teams Member Destoyed');
+        },
       },
     );
   }
@@ -140,11 +149,6 @@ export default function TeamMemberManager({
             }
             renderActions={() => (
               <>
-                <ActionMessage
-                  on={addTeamMemberForm.recentlySuccessful}
-                  message="Tems Updated Successfuly"
-                />
-
                 <Button
                   className={classNames({
                     'opacity-25': addTeamMemberForm.processing,

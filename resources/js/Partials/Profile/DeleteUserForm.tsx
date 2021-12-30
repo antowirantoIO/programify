@@ -8,6 +8,7 @@ import DialogModal from '@Components/DialogModal';
 import Input from '@Components/Input';
 import InputError from '@Components/InputError';
 import SecondaryButton from '@Components/SecondaryButton';
+import toast from 'react-hot-toast';
 
 export default function DeleteUserForm() {
   const route = useRoute();
@@ -26,8 +27,14 @@ export default function DeleteUserForm() {
   function deleteUser() {
     form.delete(route('current-user.destroy'), {
       preserveScroll: true,
-      onSuccess: () => closeModal(),
-      onError: () => passwordRef.current?.focus(),
+      onSuccess: () => {
+        closeModal();
+        toast.success('Account Destroyed');
+      },
+      onError: () => {
+        passwordRef.current?.focus();
+        toast.error('Something Wrong');
+      },
       onFinish: () => form.reset(),
     });
   }

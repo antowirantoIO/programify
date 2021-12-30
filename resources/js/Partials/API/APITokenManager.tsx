@@ -2,7 +2,6 @@ import { useForm, usePage } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@Components/ActionMessage';
 import ActionSection from '@Components/ActionSection';
 import Button from '@Components/Button';
 import Checkbox from '@Components/Checkbox';
@@ -16,6 +15,7 @@ import Label from '@Components/Label';
 import SecondaryButton from '@Components/SecondaryButton';
 import SectionBorder from '@Components/SectionBorder';
 import { ApiToken } from '@/types';
+import toast from 'react-hot-toast';
 
 interface Props {
   tokens: ApiToken[];
@@ -50,6 +50,7 @@ export default function APITokenManager({
       onSuccess: () => {
         setDisplayingToken(true);
         createApiTokenForm.reset();
+        toast.success('API Token Created');
       },
     });
   }
@@ -68,7 +69,10 @@ export default function APITokenManager({
       {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => setManagingPermissionsFor(null),
+        onSuccess: () => {
+          setManagingPermissionsFor(null);
+          toast.error('API Token Updated');
+        },
       },
     );
   }
@@ -86,7 +90,10 @@ export default function APITokenManager({
       {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => setApiTokenBeingDeleted(null),
+        onSuccess: () => {
+          setApiTokenBeingDeleted(null);
+          toast.success('API Token Destroyed');
+        },
       },
     );
   }
@@ -102,11 +109,6 @@ export default function APITokenManager({
         }
         renderActions={() => (
           <>
-            <ActionMessage
-                  on={createApiTokenForm.recentlySuccessful}
-                  message="API Created Successfuly"
-                />
-
             <Button
               className={classNames({
                 'opacity-25': createApiTokenForm.processing,

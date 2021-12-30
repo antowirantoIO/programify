@@ -2,7 +2,6 @@ import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@Components/ActionMessage';
 import ActionSection from '@Components/ActionSection';
 import Button from '@Components/Button';
 import DialogModal from '@Components/DialogModal';
@@ -10,6 +9,7 @@ import Input from '@Components/Input';
 import InputError from '@Components/InputError';
 import SecondaryButton from '@Components/SecondaryButton';
 import { Session } from '@/types';
+import toast from 'react-hot-toast';
 
 interface Props {
   sessions: Session[];
@@ -32,8 +32,14 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
   function logoutOtherBrowserSessions() {
     form.delete(route('other-browser-sessions.destroy'), {
       preserveScroll: true,
-      onSuccess: () => closeModal(),
-      onError: () => passwordRef.current?.focus(),
+      onSuccess: () => {
+        closeModal();
+        toast.success('Logouted Other Session');
+      },
+      onError: () => {
+        passwordRef.current?.focus();
+        toast.error('Something Wrong');
+      },
       onFinish: () => form.reset(),
     });
   }
@@ -119,11 +125,6 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
 
       <div className="flex items-center mt-5">
         <Button onClick={confirmLogout}>Log Out Other Browser Sessions</Button>
-
-        <ActionMessage
-          on={form.recentlySuccessful}
-          message="Logout Browser Session Successfuly"
-        />
       </div>
 
       {/* <!-- Log Out Other Devices Confirmation Modal --> */}

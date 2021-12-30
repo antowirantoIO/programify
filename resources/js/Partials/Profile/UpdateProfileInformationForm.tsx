@@ -3,7 +3,6 @@ import { useForm, usePage } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@Components/ActionMessage';
 import Button from '@Components/Button';
 import FormSection from '@Components/FormSection';
 import Input from '@Components/Input';
@@ -11,6 +10,7 @@ import InputError from '@Components/InputError';
 import Label from '@Components/Label';
 import SecondaryButton from '@Components/SecondaryButton';
 import { User } from '@/types';
+import toast from 'react-hot-toast';
 
 interface Props {
   user: User;
@@ -32,7 +32,10 @@ export default function UpdateProfileInformationForm({ user }: Props) {
     form.post(route('user-profile-information.update'), {
       errorBag: 'updateProfileInformation',
       preserveScroll: true,
-      onSuccess: () => clearPhotoFileInput(),
+      onSuccess: () => {
+        clearPhotoFileInput();
+        toast.success('User Profile Updated');
+      },
     });
   }
 
@@ -64,6 +67,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       onSuccess: () => {
         setPhotoPreview(null);
         clearPhotoFileInput();
+        toast.success('Profile Photo Deleted');
       },
     });
   }
@@ -88,11 +92,6 @@ export default function UpdateProfileInformationForm({ user }: Props) {
           >
             Save
           </Button>
-
-          <ActionMessage
-            on={form.recentlySuccessful}
-            message="Profile Updated Successfuly"
-          />
         </>
       )}
     >
@@ -182,6 +181,5 @@ export default function UpdateProfileInformationForm({ user }: Props) {
         <InputError message={form.errors.email} className="mt-2" />
       </div>
     </FormSection>
-    // <_Example/>
   );
 }

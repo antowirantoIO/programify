@@ -8,8 +8,8 @@ import Button from '@Components/Button';
 import Checkbox from '@Components/Checkbox';
 import Input from '@Components/Input';
 import Label from '@Components/Label';
-import ValidationErrors from '@Components/ValidationErrors';
-import InputError from '@/Components/InputError';
+import InputError from '@Components/InputError';
+import toast from 'react-hot-toast';
 
 interface Props {
   canResetPassword: boolean;
@@ -27,7 +27,9 @@ export default function Login({ canResetPassword, status }: Props) {
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     form.post(route('login'), {
-      onFinish: () => form.reset('password'),
+      onFinish: () => {
+        form.reset('password');
+      },
     });
   }
 

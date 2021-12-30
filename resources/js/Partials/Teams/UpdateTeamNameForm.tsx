@@ -1,5 +1,4 @@
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@Components/ActionMessage';
 import Button from '@Components/Button';
 import FormSection from '@Components/FormSection';
 import Input from '@Components/Input';
@@ -9,6 +8,7 @@ import { JetstreamTeamPermissions, Team, User } from '@/types';
 import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 interface Props {
   team: Team & { owner: User };
@@ -25,6 +25,9 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
     form.put(route('teams.update', [team]), {
       errorBag: 'updateTeamName',
       preserveScroll: true,
+      onSuccess: () => {
+        toast.success('Teams Updated');
+      },
     });
   }
 
@@ -37,11 +40,6 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
         permissions.canUpdateTeam
           ? () => (
               <>
-                <ActionMessage
-                  on={form.recentlySuccessful}
-                  message="Name Teams Updated Successfuly"
-                />
-
                 <Button
                   className={classNames({ 'opacity-25': form.processing })}
                   disabled={form.processing}
