@@ -1,6 +1,6 @@
 import React from "react"
 
-function ApplicationLogo() {
+function ApplicationLogo({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,6 +9,7 @@ function ApplicationLogo() {
       width={261.75}
       viewBox="0 0 261.75 374.999991"
       height={374.999991}
+      className={className}
     >
       <defs>
         <filter
