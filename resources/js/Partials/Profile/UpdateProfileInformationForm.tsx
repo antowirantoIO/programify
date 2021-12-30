@@ -11,7 +11,6 @@ import InputError from '@Components/InputError';
 import Label from '@Components/Label';
 import SecondaryButton from '@Components/SecondaryButton';
 import { User } from '@/types';
-import _Example from './_Example';
 
 interface Props {
   user: User;
@@ -83,16 +82,17 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       description={`Update your account's profile information and email address.`}
       renderActions={() => (
         <>
-          <ActionMessage on={form.recentlySuccessful} className="mr-3">
-            Saved.
-          </ActionMessage>
-
           <Button
             className={classNames({ 'opacity-25': form.processing })}
             disabled={form.processing}
           >
             Save
           </Button>
+
+          <ActionMessage
+            on={form.recentlySuccessful}
+            message="Profile Updated Successfuly"
+          />
         </>
       )}
     >

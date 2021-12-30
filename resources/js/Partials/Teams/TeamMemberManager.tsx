@@ -142,10 +142,8 @@ export default function TeamMemberManager({
               <>
                 <ActionMessage
                   on={addTeamMemberForm.recentlySuccessful}
-                  className="mr-3"
-                >
-                  Added.
-                </ActionMessage>
+                  message="Tems Updated Successfuly"
+                />
 
                 <Button
                   className={classNames({
@@ -171,7 +169,7 @@ export default function TeamMemberManager({
               <Input
                 id="email"
                 type="email"
-                className="mt-1 block w-full"
+                className="block mt-1 w-full"
                 value={addTeamMemberForm.data.email}
                 onChange={e =>
                   addTeamMemberForm.setData('email', e.currentTarget.value)
@@ -192,7 +190,7 @@ export default function TeamMemberManager({
                   className="mt-2"
                 />
 
-                <div className="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
+                <div className="relative z-0 mt-1 rounded-lg border border-gray-200 cursor-pointer">
                   {availableRoles.map((role, i) => (
                     <button
                       type="button"
@@ -229,7 +227,7 @@ export default function TeamMemberManager({
 
                           {addTeamMemberForm.data.role == role.key ? (
                             <svg
-                              className="ml-2 h-5 w-5 text-green-400"
+                              className="ml-2 w-5 h-5 text-green-400"
                               fill="none"
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -273,7 +271,7 @@ export default function TeamMemberManager({
             <div className="space-y-6">
               {team.team_invitations.map(invitation => (
                 <div
-                  className="flex items-center justify-between"
+                  className="flex justify-between items-center"
                   key={invitation.id}
                 >
                   <div className="text-gray-600">{invitation.email}</div>
@@ -282,7 +280,7 @@ export default function TeamMemberManager({
                     {/* <!-- Cancel Team Invitation --> */}
                     {userPermissions.canRemoveTeamMembers ? (
                       <button
-                        className="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none"
+                        className="ml-6 text-sm text-red-500 cursor-pointer focus:outline-none"
                         onClick={() => cancelTeamInvitation(invitation)}
                       >
                         Cancel
@@ -311,7 +309,7 @@ export default function TeamMemberManager({
             <div className="space-y-6">
               {team.users.map(user => (
                 <div
-                  className="flex items-center justify-between"
+                  className="flex justify-between items-center"
                   key={user.id}
                 >
                   <div className="flex items-center">
@@ -342,7 +340,7 @@ export default function TeamMemberManager({
                     {/* <!-- Leave Team --> */}
                     {page.props.user.id === user.id ? (
                       <button
-                        className="cursor-pointer ml-6 text-sm text-red-500"
+                        className="ml-6 text-sm text-red-500 cursor-pointer"
                         onClick={confirmLeavingTeam}
                       >
                         Leave
@@ -352,7 +350,7 @@ export default function TeamMemberManager({
                     {/* <!-- Remove Team Member --> */}
                     {userPermissions.canRemoveTeamMembers ? (
                       <button
-                        className="cursor-pointer ml-6 text-sm text-red-500"
+                        className="ml-6 text-sm text-red-500 cursor-pointer"
                         onClick={() => confirmTeamMemberRemoval(user)}
                       >
                         Remove
@@ -374,7 +372,7 @@ export default function TeamMemberManager({
         <DialogModal.Content title={'Manage Role'}></DialogModal.Content>
         {managingRoleFor ? (
           <div>
-            <div className="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
+            <div className="relative z-0 mt-1 rounded-lg border border-gray-200 cursor-pointer">
               {availableRoles.map((role, i) => (
                 <button
                   type="button"
@@ -408,7 +406,7 @@ export default function TeamMemberManager({
                       </div>
                       {updateRoleForm.data.role === role.key ? (
                         <svg
-                          className="ml-2 h-5 w-5 text-green-400"
+                          className="ml-2 w-5 h-5 text-green-400"
                           fill="none"
                           strokeLinecap="round"
                           strokeLinejoin="round"

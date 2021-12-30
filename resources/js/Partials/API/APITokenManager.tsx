@@ -103,11 +103,9 @@ export default function APITokenManager({
         renderActions={() => (
           <>
             <ActionMessage
-              on={createApiTokenForm.recentlySuccessful}
-              className="mr-3"
-            >
-              Created.
-            </ActionMessage>
+                  on={createApiTokenForm.recentlySuccessful}
+                  message="API Created Successfuly"
+                />
 
             <Button
               className={classNames({

@@ -103,7 +103,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
                   <div className="text-xs text-gray-500">
                     {session.ip_address},
                     {session.is_current_device ? (
-                      <span className="text-green-500 font-semibold">
+                      <span className="font-semibold text-green-500">
                         This device
                       </span>
                     ) : (
@@ -120,9 +120,10 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
       <div className="flex items-center mt-5">
         <Button onClick={confirmLogout}>Log Out Other Browser Sessions</Button>
 
-        <ActionMessage on={form.recentlySuccessful} className="ml-3">
-          Done.
-        </ActionMessage>
+        <ActionMessage
+          on={form.recentlySuccessful}
+          message="Logout Browser Session Successfuly"
+        />
       </div>
 
       {/* <!-- Log Out Other Devices Confirmation Modal --> */}
@@ -133,7 +134,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
           <div className="mt-4">
             <Input
               type="password"
-              className="mt-1 block w-3/4"
+              className="block mt-1 w-3/4"
               placeholder="Password"
               ref={passwordRef}
               value={form.data.password}

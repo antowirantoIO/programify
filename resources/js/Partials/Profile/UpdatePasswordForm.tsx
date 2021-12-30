@@ -54,9 +54,10 @@ export default function UpdatePasswordForm() {
             Save
           </Button>
 
-          <ActionMessage on={form.recentlySuccessful} className="ml-3">
-            Saved.
-          </ActionMessage>
+          <ActionMessage
+            on={form.recentlySuccessful}
+            message="Password Change Successfuly"
+          />
         </>
       )}
     >
