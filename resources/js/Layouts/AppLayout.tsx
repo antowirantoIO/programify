@@ -221,6 +221,9 @@ export default function AppLayout({
                     >
                       <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div className="px-1 py-1 ">
+                          <div className="block px-2 py-1 text-xs text-gray-400">
+                            Profile Setting
+                          </div>
                           <Menu.Item>
                             {({ active }) => (
                               <InertiaLink

@@ -15497,7 +15497,9 @@ function AppLayout(_a) {
     className: "absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
   }, react_1["default"].createElement("div", {
     className: "px-1 py-1 "
-  }, react_1["default"].createElement(react_2.Menu.Item, null, function (_a) {
+  }, react_1["default"].createElement("div", {
+    className: "block px-2 py-1 text-xs text-gray-400"
+  }, "Profile Setting"), react_1["default"].createElement(react_2.Menu.Item, null, function (_a) {
     var active = _a.active;
     return react_1["default"].createElement(inertia_react_1.InertiaLink, {
       href: route('profile.show'),
