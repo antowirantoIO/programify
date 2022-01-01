@@ -14384,7 +14384,7 @@ var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./nod
 var react_2 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 function Dropdown() {
-  var _a, _b;
+  var _a;
 
   var page = (0, useTypedPage_1["default"])();
   var route = (0, useRoute_1["default"])();
@@ -14405,26 +14405,34 @@ function Dropdown() {
 
   return react_2["default"].createElement("div", {
     className: "flex items-center ml-6"
-  }, page.props.user ? react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("div", {
-    className: "hidden md:block relative ml-3"
-  }, page.props.jetstream.hasTeamFeatures ? react_2["default"].createElement(react_1.Menu, {
+  }, react_2["default"].createElement("div", {
+    className: "relative ml-3"
+  }, react_2["default"].createElement(react_1.Menu, {
     as: "div",
     className: "relative inline-block text-left"
-  }, react_2["default"].createElement("div", null, react_2["default"].createElement(react_1.Menu.Button, null, react_2["default"].createElement("span", {
+  }, react_2["default"].createElement("div", null, react_2["default"].createElement(react_1.Menu.Button, {
+    className: "inline-flex justify-center w-full"
+  }, page.props.user ? react_2["default"].createElement(react_2["default"].Fragment, null, page.props.jetstream.managesProfilePhotos ? react_2["default"].createElement("button", {
+    className: "flex text-sm rounded-full border-2 border-transparent transition focus:outline-none focus:border-gray-300"
+  }, react_2["default"].createElement("img", {
+    className: "object-cover w-8 h-8 rounded-full",
+    src: page.props.user.profile_photo_url,
+    alt: page.props.user.name
+  })) : react_2["default"].createElement("span", {
     className: "inline-flex rounded-md"
   }, react_2["default"].createElement("button", {
     type: "button",
-    className: "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50"
-  }, (_a = page.props.user.current_team) === null || _a === void 0 ? void 0 : _a.name, react_2["default"].createElement("svg", {
+    className: "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:text-gray-700 focus:outline-none"
+  }, page.props.user.name, react_2["default"].createElement("svg", {
     className: "ml-2 -mr-0.5 h-4 w-4",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 20 20",
     fill: "currentColor"
   }, react_2["default"].createElement("path", {
     fillRule: "evenodd",
-    d: "M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z",
+    d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
     clipRule: "evenodd"
-  })))))), react_2["default"].createElement(react_1.Transition, {
+  }))))) : 'svg')), react_2["default"].createElement(react_1.Transition, {
     as: react_2.Fragment,
     enter: "transition ease-out duration-100",
     enterFrom: "transform opacity-0 scale-95",
@@ -14432,9 +14440,25 @@ function Dropdown() {
     leave: "transition ease-in duration-75",
     leaveFrom: "transform opacity-100 scale-100",
     leaveTo: "transform opacity-0 scale-95"
-  }, page.props.jetstream.hasTeamFeatures ? react_2["default"].createElement(react_1.Menu.Items, {
+  }, react_2["default"].createElement(react_1.Menu.Items, {
     className: "absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+  }, page.props.user ? react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("div", {
+    className: "px-1 py-1 "
   }, react_2["default"].createElement("div", {
+    className: "block px-2 py-1 text-xs text-gray-400"
+  }, "Profile Setting"), react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: route('profile.show'),
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "Profile");
+  }), page.props.jetstream.hasApiFeatures ? react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: route('api-tokens.index'),
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "API Token");
+  }) : null), page.props.jetstream.hasTeamFeatures ? react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("div", {
     className: "px-1 py-1 "
   }, react_2["default"].createElement("div", {
     className: "block px-2 py-1 text-xs text-gray-400"
@@ -14454,7 +14478,7 @@ function Dropdown() {
     className: "px-1 py-1 "
   }, react_2["default"].createElement("div", {
     className: "block px-2 py-1 text-xs text-gray-400"
-  }, "Switch Team"), (_b = page.props.user.all_teams) === null || _b === void 0 ? void 0 : _b.map(function (team) {
+  }, "Switch Team"), (_a = page.props.user.all_teams) === null || _a === void 0 ? void 0 : _a.map(function (team) {
     return react_2["default"].createElement("form", {
       onSubmit: function onSubmit(e) {
         return switchToTeam(e, team);
@@ -14479,60 +14503,7 @@ function Dropdown() {
         d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
       })), react_2["default"].createElement("div", null, team.name)));
     }));
-  }))) : null)) : null), react_2["default"].createElement("div", {
-    className: "relative ml-3"
-  }, react_2["default"].createElement(react_1.Menu, {
-    as: "div",
-    className: "relative inline-block text-left"
-  }, react_2["default"].createElement("div", null, react_2["default"].createElement(react_1.Menu.Button, {
-    className: "inline-flex justify-center w-full"
-  }, page.props.jetstream.managesProfilePhotos ? react_2["default"].createElement("button", {
-    className: "flex text-sm rounded-full border-2 border-transparent transition focus:outline-none focus:border-gray-300"
-  }, react_2["default"].createElement("img", {
-    className: "object-cover w-8 h-8 rounded-full",
-    src: page.props.user.profile_photo_url,
-    alt: page.props.user.name
-  })) : react_2["default"].createElement("span", {
-    className: "inline-flex rounded-md"
-  }, react_2["default"].createElement("button", {
-    type: "button",
-    className: "inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:text-gray-700 focus:outline-none"
-  }, page.props.user.name, react_2["default"].createElement("svg", {
-    className: "ml-2 -mr-0.5 h-4 w-4",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 20 20",
-    fill: "currentColor"
-  }, react_2["default"].createElement("path", {
-    fillRule: "evenodd",
-    d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
-    clipRule: "evenodd"
-  })))))), react_2["default"].createElement(react_1.Transition, {
-    as: react_2.Fragment,
-    enter: "transition ease-out duration-100",
-    enterFrom: "transform opacity-0 scale-95",
-    enterTo: "transform opacity-100 scale-100",
-    leave: "transition ease-in duration-75",
-    leaveFrom: "transform opacity-100 scale-100",
-    leaveTo: "transform opacity-0 scale-95"
-  }, react_2["default"].createElement(react_1.Menu.Items, {
-    className: "absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-  }, react_2["default"].createElement("div", {
-    className: "px-1 py-1 "
-  }, react_2["default"].createElement("div", {
-    className: "block px-2 py-1 text-xs text-gray-400"
-  }, "Profile Setting"), react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
-    var active = _a.active;
-    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
-      href: route('profile.show'),
-      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
-    }, "Profile");
-  }), page.props.jetstream.hasApiFeatures ? react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
-    var active = _a.active;
-    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
-      href: route('api-tokens.index'),
-      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
-    }, "API Token");
-  }) : null), react_2["default"].createElement("div", {
+  }))) : null, react_2["default"].createElement("div", {
     className: "px-1 py-1"
   }, react_2["default"].createElement("form", {
     onSubmit: logout
@@ -14542,7 +14513,7 @@ function Dropdown() {
       type: "submit",
       className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
     }, "Logout");
-  })))))))) : react_2["default"].createElement(react_2["default"].Fragment, null, "Belum Login"));
+  })))) : null)))));
 }
 
 exports["default"] = Dropdown;
@@ -19039,12 +19010,12 @@ Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 
-var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.tsx"));
-
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
+var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.tsx"));
+
 function Welcome() {
-  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", {
     className: "py-5"
   }, react_1["default"].createElement("div", {
     className: "mx-auto max-w-7xl sm:px-6 lg:px-8"
@@ -19052,7 +19023,7 @@ function Welcome() {
     className: "overflow-hidden bg-white shadow-xl sm:rounded-lg"
   }, react_1["default"].createElement("div", {
     className: "px-4 py-2"
-  }, "Hello")))));
+  }, "Hello"))));
 }
 
 exports["default"] = Welcome;
@@ -19060,7 +19031,7 @@ exports["default"] = Welcome;
 Welcome.layout = function (page) {
   return react_1["default"].createElement(AppLayout_1["default"], {
     children: page,
-    title: "Welcome Page"
+    title: "Landing Page"
   });
 };
 

@@ -30,19 +30,27 @@ export default function Dropdown() {
 
   return (
     <div className="flex items-center ml-6">
-      {page.props.user ? (
-        <>
-          <div className="hidden md:block relative ml-3">
-            {page.props.jetstream.hasTeamFeatures ? (
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <Menu.Button>
+      <div className="relative ml-3">
+        <Menu as="div" className="relative inline-block text-left">
+          <div>
+            <Menu.Button className="inline-flex justify-center w-full">
+              {page.props.user ? (
+                <>
+                  {page.props.jetstream.managesProfilePhotos ? (
+                    <button className="flex text-sm rounded-full border-2 border-transparent transition focus:outline-none focus:border-gray-300">
+                      <img
+                        className="object-cover w-8 h-8 rounded-full"
+                        src={page.props.user.profile_photo_url}
+                        alt={page.props.user.name}
+                      />
+                    </button>
+                  ) : (
                     <span className="inline-flex rounded-md">
                       <button
                         type="button"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50"
+                        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:text-gray-700 focus:outline-none"
                       >
-                        {page.props.user.current_team?.name}
+                        {page.props.user.name}
 
                         <svg
                           className="ml-2 -mr-0.5 h-4 w-4"
@@ -52,25 +60,68 @@ export default function Dropdown() {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
                       </button>
                     </span>
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
+                  )}
+                </>
+              ) : (
+                'svg'
+              )}
+            </Menu.Button>
+          </div>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              {page.props.user ? (
+                <>
+                  <div className="px-1 py-1 ">
+                    <div className="block px-2 py-1 text-xs text-gray-400">
+                      Profile Setting
+                    </div>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <InertiaLink
+                          href={route('profile.show')}
+                          className={`${
+                            active
+                              ? 'bg-primary-400 text-white'
+                              : 'text-gray-900'
+                          } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                        >
+                          Profile
+                        </InertiaLink>
+                      )}
+                    </Menu.Item>
+                    {page.props.jetstream.hasApiFeatures ? (
+                      <Menu.Item>
+                        {({ active }) => (
+                          <InertiaLink
+                            href={route('api-tokens.index')}
+                            className={`${
+                              active
+                                ? 'bg-primary-400 text-white'
+                                : 'text-gray-900'
+                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                          >
+                            API Token
+                          </InertiaLink>
+                        )}
+                      </Menu.Item>
+                    ) : null}
+                  </div>
                   {page.props.jetstream.hasTeamFeatures ? (
-                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <>
                       <div className="px-1 py-1 ">
                         <div className="block px-2 py-1 text-xs text-gray-400">
                           Manage Teams
@@ -150,95 +201,9 @@ export default function Dropdown() {
                           </form>
                         ))}
                       </div>
-                    </Menu.Items>
+                    </>
                   ) : null}
-                </Transition>
-              </Menu>
-            ) : null}
-          </div>
 
-          <div className="relative ml-3">
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <Menu.Button className="inline-flex justify-center w-full">
-                  {page.props.jetstream.managesProfilePhotos ? (
-                    <button className="flex text-sm rounded-full border-2 border-transparent transition focus:outline-none focus:border-gray-300">
-                      <img
-                        className="object-cover w-8 h-8 rounded-full"
-                        src={page.props.user.profile_photo_url}
-                        alt={page.props.user.name}
-                      />
-                    </button>
-                  ) : (
-                    <span className="inline-flex rounded-md">
-                      <button
-                        type="button"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:text-gray-700 focus:outline-none"
-                      >
-                        {page.props.user.name}
-
-                        <svg
-                          className="ml-2 -mr-0.5 h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    </span>
-                  )}
-                </Menu.Button>
-              </div>
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <div className="px-1 py-1 ">
-                    <div className="block px-2 py-1 text-xs text-gray-400">
-                      Profile Setting
-                    </div>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <InertiaLink
-                          href={route('profile.show')}
-                          className={`${
-                            active
-                              ? 'bg-primary-400 text-white'
-                              : 'text-gray-900'
-                          } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                        >
-                          Profile
-                        </InertiaLink>
-                      )}
-                    </Menu.Item>
-                    {page.props.jetstream.hasApiFeatures ? (
-                      <Menu.Item>
-                        {({ active }) => (
-                          <InertiaLink
-                            href={route('api-tokens.index')}
-                            className={`${
-                              active
-                                ? 'bg-primary-400 text-white'
-                                : 'text-gray-900'
-                            } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                          >
-                            API Token
-                          </InertiaLink>
-                        )}
-                      </Menu.Item>
-                    ) : null}
-                  </div>
                   <div className="px-1 py-1">
                     <form onSubmit={logout}>
                       <Menu.Item>
@@ -257,14 +222,12 @@ export default function Dropdown() {
                       </Menu.Item>
                     </form>
                   </div>
-                </Menu.Items>
-              </Transition>
-            </Menu>
-          </div>
-        </>
-      ) : (
-        <>Belum Login</>
-      )}
+                </>
+              ) : null}
+            </Menu.Items>
+          </Transition>
+        </Menu>
+      </div>
     </div>
   );
 }
