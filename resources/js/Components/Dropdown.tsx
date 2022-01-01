@@ -30,7 +30,44 @@ export default function Dropdown() {
 
   return (
     <div className="flex items-center ml-6">
-      <div className="relative ml-3">
+      <div className="flex items-center">
+        <div className="flex flex-col md:flex-row md:items-center">
+          <button className="flex items-center gap-4 px-3 py-2 border border-gray-500 bg-gray-800 rounded-xl">
+            <svg
+              className="text-gray-300"
+              xmlns="http://www.w3.org/2000/svg"
+              width={16}
+              height={16}
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+            <svg
+              className="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M238.7 220.73a110.36 110.36 0 1 1 110.36-110.37A110.49 110.49 0 0 1 238.7 220.73Zm0-216.94a106.57 106.57 0 1 0 106.57 106.57A106.69 106.69 0 0 0 238.7 3.79Z"
+                className="fill-current text-primary-300"
+              />
+              <circle
+                cx="238.7"
+                cy="110.37"
+                r="57.53"
+                className="fill-current text-primary-400"
+              />
+              <path
+                d="M444.4 302.82a29.41 29.41 0 0 0-58.82 0v-22.55a29.41 29.41 0 0 0-58.82 0V267a29.41 29.41 0 0 0-58.82 0V119.93a29.41 29.41 0 1 0-58.82 0v205.88c0 16.24-14.4 35.63-29.41 29.41-20.38-8.44-62.39-62.39-62.39-62.39a29.41 29.41 0 0 0-41.59 0c-11.49 11.49-10.1 28.87 0 41.59C112 380.22 187.57 475 249.05 498.95c48.28 18.78 124.6 21.54 163.28-20.51 27.17-29.54 31.32-62.84 32-120.93 0-32.5.12-54.69.12-54.69Z"
+                className="text-gray-300 fill-current"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="w-px ml-3 mr-3 h-7 bg-gray-50" />
+      </div>
+      <div className="relative">
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <Menu.Button className="inline-flex justify-center w-full">
@@ -39,7 +76,7 @@ export default function Dropdown() {
                   {page.props.jetstream.managesProfilePhotos ? (
                     <button className="flex text-sm rounded-full border-2 border-transparent transition focus:outline-none focus:border-gray-300">
                       <img
-                        className="object-cover w-8 h-8 rounded-full"
+                        className="object-cover w-9 h-9 rounded-full"
                         src={page.props.user.profile_photo_url}
                         alt={page.props.user.name}
                       />
@@ -83,6 +120,72 @@ export default function Dropdown() {
             leaveTo="transform opacity-0 scale-95"
           >
             <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <div className="px-1 py-1 sm:hidden">
+                <Menu.Item>
+                  {({ active }) => (
+                    <InertiaLink
+                      href="#"
+                      className={`${
+                        active ? 'bg-primary-400 text-white' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      Home
+                    </InertiaLink>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <InertiaLink
+                      href="#"
+                      className={`${
+                        active ? 'bg-primary-400 text-white' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      Series
+                    </InertiaLink>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <InertiaLink
+                      href="#"
+                      className={`${
+                        active ? 'bg-primary-400 text-white' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      Topics
+                    </InertiaLink>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <InertiaLink
+                      href="#"
+                      className={`${
+                        active ? 'bg-primary-400 text-white' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      Discussion
+                    </InertiaLink>
+                  )}
+                </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <InertiaLink
+                      href="#"
+                      className={`${
+                        active ? 'bg-primary-400 text-white' : 'text-gray-900'
+                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                    >
+                      Premium
+                    </InertiaLink>
+                  )}
+                </Menu.Item>
+              </div>
               {page.props.user ? (
                 <>
                   <div className="px-1 py-1 ">

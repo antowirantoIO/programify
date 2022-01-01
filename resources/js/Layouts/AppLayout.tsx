@@ -24,7 +24,7 @@ export default function AppLayout({
       <Banner />
       <Toaster position="bottom-right" />
       <div className="min-h-screen bg-gray-50">
-        <nav className="bg-white border-b border-gray-100">
+        <nav className="bg-gray-900 border-b border-gray-100">
           {/* <!-- Primary Navigation Menu --> */}
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="flex justify-between h-16">
@@ -37,13 +37,17 @@ export default function AppLayout({
                 </div>
 
                 {/* <!-- Navigation Links --> */}
-                <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div className="hidden gap-x-2 sm:-my-px sm:ml-10 sm:flex">
                   <NavLink
-                    href={route('dashboard')}
-                    active={route().current('dashboard')}
+                    href={route('welcome')}
+                    active={route().current('welcome')}
                   >
-                    Dashboard
+                    Home
                   </NavLink>
+                  <NavLink href={'#'}>Series</NavLink>
+                  <NavLink href={'#'}>Topics</NavLink>
+                  <NavLink href={'#'}>Discussion</NavLink>
+                  <NavLink href={'#'}>Premium</NavLink>
                 </div>
               </div>
 

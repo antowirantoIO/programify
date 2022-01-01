@@ -14406,7 +14406,39 @@ function Dropdown() {
   return react_2["default"].createElement("div", {
     className: "flex items-center ml-6"
   }, react_2["default"].createElement("div", {
-    className: "relative ml-3"
+    className: "flex items-center"
+  }, react_2["default"].createElement("div", {
+    className: "flex flex-col md:flex-row md:items-center"
+  }, react_2["default"].createElement("button", {
+    className: "flex items-center gap-4 px-3 py-2 border border-gray-500 bg-gray-800 rounded-xl"
+  }, react_2["default"].createElement("svg", {
+    className: "text-gray-300",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    viewBox: "0 0 16 16"
+  }, react_2["default"].createElement("path", {
+    d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+  })), react_2["default"].createElement("svg", {
+    className: "w-5 h-5",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 512 512"
+  }, react_2["default"].createElement("path", {
+    d: "M238.7 220.73a110.36 110.36 0 1 1 110.36-110.37A110.49 110.49 0 0 1 238.7 220.73Zm0-216.94a106.57 106.57 0 1 0 106.57 106.57A106.69 106.69 0 0 0 238.7 3.79Z",
+    className: "fill-current text-primary-300"
+  }), react_2["default"].createElement("circle", {
+    cx: "238.7",
+    cy: "110.37",
+    r: "57.53",
+    className: "fill-current text-primary-400"
+  }), react_2["default"].createElement("path", {
+    d: "M444.4 302.82a29.41 29.41 0 0 0-58.82 0v-22.55a29.41 29.41 0 0 0-58.82 0V267a29.41 29.41 0 0 0-58.82 0V119.93a29.41 29.41 0 1 0-58.82 0v205.88c0 16.24-14.4 35.63-29.41 29.41-20.38-8.44-62.39-62.39-62.39-62.39a29.41 29.41 0 0 0-41.59 0c-11.49 11.49-10.1 28.87 0 41.59C112 380.22 187.57 475 249.05 498.95c48.28 18.78 124.6 21.54 163.28-20.51 27.17-29.54 31.32-62.84 32-120.93 0-32.5.12-54.69.12-54.69Z",
+    className: "text-gray-300 fill-current"
+  })))), react_2["default"].createElement("div", {
+    className: "w-px ml-3 mr-3 h-7 bg-gray-50"
+  })), react_2["default"].createElement("div", {
+    className: "relative"
   }, react_2["default"].createElement(react_1.Menu, {
     as: "div",
     className: "relative inline-block text-left"
@@ -14415,7 +14447,7 @@ function Dropdown() {
   }, page.props.user ? react_2["default"].createElement(react_2["default"].Fragment, null, page.props.jetstream.managesProfilePhotos ? react_2["default"].createElement("button", {
     className: "flex text-sm rounded-full border-2 border-transparent transition focus:outline-none focus:border-gray-300"
   }, react_2["default"].createElement("img", {
-    className: "object-cover w-8 h-8 rounded-full",
+    className: "object-cover w-9 h-9 rounded-full",
     src: page.props.user.profile_photo_url,
     alt: page.props.user.name
   })) : react_2["default"].createElement("span", {
@@ -14442,7 +14474,39 @@ function Dropdown() {
     leaveTo: "transform opacity-0 scale-95"
   }, react_2["default"].createElement(react_1.Menu.Items, {
     className: "absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-  }, page.props.user ? react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("div", {
+  }, react_2["default"].createElement("div", {
+    className: "px-1 py-1 sm:hidden"
+  }, react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: "#",
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "Home");
+  }), react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: "#",
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "Series");
+  }), react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: "#",
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "Topics");
+  }), react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: "#",
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "Discussion");
+  }), react_2["default"].createElement(react_1.Menu.Item, null, function (_a) {
+    var active = _a.active;
+    return react_2["default"].createElement(inertia_react_1.InertiaLink, {
+      href: "#",
+      className: "".concat(active ? 'bg-primary-400 text-white' : 'text-gray-900', " group flex rounded-md items-center w-full px-2 py-2 text-sm")
+    }, "Premium");
+  })), page.props.user ? react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("div", {
     className: "px-1 py-1 "
   }, react_2["default"].createElement("div", {
     className: "block px-2 py-1 text-xs text-gray-400"
@@ -14878,7 +14942,7 @@ function NavLink(_a) {
   var active = _a.active,
       href = _a.href,
       children = _a.children;
-  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-primary-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+  var classes = active ? 'inline-flex items-center cursor-pointer px-1 pt-1 text-sm font-medium leading-5 text-white focus:outline-none transition' : 'inline-flex items-center cursor-pointer px-1 pt-1 text-sm font-medium leading-5 text-gray-400 hover:text-white hover:border-gray-300 focus:outline-none focus:text-white focus:border-gray-300 transition';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -15279,7 +15343,7 @@ function AppLayout(_a) {
   }), react_1["default"].createElement("div", {
     className: "min-h-screen bg-gray-50"
   }, react_1["default"].createElement("nav", {
-    className: "bg-white border-b border-gray-100"
+    className: "bg-gray-900 border-b border-gray-100"
   }, react_1["default"].createElement("div", {
     className: "px-4 mx-auto max-w-7xl sm:px-6 lg:px-8"
   }, react_1["default"].createElement("div", {
@@ -15293,11 +15357,19 @@ function AppLayout(_a) {
   }, react_1["default"].createElement(ApplicationMark_1["default"], {
     className: "block w-auto h-9"
   }))), react_1["default"].createElement("div", {
-    className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+    className: "hidden gap-x-2 sm:-my-px sm:ml-10 sm:flex"
   }, react_1["default"].createElement(NavLink_1["default"], {
-    href: route('dashboard'),
-    active: route().current('dashboard')
-  }, "Dashboard"))), react_1["default"].createElement(Dropdown_1["default"], null)))), react_1["default"].createElement("main", null, children)));
+    href: route('welcome'),
+    active: route().current('welcome')
+  }, "Home"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Series"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Topics"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Discussion"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Premium"))), react_1["default"].createElement(Dropdown_1["default"], null)))), react_1["default"].createElement("main", null, children)));
 }
 
 exports["default"] = AppLayout;
