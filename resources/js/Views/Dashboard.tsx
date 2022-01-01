@@ -15,13 +15,5 @@ export default function Dashboard() {
 }
 
 Dashboard.layout = (page: JSX.Element) => (
-  <AppLayout
-    children={page}
-    title="Dashboard"
-    renderHeader={() => (
-      <h2 className="text-xl font-semibold leading-tight text-gray-800">
-        Dashboard
-      </h2>
-    )}
-  />
+  <AppLayout children={page} title="Dashboard" />
 );

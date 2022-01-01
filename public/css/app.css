@@ -953,6 +953,9 @@ select {
 .top-0 {
   top: 0px;
 }
+.top-16 {
+  top: 4rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -1536,13 +1539,17 @@ select {
 .bg-gray-50\/40 {
   background-color: rgb(249 250 251 / 0.4);
 }
+.bg-primary-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(77 150 255 / var(--tw-bg-opacity));
+}
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
-.bg-primary-400 {
+.bg-violet-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(77 150 255 / var(--tw-bg-opacity));
+  background-color: rgb(139 92 246 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1844,6 +1851,14 @@ select {
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity));
 }
+.text-violet-200 {
+  --tw-text-opacity: 1;
+  color: rgb(221 214 254 / var(--tw-text-opacity));
+}
+.text-violet-400 {
+  --tw-text-opacity: 1;
+  color: rgb(167 139 250 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2120,6 +2135,10 @@ select {
 .hover\:text-primary-700:hover {
   --tw-text-opacity: 1;
   color: rgb(0 79 191 / var(--tw-text-opacity));
+}
+.hover\:text-violet-100:hover {
+  --tw-text-opacity: 1;
+  color: rgb(237 233 254 / var(--tw-text-opacity));
 }
 .hover\:opacity-100:hover {
   opacity: 1;

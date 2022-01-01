@@ -57,13 +57,5 @@ export default function Show({ team, availableRoles, permissions }: Props) {
 }
 
 Show.layout = (page: JSX.Element) => (
-  <AppLayout
-    children={page}
-    title="Team Settings"
-    renderHeader={() => (
-      <h2 className="text-xl font-semibold leading-tight text-gray-800">
-        Team Settings
-      </h2>
-    )}
-  />
+  <AppLayout children={page} title="Team Settings" />
 );

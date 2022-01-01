@@ -13,13 +13,5 @@ export default function Create() {
 }
 
 Create.layout = (page: JSX.Element) => (
-  <AppLayout
-    children={page}
-    title="Create Team"
-    renderHeader={() => (
-      <h2 className="text-xl font-semibold leading-tight text-gray-800">
-        Create Team
-      </h2>
-    )}
-  />
+  <AppLayout children={page} title="Create Team" />
 );

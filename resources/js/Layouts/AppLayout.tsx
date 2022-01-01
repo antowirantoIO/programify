@@ -78,97 +78,130 @@ export default function AppLayout({
                 </div>
               </div>
 
+              {/* <!-- Teams Dropdown --> */}
               <div className="hidden sm:flex sm:items-center sm:ml-6">
                 <div className="relative ml-3">
-                  {/* <!-- Teams Dropdown --> */}
                   {page.props.jetstream.hasTeamFeatures ? (
-                    <Dropdown
-                      align="right"
-                      width="60"
-                      renderTrigger={() => (
-                        <span className="inline-flex rounded-md">
-                          <button
-                            type="button"
-                            className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50"
-                          >
-                            {page.props.user.current_team?.name}
-
-                            <svg
-                              className="ml-2 -mr-0.5 h-4 w-4"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
+                    <Menu as="div" className="relative inline-block text-left">
+                      <div>
+                        <Menu.Button>
+                          <span className="inline-flex rounded-md">
+                            <button
+                              type="button"
+                              className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 bg-white rounded-md border border-transparent transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50"
                             >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                          </button>
-                        </span>
-                      )}
-                    >
-                      <div className="w-60">
-                        {/* <!-- Team Management --> */}
-                        {page.props.jetstream.hasTeamFeatures ? (
-                          <>
-                            <div className="block px-4 py-2 text-xs text-gray-400">
-                              Manage Team
-                            </div>
+                              {page.props.user.current_team?.name}
 
-                            {/* <!-- Team Settings --> */}
-                            <DropdownLink
-                              href={route('teams.show', [
-                                page.props.user.current_team!,
-                              ])}
-                            >
-                              Team Settings
-                            </DropdownLink>
-
-                            {page.props.jetstream.canCreateTeams ? (
-                              <DropdownLink href={route('teams.create')}>
-                                Create New Team
-                              </DropdownLink>
-                            ) : null}
-
-                            <div className="border-t border-gray-100"></div>
-
-                            {/* <!-- Team Switcher --> */}
-                            <div className="block px-4 py-2 text-xs text-gray-400">
-                              Switch Teams
-                            </div>
-
-                            {page.props.user.all_teams?.map(team => (
-                              <form
-                                onSubmit={e => switchToTeam(e, team)}
-                                key={team.id}
+                              <svg
+                                className="ml-2 -mr-0.5 h-4 w-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
                               >
-                                <DropdownLink as="button">
-                                  <div className="flex items-center">
-                                    {team.id ==
-                                      page.props.user.current_team_id && (
-                                      <svg
-                                        className="mr-2 w-5 h-5 text-green-400"
-                                        fill="none"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                      </svg>
-                                    )}
-                                    <div>{team.name}</div>
-                                  </div>
-                                </DropdownLink>
-                              </form>
-                            ))}
-                          </>
-                        ) : null}
+                                <path
+                                  fillRule="evenodd"
+                                  d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            </button>
+                          </span>
+                        </Menu.Button>
                       </div>
-                    </Dropdown>
+                      <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        {page.props.jetstream.hasTeamFeatures ? (
+                          <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div className="px-1 py-1 ">
+                              <div className="block px-2 py-1 text-xs text-gray-400">
+                                Manage Teams
+                              </div>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <InertiaLink
+                                    href={route('teams.show', [
+                                      page.props.user.current_team!,
+                                    ])}
+                                    className={`${
+                                      active
+                                        ? 'bg-primary-400 text-white'
+                                        : 'text-gray-900'
+                                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                  >
+                                    Team Settings
+                                  </InertiaLink>
+                                )}
+                              </Menu.Item>
+                              {page.props.jetstream.canCreateTeams ? (
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <InertiaLink
+                                      href={route('teams.create')}
+                                      className={`${
+                                        active
+                                          ? 'bg-primary-400 text-white'
+                                          : 'text-gray-900'
+                                      } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                    >
+                                      Create New Team
+                                    </InertiaLink>
+                                  )}
+                                </Menu.Item>
+                              ) : null}
+                            </div>
+                            <div className="px-1 py-1 ">
+                              <div className="block px-2 py-1 text-xs text-gray-400">
+                                Switch Team
+                              </div>
+                              {page.props.user.all_teams?.map(team => (
+                                <form
+                                  onSubmit={e => switchToTeam(e, team)}
+                                  key={team.id}
+                                >
+                                  <Menu.Item>
+                                    {({ active }) => (
+                                      <button
+                                        type="submit"
+                                        className={`${
+                                          active
+                                            ? 'bg-primary-400 text-white'
+                                            : 'text-gray-900'
+                                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                                      >
+                                        <div className="flex items-center">
+                                          {team.id ==
+                                            page.props.user.current_team_id && (
+                                            <svg
+                                              className="mr-2 w-5 h-5 text-green-400"
+                                              fill="none"
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
+                                              strokeWidth="2"
+                                              stroke="currentColor"
+                                              viewBox="0 0 24 24"
+                                            >
+                                              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                          )}
+                                          <div>{team.name}</div>
+                                        </div>
+                                      </button>
+                                    )}
+                                  </Menu.Item>
+                                </form>
+                              ))}
+                            </div>
+                          </Menu.Items>
+                        ) : null}
+                      </Transition>
+                    </Menu>
                   ) : null}
                 </div>
 

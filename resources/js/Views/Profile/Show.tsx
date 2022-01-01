@@ -8,7 +8,6 @@ import useTypedPage from '@/Hooks/useTypedPage';
 import SectionBorder from '@Components/SectionBorder';
 import AppLayout from '@/Layouts/AppLayout';
 import { Session } from '@/types';
-import Example from './Example';
 
 interface Props {
   sessions: Session[];
@@ -63,13 +62,5 @@ export default function Show({ sessions }: Props) {
 }
 
 Show.layout = (page: JSX.Element) => (
-  <AppLayout
-    children={page}
-    title={'Profile'}
-    renderHeader={() => (
-      <h2 className="text-xl font-semibold leading-tight text-gray-800">
-        Profile
-      </h2>
-    )}
-  />
+  <AppLayout children={page} title={'Profile'} />
 );
