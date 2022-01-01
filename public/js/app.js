@@ -10072,7 +10072,7 @@ function ResponsiveNavLink(_a) {
       children = _a.children,
       props = __rest(_a, ["active", "href", "children"]);
 
-  var classes = active ? 'block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition' : 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition';
+  var classes = active ? 'block w-full px-4 py-2 text-sm leading-5 text-gray-900 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition' : 'block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition';
   return react_1["default"].createElement("div", null, 'as' in props && props.as === 'button' ? react_1["default"].createElement("button", {
     className: (0, classnames_1["default"])('w-full text-left', classes)
   }, children) : react_1["default"].createElement(inertia_react_1.InertiaLink, {
@@ -10557,6 +10557,8 @@ var NavLink_1 = __importDefault(__webpack_require__(/*! @/Components/NavLink */ 
 
 var ResponsiveNavLink_1 = __importDefault(__webpack_require__(/*! @/Components/ResponsiveNavLink */ "./resources/js/Components/ResponsiveNavLink.tsx"));
 
+var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.esm.js");
+
 function AppLayout(_a) {
   var _b, _c, _d;
 
@@ -10707,7 +10709,7 @@ function AppLayout(_a) {
   }, react_1["default"].createElement(DropdownLink_1["default"], {
     as: "button"
   }, "Log Out"))))), react_1["default"].createElement("div", {
-    className: "-mr-2 flex items-center sm:hidden"
+    className: "-mr-2 flex items-center relative sm:hidden"
   }, react_1["default"].createElement("button", {
     onClick: function onClick() {
       return setShowingNavigationDropdown(!showingNavigationDropdown);
@@ -10736,13 +10738,21 @@ function AppLayout(_a) {
     strokeLinejoin: "round",
     strokeWidth: "2",
     d: "M6 18L18 6M6 6l12 12"
-  })))))), react_1["default"].createElement("div", {
-    className: (0, classnames_1["default"])('sm:hidden', {
+  })))))), react_1["default"].createElement(react_2.Transition, {
+    show: showingNavigationDropdown,
+    enter: "transition ease-out duration-200",
+    enterFrom: "transform opacity-0 scale-95",
+    enterTo: "transform opacity-100 scale-100",
+    leave: "transition ease-in duration-75",
+    leaveFrom: "transform opacity-100 scale-100",
+    leaveTo: "transform opacity-0 scale-95"
+  }, react_1["default"].createElement("div", {
+    className: (0, classnames_1["default"])('absolute z-50 mt-2 origin-top-right right-0 mr-4 bg-white rounded-md shadow-lg sm:hidden', {
       block: showingNavigationDropdown,
       hidden: !showingNavigationDropdown
     })
   }, react_1["default"].createElement("div", {
-    className: "pt-2 pb-3 space-y-1"
+    className: "rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white"
   }, react_1["default"].createElement(ResponsiveNavLink_1["default"], {
     href: route('dashboard'),
     active: route().current('dashboard')
@@ -10808,7 +10818,7 @@ function AppLayout(_a) {
     }, react_1["default"].createElement("path", {
       d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
     })), react_1["default"].createElement("div", null, team.name))));
-  })) : null)))), renderHeader ? react_1["default"].createElement("header", {
+  })) : null))))), renderHeader ? react_1["default"].createElement("header", {
     className: "bg-white shadow"
   }, react_1["default"].createElement("div", {
     className: "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"

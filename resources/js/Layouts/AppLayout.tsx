@@ -12,6 +12,7 @@ import DropdownLink from '@/Components/DropdownLink';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Team } from '@/types';
+import { Transition } from '@headlessui/react';
 
 interface Props {
   title: string;
@@ -235,7 +236,8 @@ export default function AppLayout({
               </div>
 
               {/* <!-- Hamburger --> */}
-              <div className="-mr-2 flex items-center sm:hidden">
+              <div className="-mr-2 flex items-center relative sm:hidden">
+                
                 <button
                   onClick={() =>
                     setShowingNavigationDropdown(!showingNavigationDropdown)
@@ -275,127 +277,143 @@ export default function AppLayout({
           </div>
 
           {/* <!-- Responsive Navigation Menu --> */}
-          <div
-            className={classNames('sm:hidden', {
-              block: showingNavigationDropdown,
-              hidden: !showingNavigationDropdown,
-            })}
+          <Transition
+            show={showingNavigationDropdown}
+            enter="transition ease-out duration-200"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
           >
-            <div className="pt-2 pb-3 space-y-1">
-              <ResponsiveNavLink
-                href={route('dashboard')}
-                active={route().current('dashboard')}
-              >
-                Dashboard
-              </ResponsiveNavLink>
-            </div>
+            <div
+              className={classNames(
+                'absolute z-50 mt-2 origin-top-right right-0 mr-4 bg-white rounded-md shadow-lg sm:hidden',
+                {
+                  block: showingNavigationDropdown,
+                  hidden: !showingNavigationDropdown,
+                },
+              )}
+            >
+              <div className="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white">
+                <ResponsiveNavLink
+                  href={route('dashboard')}
+                  active={route().current('dashboard')}
+                >
+                  Dashboard
+                </ResponsiveNavLink>
+              </div>
 
-            {/* <!-- Responsive Settings Options --> */}
-            <div className="pt-4 pb-1 border-t border-gray-200">
-              <div className="flex items-center px-4">
-                {page.props.jetstream.managesProfilePhotos ? (
-                  <div className="flex-shrink-0 mr-3">
-                    <img
-                      className="h-10 w-10 rounded-full object-cover"
-                      src={page.props.user.profile_photo_url}
-                      alt={page.props.user.name}
-                    />
-                  </div>
-                ) : null}
+              {/* <!-- Responsive Settings Options --> */}
+              <div className="pt-4 pb-1 border-t border-gray-200">
+                <div className="flex items-center px-4">
+                  {page.props.jetstream.managesProfilePhotos ? (
+                    <div className="flex-shrink-0 mr-3">
+                      <img
+                        className="h-10 w-10 rounded-full object-cover"
+                        src={page.props.user.profile_photo_url}
+                        alt={page.props.user.name}
+                      />
+                    </div>
+                  ) : null}
 
-                <div>
-                  <div className="font-medium text-base text-gray-800">
-                    {page.props.user.name}
-                  </div>
-                  <div className="font-medium text-sm text-gray-500">
-                    {page.props.user.email}
+                  <div>
+                    <div className="font-medium text-base text-gray-800">
+                      {page.props.user.name}
+                    </div>
+                    <div className="font-medium text-sm text-gray-500">
+                      {page.props.user.email}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-3 space-y-1">
-                <ResponsiveNavLink
-                  href={route('profile.show')}
-                  active={route().current('profile.show')}
-                >
-                  Profile
-                </ResponsiveNavLink>
-
-                {page.props.jetstream.hasApiFeatures ? (
+                <div className="mt-3 space-y-1">
                   <ResponsiveNavLink
-                    href={route('api-tokens.index')}
-                    active={route().current('api-tokens.index')}
+                    href={route('profile.show')}
+                    active={route().current('profile.show')}
                   >
-                    API Tokens
+                    Profile
                   </ResponsiveNavLink>
-                ) : null}
 
-                {/* <!-- Authentication --> */}
-                <form method="POST" onSubmit={logout}>
-                  <ResponsiveNavLink as="button">Log Out</ResponsiveNavLink>
-                </form>
-
-                {/* <!-- Team Management --> */}
-                {page.props.jetstream.hasTeamFeatures ? (
-                  <>
-                    <div className="border-t border-gray-200"></div>
-
-                    <div className="block px-4 py-2 text-xs text-gray-400">
-                      Manage Team
-                    </div>
-
-                    {/* <!-- Team Settings --> */}
+                  {page.props.jetstream.hasApiFeatures ? (
                     <ResponsiveNavLink
-                      href={route('teams.show', [
-                        page.props.user.current_team!,
-                      ])}
-                      active={route().current('teams.show')}
+                      href={route('api-tokens.index')}
+                      active={route().current('api-tokens.index')}
                     >
-                      Team Settings
+                      API Tokens
                     </ResponsiveNavLink>
+                  ) : null}
 
-                    {page.props.jetstream.canCreateTeams ? (
+                  {/* <!-- Authentication --> */}
+                  <form method="POST" onSubmit={logout}>
+                    <ResponsiveNavLink as="button">Log Out</ResponsiveNavLink>
+                  </form>
+
+                  {/* <!-- Team Management --> */}
+                  {page.props.jetstream.hasTeamFeatures ? (
+                    <>
+                      <div className="border-t border-gray-200"></div>
+
+                      <div className="block px-4 py-2 text-xs text-gray-400">
+                        Manage Team
+                      </div>
+
+                      {/* <!-- Team Settings --> */}
                       <ResponsiveNavLink
-                        href={route('teams.create')}
-                        active={route().current('teams.create')}
+                        href={route('teams.show', [
+                          page.props.user.current_team!,
+                        ])}
+                        active={route().current('teams.show')}
                       >
-                        Create New Team
+                        Team Settings
                       </ResponsiveNavLink>
-                    ) : null}
 
-                    <div className="border-t border-gray-200"></div>
-
-                    {/* <!-- Team Switcher --> */}
-                    <div className="block px-4 py-2 text-xs text-gray-400">
-                      Switch Teams
-                    </div>
-                    {page.props.user?.all_teams?.map(team => (
-                      <form onSubmit={e => switchToTeam(e, team)} key={team.id}>
-                        <ResponsiveNavLink as="button">
-                          <div className="flex items-center">
-                            {team.id == page.props.user.current_team_id && (
-                              <svg
-                                className="mr-2 h-5 w-5 text-green-400"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                              </svg>
-                            )}
-                            <div>{team.name}</div>
-                          </div>
+                      {page.props.jetstream.canCreateTeams ? (
+                        <ResponsiveNavLink
+                          href={route('teams.create')}
+                          active={route().current('teams.create')}
+                        >
+                          Create New Team
                         </ResponsiveNavLink>
-                      </form>
-                    ))}
-                  </>
-                ) : null}
+                      ) : null}
+
+                      <div className="border-t border-gray-200"></div>
+
+                      {/* <!-- Team Switcher --> */}
+                      <div className="block px-4 py-2 text-xs text-gray-400">
+                        Switch Teams
+                      </div>
+                      {page.props.user?.all_teams?.map(team => (
+                        <form
+                          onSubmit={e => switchToTeam(e, team)}
+                          key={team.id}
+                        >
+                          <ResponsiveNavLink as="button">
+                            <div className="flex items-center">
+                              {team.id == page.props.user.current_team_id && (
+                                <svg
+                                  className="mr-2 h-5 w-5 text-green-400"
+                                  fill="none"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                              )}
+                              <div>{team.name}</div>
+                            </div>
+                          </ResponsiveNavLink>
+                        </form>
+                      ))}
+                    </>
+                  ) : null}
+                </div>
               </div>
             </div>
-          </div>
+          </Transition>
         </nav>
 
         {/* <!-- Page Heading --> */}
