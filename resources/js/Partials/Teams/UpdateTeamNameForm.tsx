@@ -1,14 +1,14 @@
 import useRoute from '@/Hooks/useRoute';
-import Button from '@Components/Button';
-import FormSection from '@Components/FormSection';
-import Input from '@Components/Input';
-import InputError from '@Components/InputError';
-import Label from '@Components/Label';
+import ActionMessage from '@/Components/ActionMessage';
+import Button from '@/Components/Button';
+import FormSection from '@/Components/FormSection';
+import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
+import Label from '@/Components/Label';
 import { JetstreamTeamPermissions, Team, User } from '@/types';
 import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React from 'react';
-import toast from 'react-hot-toast';
 
 interface Props {
   team: Team & { owner: User };
@@ -25,9 +25,6 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
     form.put(route('teams.update', [team]), {
       errorBag: 'updateTeamName',
       preserveScroll: true,
-      onSuccess: () => {
-        toast.success('Teams Updated');
-      },
     });
   }
 
@@ -40,6 +37,10 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
         permissions.canUpdateTeam
           ? () => (
               <>
+                <ActionMessage on={form.recentlySuccessful} className="mr-3">
+                  Saved.
+                </ActionMessage>
+
                 <Button
                   className={classNames({ 'opacity-25': form.processing })}
                   disabled={form.processing}
@@ -57,14 +58,14 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
 
         <div className="flex items-center mt-2">
           <img
-            className="object-cover w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full object-cover"
             src={team.owner.profile_photo_url}
             alt={team.owner.name}
           />
 
           <div className="ml-4 leading-tight">
             <div>{team.owner.name}</div>
-            <div className="text-sm text-gray-700">{team.owner.email}</div>
+            <div className="text-gray-700 text-sm">{team.owner.email}</div>
           </div>
         </div>
       </div>
@@ -76,7 +77,7 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
         <Input
           id="name"
           type="text"
-          className="block mt-1 w-full"
+          className="mt-1 block w-full"
           value={form.data.name}
           onChange={e => form.setData('name', e.currentTarget.value)}
           disabled={!permissions.canUpdateTeam}

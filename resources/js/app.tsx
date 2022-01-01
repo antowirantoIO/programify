@@ -10,10 +10,10 @@ const appName =
 
 createInertiaApp({
   title: title => `${title} - ${appName}`,
-  resolve: name => require(`./Views/${name}.tsx`),
+  resolve: name => require(`./Pages/${name}.tsx`),
   setup({ el, App, props }) {
     return render(<App {...props} />, el);
   },
 });
 
-InertiaProgress.init({ color: '#0069ff', showSpinner: true });
+InertiaProgress.init({ color: '#4B5563' });

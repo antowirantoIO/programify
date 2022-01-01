@@ -2,14 +2,14 @@ import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionSection from '@Components/ActionSection';
-import Button from '@Components/Button';
-import DialogModal from '@Components/DialogModal';
-import Input from '@Components/Input';
-import InputError from '@Components/InputError';
-import SecondaryButton from '@Components/SecondaryButton';
+import ActionMessage from '@/Components/ActionMessage';
+import ActionSection from '@/Components/ActionSection';
+import Button from '@/Components/Button';
+import DialogModal from '@/Components/DialogModal';
+import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
+import SecondaryButton from '@/Components/SecondaryButton';
 import { Session } from '@/types';
-import toast from 'react-hot-toast';
 
 interface Props {
   sessions: Session[];
@@ -32,14 +32,8 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
   function logoutOtherBrowserSessions() {
     form.delete(route('other-browser-sessions.destroy'), {
       preserveScroll: true,
-      onSuccess: () => {
-        closeModal();
-        toast.success('Logouted Other Session');
-      },
-      onError: () => {
-        passwordRef.current?.focus();
-        toast.error('Something Wrong');
-      },
+      onSuccess: () => closeModal(),
+      onError: () => passwordRef.current?.focus(),
       onFinish: () => form.reset(),
     });
   }
@@ -57,7 +51,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
         'Manage and log out your active sessions on other browsers and devices.'
       }
     >
-      <div className="w-full text-sm text-gray-600">
+      <div className="max-w-xl text-sm text-gray-600">
         If necessary, you may log out of all of your other browser sessions
         across all of your devices. Some of your recent sessions are listed
         below; however, this list may not be exhaustive. If you feel your
@@ -109,7 +103,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
                   <div className="text-xs text-gray-500">
                     {session.ip_address},
                     {session.is_current_device ? (
-                      <span className="font-semibold text-green-500">
+                      <span className="text-green-500 font-semibold">
                         This device
                       </span>
                     ) : (
@@ -125,6 +119,10 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
 
       <div className="flex items-center mt-5">
         <Button onClick={confirmLogout}>Log Out Other Browser Sessions</Button>
+
+        <ActionMessage on={form.recentlySuccessful} className="ml-3">
+          Done.
+        </ActionMessage>
       </div>
 
       {/* <!-- Log Out Other Devices Confirmation Modal --> */}
@@ -135,7 +133,7 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
           <div className="mt-4">
             <Input
               type="password"
-              className="block mt-1 w-3/4"
+              className="mt-1 block w-3/4"
               placeholder="Password"
               ref={passwordRef}
               value={form.data.password}

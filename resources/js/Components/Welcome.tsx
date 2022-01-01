@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplicationLogo from '@Components/ApplicationLogo';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function Welcome() {
   return (
@@ -51,10 +51,10 @@ export default function Welcome() {
             </div>
 
             <a href="https://laravel.com/docs">
-              <div className="mt-3 flex items-center text-sm font-semibold text-primary-700">
+              <div className="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                 <div>Explore the documentation</div>
 
-                <div className="ml-1 text-primary-500">
+                <div className="ml-1 text-indigo-500">
                   <svg
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -99,10 +99,10 @@ export default function Welcome() {
             </div>
 
             <a href="https://laracasts.com">
-              <div className="mt-3 flex items-center text-sm font-semibold text-primary-700">
+              <div className="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                 <div>Start watching Laracasts</div>
 
-                <div className="ml-1 text-primary-500">
+                <div className="ml-1 text-indigo-500">
                   <svg
                     viewBox="0 0 20 20"
                     fill="currentColor"

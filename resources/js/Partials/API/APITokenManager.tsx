@@ -2,20 +2,20 @@ import { useForm, usePage } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionSection from '@Components/ActionSection';
-import Button from '@Components/Button';
-import Checkbox from '@Components/Checkbox';
-import ConfirmationModal from '@Components/ConfirmationModal';
-import DangerButton from '@Components/DangerButton';
-import DialogModal from '@Components/DialogModal';
-import FormSection from '@Components/FormSection';
-import Input from '@Components/Input';
-import InputError from '@Components/InputError';
-import Label from '@Components/Label';
-import SecondaryButton from '@Components/SecondaryButton';
-import SectionBorder from '@Components/SectionBorder';
+import ActionMessage from '@/Components/ActionMessage';
+import ActionSection from '@/Components/ActionSection';
+import Button from '@/Components/Button';
+import Checkbox from '@/Components/Checkbox';
+import ConfirmationModal from '@/Components/ConfirmationModal';
+import DangerButton from '@/Components/DangerButton';
+import DialogModal from '@/Components/DialogModal';
+import FormSection from '@/Components/FormSection';
+import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
+import Label from '@/Components/Label';
+import SecondaryButton from '@/Components/SecondaryButton';
+import SectionBorder from '@/Components/SectionBorder';
 import { ApiToken } from '@/types';
-import toast from 'react-hot-toast';
 
 interface Props {
   tokens: ApiToken[];
@@ -50,7 +50,6 @@ export default function APITokenManager({
       onSuccess: () => {
         setDisplayingToken(true);
         createApiTokenForm.reset();
-        toast.success('API Token Created');
       },
     });
   }
@@ -69,10 +68,7 @@ export default function APITokenManager({
       {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => {
-          setManagingPermissionsFor(null);
-          toast.error('API Token Updated');
-        },
+        onSuccess: () => setManagingPermissionsFor(null),
       },
     );
   }
@@ -90,10 +86,7 @@ export default function APITokenManager({
       {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => {
-          setApiTokenBeingDeleted(null);
-          toast.success('API Token Destroyed');
-        },
+        onSuccess: () => setApiTokenBeingDeleted(null),
       },
     );
   }
@@ -109,6 +102,13 @@ export default function APITokenManager({
         }
         renderActions={() => (
           <>
+            <ActionMessage
+              on={createApiTokenForm.recentlySuccessful}
+              className="mr-3"
+            >
+              Created.
+            </ActionMessage>
+
             <Button
               className={classNames({
                 'opacity-25': createApiTokenForm.processing,
@@ -121,12 +121,12 @@ export default function APITokenManager({
         )}
       >
         {/* <!-- Token Name --> */}
-        <div className="col-span-9 sm:col-span-8">
+        <div className="col-span-6 sm:col-span-4">
           <Label htmlFor="name">Name</Label>
           <Input
             id="name"
             type="text"
-            className="block mt-1 w-full"
+            className="mt-1 block w-full"
             value={createApiTokenForm.data.name}
             onChange={e =>
               createApiTokenForm.setData('name', e.currentTarget.value)
@@ -144,7 +144,7 @@ export default function APITokenManager({
           <div className="col-span-6">
             <Label htmlFor="permissions">Permissions</Label>
 
-            <div className="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2">
+            <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
               {availablePermissions.map(permission => (
                 <div key={permission}>
                   <label className="flex items-center">
@@ -200,7 +200,7 @@ export default function APITokenManager({
               <div className="space-y-6">
                 {tokens.map(token => (
                   <div
-                    className="flex justify-between items-center"
+                    className="flex items-center justify-between"
                     key={token.id}
                   >
                     <div>{token.name}</div>
@@ -214,7 +214,7 @@ export default function APITokenManager({
 
                       {availablePermissions.length > 0 ? (
                         <button
-                          className="ml-6 text-sm text-gray-400 underline cursor-pointer"
+                          className="cursor-pointer ml-6 text-sm text-gray-400 underline"
                           onClick={() => manageApiTokenPermissions(token)}
                         >
                           Permissions
@@ -222,7 +222,7 @@ export default function APITokenManager({
                       ) : null}
 
                       <button
-                        className="ml-6 text-sm text-red-500 cursor-pointer"
+                        className="cursor-pointer ml-6 text-sm text-red-500"
                         onClick={() => confirmApiTokenDeletion(token)}
                       >
                         Delete
@@ -247,7 +247,7 @@ export default function APITokenManager({
             again.
           </div>
 
-          <div className="px-4 py-2 mt-4 font-mono text-sm text-gray-500 bg-gray-100 rounded">
+          <div className="mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500">
             {page.props?.jetstream?.flash?.token}
           </div>
         </DialogModal.Content>
@@ -264,7 +264,7 @@ export default function APITokenManager({
         onClose={() => setManagingPermissionsFor(null)}
       >
         <DialogModal.Content title={'API Token Permissions'}>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {availablePermissions.map(permission => (
               <div key={permission}>
                 <label className="flex items-center">

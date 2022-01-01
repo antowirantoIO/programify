@@ -9,8 +9,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/*": ["./resources/js/*"],
-      "@Components/*": ["./resources/js/Components/*"]
+      "@/*": ["./resources/js/*"]
     }
   }
 }

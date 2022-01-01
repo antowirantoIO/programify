@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import Modal, { ModalProps } from '@Components/Modal';
+import Modal, { ModalProps } from '@/Components/Modal';
 
 DialogModal.Content = function DialogModalContent({
   title,
@@ -17,7 +17,7 @@ DialogModal.Content = function DialogModalContent({
 DialogModal.Footer = function DialogModalFooter({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
-  return <div className="px-6 py-4 text-right bg-gray-100">{children}</div>;
+  return <div className="px-6 py-4 bg-gray-100 text-right">{children}</div>;
 };
 
 export default function DialogModal({

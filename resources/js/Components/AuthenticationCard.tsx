@@ -1,16 +1,16 @@
 import React, { PropsWithChildren } from 'react';
-import AuthenticationCardLogo from '@Components/AuthenticationCardLogo';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo';
 
 export default function AuthenticationCard({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
   return (
-    <div className="flex flex-col items-center pt-6 min-h-screen bg-gray-100 sm:justify-center sm:pt-0">
+    <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
       <div>
         <AuthenticationCardLogo />
       </div>
 
-      <div className="overflow-hidden px-6 py-4 mt-6 w-full bg-white shadow-md sm:max-w-md sm:rounded-lg">
+      <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
         {children}
       </div>
     </div>

@@ -1,16 +1,17 @@
 import useRoute from '@/Hooks/useRoute';
 import useTypedPage from '@/Hooks/useTypedPage';
-import ActionSection from '@Components/ActionSection';
-import Button from '@Components/Button';
-import ConfirmationModal from '@Components/ConfirmationModal';
-import DangerButton from '@Components/DangerButton';
-import DialogModal from '@Components/DialogModal';
-import FormSection from '@Components/FormSection';
-import Input from '@Components/Input';
-import InputError from '@Components/InputError';
-import Label from '@Components/Label';
-import SecondaryButton from '@Components/SecondaryButton';
-import SectionBorder from '@Components/SectionBorder';
+import ActionMessage from '@/Components/ActionMessage';
+import ActionSection from '@/Components/ActionSection';
+import Button from '@/Components/Button';
+import ConfirmationModal from '@/Components/ConfirmationModal';
+import DangerButton from '@/Components/DangerButton';
+import DialogModal from '@/Components/DialogModal';
+import FormSection from '@/Components/FormSection';
+import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
+import Label from '@/Components/Label';
+import SecondaryButton from '@/Components/SecondaryButton';
+import SectionBorder from '@/Components/SectionBorder';
 import {
   JetstreamTeamPermissions,
   Nullable,
@@ -23,7 +24,6 @@ import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import toast from 'react-hot-toast';
 
 interface UserMembership extends User {
   membership: {
@@ -66,10 +66,7 @@ export default function TeamMemberManager({
     addTeamMemberForm.post(route('team-members.store', [team]), {
       errorBag: 'addTeamMember',
       preserveScroll: true,
-      onSuccess: () => {
-        addTeamMemberForm.reset();
-        toast.success('Teams Member Added');
-      },
+      onSuccess: () => addTeamMemberForm.reset(),
     });
   }
 
@@ -91,10 +88,7 @@ export default function TeamMemberManager({
     }
     updateRoleForm.put(route('team-members.update', [team, managingRoleFor]), {
       preserveScroll: true,
-      onSuccess: () => {
-        setCurrentlyManagingRole(false);
-        toast.success('Teams Role Member Updated');
-      },
+      onSuccess: () => setCurrentlyManagingRole(false),
     });
   }
 
@@ -122,10 +116,7 @@ export default function TeamMemberManager({
         errorBag: 'removeTeamMember',
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => {
-          setTeamMemberBeingRemoved(null);
-          toast.success('Teams Member Destoyed');
-        },
+        onSuccess: () => setTeamMemberBeingRemoved(null),
       },
     );
   }
@@ -149,6 +140,13 @@ export default function TeamMemberManager({
             }
             renderActions={() => (
               <>
+                <ActionMessage
+                  on={addTeamMemberForm.recentlySuccessful}
+                  className="mr-3"
+                >
+                  Added.
+                </ActionMessage>
+
                 <Button
                   className={classNames({
                     'opacity-25': addTeamMemberForm.processing,
@@ -173,7 +171,7 @@ export default function TeamMemberManager({
               <Input
                 id="email"
                 type="email"
-                className="block mt-1 w-full"
+                className="mt-1 block w-full"
                 value={addTeamMemberForm.data.email}
                 onChange={e =>
                   addTeamMemberForm.setData('email', e.currentTarget.value)
@@ -194,7 +192,7 @@ export default function TeamMemberManager({
                   className="mt-2"
                 />
 
-                <div className="relative z-0 mt-1 rounded-lg border border-gray-200 cursor-pointer">
+                <div className="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
                   {availableRoles.map((role, i) => (
                     <button
                       type="button"
@@ -231,7 +229,7 @@ export default function TeamMemberManager({
 
                           {addTeamMemberForm.data.role == role.key ? (
                             <svg
-                              className="ml-2 w-5 h-5 text-green-400"
+                              className="ml-2 h-5 w-5 text-green-400"
                               fill="none"
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -275,7 +273,7 @@ export default function TeamMemberManager({
             <div className="space-y-6">
               {team.team_invitations.map(invitation => (
                 <div
-                  className="flex justify-between items-center"
+                  className="flex items-center justify-between"
                   key={invitation.id}
                 >
                   <div className="text-gray-600">{invitation.email}</div>
@@ -284,7 +282,7 @@ export default function TeamMemberManager({
                     {/* <!-- Cancel Team Invitation --> */}
                     {userPermissions.canRemoveTeamMembers ? (
                       <button
-                        className="ml-6 text-sm text-red-500 cursor-pointer focus:outline-none"
+                        className="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none"
                         onClick={() => cancelTeamInvitation(invitation)}
                       >
                         Cancel
@@ -313,7 +311,7 @@ export default function TeamMemberManager({
             <div className="space-y-6">
               {team.users.map(user => (
                 <div
-                  className="flex justify-between items-center"
+                  className="flex items-center justify-between"
                   key={user.id}
                 >
                   <div className="flex items-center">
@@ -344,7 +342,7 @@ export default function TeamMemberManager({
                     {/* <!-- Leave Team --> */}
                     {page.props.user.id === user.id ? (
                       <button
-                        className="ml-6 text-sm text-red-500 cursor-pointer"
+                        className="cursor-pointer ml-6 text-sm text-red-500"
                         onClick={confirmLeavingTeam}
                       >
                         Leave
@@ -354,7 +352,7 @@ export default function TeamMemberManager({
                     {/* <!-- Remove Team Member --> */}
                     {userPermissions.canRemoveTeamMembers ? (
                       <button
-                        className="ml-6 text-sm text-red-500 cursor-pointer"
+                        className="cursor-pointer ml-6 text-sm text-red-500"
                         onClick={() => confirmTeamMemberRemoval(user)}
                       >
                         Remove
@@ -376,7 +374,7 @@ export default function TeamMemberManager({
         <DialogModal.Content title={'Manage Role'}></DialogModal.Content>
         {managingRoleFor ? (
           <div>
-            <div className="relative z-0 mt-1 rounded-lg border border-gray-200 cursor-pointer">
+            <div className="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
               {availableRoles.map((role, i) => (
                 <button
                   type="button"
@@ -410,7 +408,7 @@ export default function TeamMemberManager({
                       </div>
                       {updateRoleForm.data.role === role.key ? (
                         <svg
-                          className="ml-2 w-5 h-5 text-green-400"
+                          className="ml-2 h-5 w-5 text-green-400"
                           fill="none"
                           strokeLinecap="round"
                           strokeLinejoin="round"

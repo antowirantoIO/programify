@@ -3,8 +3,8 @@ import { InertiaLink, useForm, Head } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React from 'react';
 import useRoute from '@/Hooks/useRoute';
-import AuthenticationCard from '@Components/AuthenticationCard';
-import Button from '@Components/Button';
+import AuthenticationCard from '@/Components/AuthenticationCard';
+import Button from '@/Components/Button';
 
 interface Props {
   status: string;

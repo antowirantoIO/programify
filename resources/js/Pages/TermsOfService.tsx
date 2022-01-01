@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthenticationCardLogo from '@Components/AuthenticationCardLogo';
+import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo';
 // @ts-ignore
 import { Head } from '@inertiajs/inertia-react';
 

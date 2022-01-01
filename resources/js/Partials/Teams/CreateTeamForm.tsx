@@ -1,9 +1,9 @@
 import useRoute from '@/Hooks/useRoute';
 import useTypedPage from '@/Hooks/useTypedPage';
-import FormSection from '@Components/FormSection';
-import Input from '@Components/Input';
-import InputError from '@Components/InputError';
-import Label from '@Components/Label';
+import FormSection from '@/Components/FormSection';
+import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
+import Label from '@/Components/Label';
 import { useForm } from '@inertiajs/inertia-react';
 import React from 'react';
 

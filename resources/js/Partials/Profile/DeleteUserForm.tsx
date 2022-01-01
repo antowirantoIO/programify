@@ -2,13 +2,12 @@ import { useForm } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionSection from '@Components/ActionSection';
-import DangerButton from '@Components/DangerButton';
-import DialogModal from '@Components/DialogModal';
-import Input from '@Components/Input';
-import InputError from '@Components/InputError';
-import SecondaryButton from '@Components/SecondaryButton';
-import toast from 'react-hot-toast';
+import ActionSection from '@/Components/ActionSection';
+import DangerButton from '@/Components/DangerButton';
+import DialogModal from '@/Components/DialogModal';
+import Input from '@/Components/Input';
+import InputError from '@/Components/InputError';
+import SecondaryButton from '@/Components/SecondaryButton';
 
 export default function DeleteUserForm() {
   const route = useRoute();
@@ -27,14 +26,8 @@ export default function DeleteUserForm() {
   function deleteUser() {
     form.delete(route('current-user.destroy'), {
       preserveScroll: true,
-      onSuccess: () => {
-        closeModal();
-        toast.success('Account Destroyed');
-      },
-      onError: () => {
-        passwordRef.current?.focus();
-        toast.error('Something Wrong');
-      },
+      onSuccess: () => closeModal(),
+      onError: () => passwordRef.current?.focus(),
       onFinish: () => form.reset(),
     });
   }
@@ -49,7 +42,7 @@ export default function DeleteUserForm() {
       title={'Delete Account'}
       description={'Permanently delete your account.'}
     >
-      <div className="w-full text-sm text-gray-600">
+      <div className="max-w-xl text-sm text-gray-600">
         Once your account is deleted, all of its resources and data will be
         permanently deleted. Before deleting your account, please download any
         data or information that you wish to retain.
