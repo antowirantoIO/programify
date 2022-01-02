@@ -10,6 +10,7 @@ import Input from '@/Components/Input';
 import InputError from '@/Components/InputError';
 import SecondaryButton from '@/Components/SecondaryButton';
 import { Session } from '@/types';
+import toast from 'react-hot-toast';
 
 interface Props {
   sessions: Session[];
@@ -32,8 +33,14 @@ export default function LogoutOtherBrowserSessions({ sessions }: Props) {
   function logoutOtherBrowserSessions() {
     form.delete(route('other-browser-sessions.destroy'), {
       preserveScroll: true,
-      onSuccess: () => closeModal(),
-      onError: () => passwordRef.current?.focus(),
+      onSuccess: () => {
+        toast.success('Logouted Other Session');
+        closeModal();
+      },
+      onError: () => {
+        toast.error('Something Wrong');
+        passwordRef.current?.focus();
+      },
       onFinish: () => form.reset(),
     });
   }

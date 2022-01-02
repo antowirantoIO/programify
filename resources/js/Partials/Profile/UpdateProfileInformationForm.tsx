@@ -11,6 +11,7 @@ import InputError from '@/Components/InputError';
 import Label from '@/Components/Label';
 import SecondaryButton from '@/Components/SecondaryButton';
 import { User } from '@/types';
+import toast from 'react-hot-toast';
 
 interface Props {
   user: User;
@@ -32,7 +33,10 @@ export default function UpdateProfileInformationForm({ user }: Props) {
     form.post(route('user-profile-information.update'), {
       errorBag: 'updateProfileInformation',
       preserveScroll: true,
-      onSuccess: () => clearPhotoFileInput(),
+      onSuccess: () => {
+        toast.success('Profile Updated');
+        clearPhotoFileInput();
+      },
     });
   }
 
@@ -62,6 +66,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
     Inertia.delete(route('current-user-photo.destroy'), {
       preserveScroll: true,
       onSuccess: () => {
+        toast.success('Photo Profile Deleted')
         setPhotoPreview(null);
         clearPhotoFileInput();
       },
@@ -82,10 +87,6 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       description={`Update your account's profile information and email address.`}
       renderActions={() => (
         <>
-          <ActionMessage on={form.recentlySuccessful} className="mr-3">
-            Saved.
-          </ActionMessage>
-
           <Button
             className={classNames({ 'opacity-25': form.processing })}
             disabled={form.processing}

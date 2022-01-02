@@ -8,6 +8,7 @@ import FormSection from '@/Components/FormSection';
 import Input from '@/Components/Input';
 import InputError from '@/Components/InputError';
 import Label from '@/Components/Label';
+import toast from 'react-hot-toast';
 
 export default function UpdatePasswordForm() {
   const route = useRoute();
@@ -23,7 +24,10 @@ export default function UpdatePasswordForm() {
     form.put(route('user-password.update'), {
       errorBag: 'updatePassword',
       preserveScroll: true,
-      onSuccess: () => form.reset(),
+      onSuccess: () => {
+        toast.success('Password Updated');
+        form.reset();
+      },
       onError: () => {
         if (form.errors.password) {
           form.reset('password', 'password_confirmation');
@@ -47,10 +51,6 @@ export default function UpdatePasswordForm() {
       }
       renderActions={() => (
         <>
-          <ActionMessage on={form.recentlySuccessful} className="mr-3">
-            Saved.
-          </ActionMessage>
-
           <Button
             className={classNames({ 'opacity-25': form.processing })}
             disabled={form.processing}

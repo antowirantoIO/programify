@@ -7,6 +7,7 @@ import Banner from '@/Components/Banner';
 import NavLink from '@/Components/NavLink';
 import DropdownMenu from '@/Components/DropdownMenu';
 import DropdownMenuResponsive from '@/Components/DropdownMenuResponsive';
+import { Toaster } from 'react-hot-toast';
 
 interface Props {
   title: string;
@@ -25,7 +26,7 @@ export default function AppLayout({
       <Head title={title} />
 
       <Banner />
-
+      <Toaster position="bottom-right" />
       <div className="min-h-screen bg-gray-100">
         <nav className="bg-white border-b border-gray-100">
           {/* <!-- Primary Navigation Menu --> */}

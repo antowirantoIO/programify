@@ -16,6 +16,7 @@ import Label from '@/Components/Label';
 import SecondaryButton from '@/Components/SecondaryButton';
 import SectionBorder from '@/Components/SectionBorder';
 import { ApiToken } from '@/types';
+import toast from 'react-hot-toast';
 
 interface Props {
   tokens: ApiToken[];
@@ -48,6 +49,7 @@ export default function APITokenManager({
     createApiTokenForm.post(route('api-tokens.store'), {
       preserveScroll: true,
       onSuccess: () => {
+        toast.success('API Token Created');
         setDisplayingToken(true);
         createApiTokenForm.reset();
       },
@@ -68,7 +70,10 @@ export default function APITokenManager({
       {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => setManagingPermissionsFor(null),
+        onSuccess: () => {
+          toast.success('API Token Updated');
+          setManagingPermissionsFor(null);
+        },
       },
     );
   }
@@ -86,7 +91,10 @@ export default function APITokenManager({
       {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => setApiTokenBeingDeleted(null),
+        onSuccess: () => {
+          toast.success('API Token Deleted');
+          setApiTokenBeingDeleted(null);
+        },
       },
     );
   }
@@ -102,13 +110,6 @@ export default function APITokenManager({
         }
         renderActions={() => (
           <>
-            <ActionMessage
-              on={createApiTokenForm.recentlySuccessful}
-              className="mr-3"
-            >
-              Created.
-            </ActionMessage>
-
             <Button
               className={classNames({
                 'opacity-25': createApiTokenForm.processing,
