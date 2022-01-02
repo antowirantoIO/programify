@@ -12,12 +12,18 @@ export default function ActionSection({
   children,
 }: PropsWithChildren<Props>) {
   return (
-    <div className="md:grid md:grid-cols-3 md:gap-6">
-      <SectionTitle title={title} description={description} />
+    <div className="px-4 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="lg:col-span-9 lg:order-none">
+          <div className="bg-white border shadow-sm rounded-xl">
+            <SectionTitle title={title} description={description} />
 
-      <div className="mt-5 md:mt-0 md:col-span-2">
-        <div className="px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg">
-          {children}
+            <div className="mt-5 md:mt-0 md:col-span-2">
+              <div className="px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg">
+                {children}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

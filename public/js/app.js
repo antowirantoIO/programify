@@ -8585,7 +8585,13 @@ function ActionSection(_a) {
       description = _a.description,
       children = _a.children;
   return react_1["default"].createElement("div", {
-    className: "md:grid md:grid-cols-3 md:gap-6"
+    className: "px-4 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 lg:grid-cols-12 gap-6"
+  }, react_1["default"].createElement("div", {
+    className: "lg:col-span-9 lg:order-none"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
   }, react_1["default"].createElement(SectionTitle_1["default"], {
     title: title,
     description: description
@@ -8593,7 +8599,7 @@ function ActionSection(_a) {
     className: "mt-5 md:mt-0 md:col-span-2"
   }, react_1["default"].createElement("div", {
     className: "px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg"
-  }, children)));
+  }, children))))));
 }
 
 exports["default"] = ActionSection;
@@ -9957,7 +9963,13 @@ function FormSection(_a) {
       children = _a.children;
   var hasActions = !!renderActions;
   return react_1["default"].createElement("div", {
-    className: "md:grid md:grid-cols-3 md:gap-6"
+    className: "px-4 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 lg:grid-cols-12 gap-6"
+  }, react_1["default"].createElement("div", {
+    className: "lg:col-span-9 lg:order-none"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
   }, react_1["default"].createElement(SectionTitle_1["default"], {
     title: title,
     description: description
@@ -9975,7 +9987,7 @@ function FormSection(_a) {
     className: "grid grid-cols-6 gap-6"
   }, children)), hasActions && react_1["default"].createElement("div", {
     className: "flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md"
-  }, renderActions === null || renderActions === void 0 ? void 0 : renderActions()))));
+  }, renderActions === null || renderActions === void 0 ? void 0 : renderActions())))))));
 }
 
 exports["default"] = FormSection;
@@ -10055,13 +10067,13 @@ var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node
 
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var JetInput = (0, react_1.forwardRef)(function (props, ref) {
+var Input = (0, react_1.forwardRef)(function (props, ref) {
   return react_1["default"].createElement("input", __assign({}, props, {
     ref: ref,
-    className: (0, classnames_1["default"])('border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm', props.className)
+    className: (0, classnames_1["default"])('form-text h-11 py-0.5 w-full focus:outline-none focus:ring focus:ring-primary-100/60 shadow-sm focus:border-primary-400 border-gray-200 caret-primary-300 selection:bg-primary-100 selection:text-primary-700 rounded-xl transition duration-200 ease-in', props.className)
   }));
 });
-exports["default"] = JetInput;
+exports["default"] = Input;
 
 /***/ }),
 
@@ -10414,13 +10426,13 @@ function SectionTitle(_a) {
   var title = _a.title,
       description = _a.description;
   return react_1["default"].createElement("div", {
-    className: "md:col-span-1"
+    className: "items-center px-4 py-3 border-b gap-4 sm:grid-cols-12 grid rounded-t-xl"
   }, react_1["default"].createElement("div", {
-    className: "px-4 sm:px-0"
-  }, react_1["default"].createElement("h3", {
-    className: "text-lg font-medium text-gray-900"
-  }, title), react_1["default"].createElement("p", {
-    className: "mt-1 text-sm text-gray-600"
+    className: "col-span-12 sm:col-span-8"
+  }, react_1["default"].createElement("div", {
+    className: "font-medium tracking-tighter lg:text-lg"
+  }, title), react_1["default"].createElement("span", {
+    className: "text-sm tracking-tighter text-gray-500 lg:text-md"
   }, description)));
 }
 
@@ -11754,12 +11766,12 @@ function Show(_a) {
   return react_1["default"].createElement(AppLayout_1["default"], {
     title: 'Profile',
     renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
+      return react_1["default"].createElement("div", {
         className: "font-semibold text-xl text-gray-800 leading-tight"
       }, "Profile");
     }
   }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+    className: "max-w-7xl mx-auto py-5"
   }, page.props.jetstream.canUpdateProfileInformation ? react_1["default"].createElement("div", null, react_1["default"].createElement(UpdateProfileInformationForm_1["default"], {
     user: page.props.user
   }), react_1["default"].createElement(SectionBorder_1["default"], null)) : null, page.props.jetstream.canUpdatePassword ? react_1["default"].createElement("div", {
@@ -12622,7 +12634,7 @@ function DeleteUserForm() {
     title: 'Delete Account',
     description: 'Permanently delete your account.'
   }, react_1["default"].createElement("div", {
-    className: "max-w-xl text-sm text-gray-600"
+    className: "tracking-tighter text-sm text-gray-600"
   }, "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain."), react_1["default"].createElement("div", {
     className: "mt-5"
   }, react_1["default"].createElement(DangerButton_1["default"], {
@@ -12787,7 +12799,7 @@ function LogoutOtherBrowserSessions(_a) {
     title: 'Browser Sessions',
     description: 'Manage and log out your active sessions on other browsers and devices.'
   }, react_1["default"].createElement("div", {
-    className: "max-w-xl text-sm text-gray-600"
+    className: "tracking-tighter text-sm text-gray-600"
   }, "If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password."), sessions.length > 0 ? react_1["default"].createElement("div", {
     className: "mt-5 space-y-6"
   }, sessions.map(function (session, i) {
@@ -13014,7 +13026,7 @@ function TwoFactorAuthenticationForm() {
   }, "You have enabled two factor authentication.") : react_1["default"].createElement("h3", {
     className: "text-lg font-medium text-gray-900"
   }, "You have not enabled two factor authentication."), react_1["default"].createElement("div", {
-    className: "mt-3 max-w-xl text-sm text-gray-600"
+    className: "mt-3 tracking-tighter text-sm text-gray-600"
   }, react_1["default"].createElement("p", null, "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.")), twoFactorEnabled ? react_1["default"].createElement("div", null, qrCode ? react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
     className: "mt-4 max-w-xl text-sm text-gray-600"
   }, react_1["default"].createElement("p", {
@@ -13027,7 +13039,7 @@ function TwoFactorAuthenticationForm() {
   })) : null, recoveryCodes.length > 0 ? react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
     className: "mt-4 max-w-xl text-sm text-gray-600"
   }, react_1["default"].createElement("p", {
-    className: "font-semibold"
+    className: "font-semibold tracking-tighter"
   }, "Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.")), react_1["default"].createElement("div", {
     className: "grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg"
   }, recoveryCodes.map(function (code) {
@@ -14291,7 +14303,9 @@ var appName = ((_a = window.document.getElementsByTagName('title')[0]) === null 
   }
 });
 progress_1.InertiaProgress.init({
-  color: '#4B5563'
+  color: '#4B5563',
+  showSpinner: true,
+  includeCSS: true
 });
 
 /***/ }),

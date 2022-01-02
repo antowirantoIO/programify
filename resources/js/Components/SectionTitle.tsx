@@ -7,11 +7,12 @@ interface Props {
 
 export default function SectionTitle({ title, description }: Props) {
   return (
-    <div className="md:col-span-1">
-      <div className="px-4 sm:px-0">
-        <h3 className="text-lg font-medium text-gray-900">{title}</h3>
-
-        <p className="mt-1 text-sm text-gray-600">{description}</p>
+    <div className="items-center px-4 py-3 border-b gap-4 sm:grid-cols-12 grid rounded-t-xl">
+      <div className="col-span-12 sm:col-span-8">
+        <div className="font-medium tracking-tighter lg:text-lg">{title}</div>
+        <span className="text-sm tracking-tighter text-gray-500 lg:text-md">
+          {description}
+        </span>
       </div>
     </div>
   );

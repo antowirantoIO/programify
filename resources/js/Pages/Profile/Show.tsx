@@ -20,13 +20,13 @@ export default function Show({ sessions }: Props) {
     <AppLayout
       title={'Profile'}
       renderHeader={() => (
-        <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+        <div className="font-semibold text-xl text-gray-800 leading-tight">
           Profile
-        </h2>
+        </div>
       )}
     >
       <div>
-        <div className="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-5">
           {page.props.jetstream.canUpdateProfileInformation ? (
             <div>
               <UpdateProfileInformationForm user={page.props.user} />
