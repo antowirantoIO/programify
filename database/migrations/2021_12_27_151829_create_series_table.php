@@ -27,7 +27,6 @@ class CreateSeriesTable extends Migration
             $table->string('thumbnail');
             $table->string('introduction_video');
             $table->foreignIdFor(User::class, 'mentor_id');
-            $table->foreignIdFor(Skill::class);
             $table->json('meta_keyword')->nullable();
             $table->text('meta_description')->nullable();
             $table->float('review')->default(0.0);

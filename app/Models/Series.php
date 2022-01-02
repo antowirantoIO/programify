@@ -9,9 +9,9 @@ class Series extends Model
 {
     use HasFactory;
 
-    public function skill()
+    public function skills()
     {
-        return $this->belongsTo(Skill::class);
+        return $this->belongsToMany(Skill::class);
     }
 
     public function mentor()
