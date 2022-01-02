@@ -4,11 +4,13 @@ import React, { PropsWithChildren } from 'react';
 interface Props {
   as?: string;
   href?: string;
+  active?: boolean;
 }
 
 export default function DropdownLink({
   as,
   href,
+  active,
   children,
 }: PropsWithChildren<Props>) {
   return (
@@ -19,7 +21,9 @@ export default function DropdownLink({
             return (
               <button
                 type="submit"
-                className="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
+                className={`${
+                  active ? 'bg-gray-100' : ''
+                } block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition`}
               >
                 {children}
               </button>
@@ -28,7 +32,9 @@ export default function DropdownLink({
             return (
               <a
                 href={href}
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
+                className={`${
+                  active ? 'bg-gray-100' : ''
+                } block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition`}
               >
                 {children}
               </a>
@@ -37,7 +43,9 @@ export default function DropdownLink({
             return (
               <InertiaLink
                 href={href || ''}
-                className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
+                className={`${
+                  active ? 'bg-gray-100' : ''
+                } block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition`}
               >
                 {children}
               </InertiaLink>

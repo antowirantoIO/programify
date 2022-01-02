@@ -4,23 +4,17 @@ import React, { PropsWithChildren, useState } from 'react';
 
 interface Props {
   align?: string;
-  width?: string | number;
   contentClasses?: string;
   renderTrigger(): JSX.Element;
 }
 
 export default function Dropdown({
   align = 'right',
-  width = '48',
   contentClasses = 'py-1 bg-white',
   renderTrigger,
   children,
 }: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(false);
-
-  const widthClass = {
-    '48': 'w-48',
-  }[width.toString()];
 
   const alignmentClasses = (() => {
     if (align === 'left') {
@@ -54,8 +48,7 @@ export default function Dropdown({
       >
         <div
           className={classNames(
-            'absolute z-50 mt-2 rounded-md shadow-lg',
-            widthClass,
+            'absolute w-60 z-50 mt-2 rounded-md shadow-lg',
             alignmentClasses,
           )}
           onClick={() => setOpen(false)}
