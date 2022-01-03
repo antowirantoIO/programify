@@ -9777,7 +9777,9 @@ function DropdownMenu() {
     }, react_1["default"].createElement("path", {
       d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
     })), react_1["default"].createElement("div", null, team.name))));
-  })) : null), react_1["default"].createElement("form", {
+  })) : null), react_1["default"].createElement("div", {
+    className: "border-t border-gray-100"
+  }), react_1["default"].createElement("form", {
     onSubmit: logout
   }, react_1["default"].createElement(DropdownLink_1["default"], {
     as: "button"
@@ -9883,12 +9885,7 @@ function DropdownMenuResponsive() {
   }, "Profile"), page.props.jetstream.hasApiFeatures ? react_1["default"].createElement(DropdownLink_1["default"], {
     href: route('api-tokens.index'),
     active: route().current('api-tokens.index')
-  }, "API Tokens") : null, react_1["default"].createElement("form", {
-    method: "POST",
-    onSubmit: logout
-  }, react_1["default"].createElement(DropdownLink_1["default"], {
-    as: "button"
-  }, "Log Out")), page.props.jetstream.hasTeamFeatures ? react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
+  }, "API Tokens") : null, page.props.jetstream.hasTeamFeatures ? react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement("div", {
     className: "border-t border-gray-200"
   }), react_1["default"].createElement("div", {
     className: "block px-4 py-2 text-xs text-gray-400"
@@ -9923,7 +9920,14 @@ function DropdownMenuResponsive() {
     }, react_1["default"].createElement("path", {
       d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
     })), react_1["default"].createElement("div", null, team.name))));
-  })) : null))));
+  })) : null), react_1["default"].createElement("div", {
+    className: "border-t border-gray-100"
+  }), react_1["default"].createElement("form", {
+    method: "POST",
+    onSubmit: logout
+  }, react_1["default"].createElement(DropdownLink_1["default"], {
+    as: "button"
+  }, "Log Out")))));
 }
 
 exports["default"] = DropdownMenuResponsive;
@@ -13198,7 +13202,7 @@ function UpdatePasswordForm() {
       }, "Save"));
     }
   }, react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "current_password"
   }, "Current Password"), react_1["default"].createElement(Input_1["default"], {
@@ -13215,7 +13219,7 @@ function UpdatePasswordForm() {
     message: form.errors.current_password,
     className: "mt-2"
   })), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "password"
   }, "New Password"), react_1["default"].createElement(Input_1["default"], {
@@ -13232,7 +13236,7 @@ function UpdatePasswordForm() {
     message: form.errors.password,
     className: "mt-2"
   })), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "password_confirmation"
   }, "Confirm Password"), react_1["default"].createElement(Input_1["default"], {
@@ -13458,7 +13462,7 @@ function UpdateProfileInformationForm(_a) {
     message: form.errors.photo,
     className: "mt-2"
   })) : null, react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "name",
     value: "Name"
@@ -13475,7 +13479,7 @@ function UpdateProfileInformationForm(_a) {
     message: form.errors.name,
     className: "mt-2"
   })), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "email",
     value: "Email"
@@ -13565,7 +13569,7 @@ function CreateTeamForm() {
   }, react_1["default"].createElement("div", null, page.props.user.name), react_1["default"].createElement("div", {
     className: "text-gray-700 text-sm"
   }, page.props.user.email)))), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "name",
     value: "Team Name"
@@ -14154,8 +14158,6 @@ Object.defineProperty(exports, "__esModule", ({
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @/Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
 var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
 
 var FormSection_1 = __importDefault(__webpack_require__(/*! @/Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
@@ -14192,10 +14194,7 @@ function UpdateTeamNameForm(_a) {
     title: 'Team Name',
     description: "The team's name and owner information.",
     renderActions: permissions.canUpdateTeam ? function () {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(ActionMessage_1["default"], {
-        on: form.recentlySuccessful,
-        className: "mr-3"
-      }, "Saved."), react_1["default"].createElement(Button_1["default"], {
+      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
         className: (0, classnames_1["default"])({
           'opacity-25': form.processing
         }),
@@ -14217,7 +14216,7 @@ function UpdateTeamNameForm(_a) {
   }, react_1["default"].createElement("div", null, team.owner.name), react_1["default"].createElement("div", {
     className: "text-gray-700 text-sm"
   }, team.owner.email)))), react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
+    className: "col-span-7"
   }, react_1["default"].createElement(Label_1["default"], {
     htmlFor: "name",
     value: "Team Name"

@@ -1,5 +1,4 @@
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@/Components/ActionMessage';
 import Button from '@/Components/Button';
 import FormSection from '@/Components/FormSection';
 import Input from '@/Components/Input';
@@ -37,10 +36,6 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
         permissions.canUpdateTeam
           ? () => (
               <>
-                <ActionMessage on={form.recentlySuccessful} className="mr-3">
-                  Saved.
-                </ActionMessage>
-
                 <Button
                   className={classNames({ 'opacity-25': form.processing })}
                   disabled={form.processing}
@@ -71,7 +66,7 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
       </div>
 
       {/* <!-- Team Name --> */}
-      <div className="col-span-6 sm:col-span-4">
+      <div className="col-span-7">
         <Label htmlFor="name" value="Team Name" />
 
         <Input

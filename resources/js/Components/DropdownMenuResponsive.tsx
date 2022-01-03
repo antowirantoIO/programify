@@ -97,11 +97,6 @@ export default function DropdownMenuResponsive() {
               </DropdownLink>
             ) : null}
 
-            {/* <!-- Authentication --> */}
-            <form method="POST" onSubmit={logout}>
-              <DropdownLink as="button">Log Out</DropdownLink>
-            </form>
-
             {/* <!-- Team Management --> */}
             {page.props.jetstream.hasTeamFeatures ? (
               <>
@@ -159,6 +154,12 @@ export default function DropdownMenuResponsive() {
               </>
             ) : null}
           </div>
+          <div className="border-t border-gray-100"></div>
+
+          {/* <!-- Authentication --> */}
+          <form method="POST" onSubmit={logout}>
+            <DropdownLink as="button">Log Out</DropdownLink>
+          </form>
         </div>
       </Dropdown>
     </div>

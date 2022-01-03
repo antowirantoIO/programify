@@ -136,6 +136,8 @@ export default function DropdownMenu() {
           ) : null}
         </div>
 
+        <div className="border-t border-gray-100"></div>
+
         {/* <!-- Authentication --> */}
         <form onSubmit={logout}>
           <DropdownLink as="button">Log Out</DropdownLink>

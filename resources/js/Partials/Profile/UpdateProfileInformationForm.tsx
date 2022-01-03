@@ -3,7 +3,6 @@ import { useForm, usePage } from '@inertiajs/inertia-react';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import useRoute from '@/Hooks/useRoute';
-import ActionMessage from '@/Components/ActionMessage';
 import Button from '@/Components/Button';
 import FormSection from '@/Components/FormSection';
 import Input from '@/Components/Input';
@@ -66,7 +65,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
     Inertia.delete(route('current-user-photo.destroy'), {
       preserveScroll: true,
       onSuccess: () => {
-        toast.success('Photo Profile Deleted')
+        toast.success('Photo Profile Deleted');
         setPhotoPreview(null);
         clearPhotoFileInput();
       },
@@ -156,7 +155,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       ) : null}
 
       {/* <!-- Name --> */}
-      <div className="col-span-6 sm:col-span-4">
+      <div className="col-span-7">
         <Label htmlFor="name" value="Name" />
         <Input
           id="name"
@@ -170,7 +169,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       </div>
 
       {/* <!-- Email --> */}
-      <div className="col-span-6 sm:col-span-4">
+      <div className="col-span-7">
         <Label htmlFor="email" value="Email" />
         <Input
           id="email"
