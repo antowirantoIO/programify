@@ -25,7 +25,7 @@ export default function FormSection({
           <div className="bg-white border shadow-sm rounded-xl">
             <SectionTitle title={title} description={description} />
 
-            <div className="mt-5 md:mt-0 md:col-span-2">
+            <div className="md:col-span-2">
               <form
                 onSubmit={e => {
                   e.preventDefault();
@@ -34,7 +34,7 @@ export default function FormSection({
               >
                 <div
                   className={classNames(
-                    'px-4 py-5 bg-white sm:p-6 shadow',
+                    'px-4 py-5 bg-white shadow',
                     hasActions
                       ? 'sm:rounded-tl-md sm:rounded-tr-md'
                       : 'sm:rounded-md',

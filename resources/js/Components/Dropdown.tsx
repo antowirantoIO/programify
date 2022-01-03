@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react';
 import classNames from 'classnames';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 
 interface Props {
   align?: string;
@@ -25,6 +25,12 @@ export default function Dropdown({
       return 'origin-top';
     }
   })();
+
+  useEffect(() => {
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      e.key === 'Escape' ? setOpen(false) : '';
+    });
+  }, []);
 
   return (
     <div className="relative">

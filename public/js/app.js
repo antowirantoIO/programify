@@ -8598,7 +8598,7 @@ function ActionSection(_a) {
   }), react_1["default"].createElement("div", {
     className: "mt-5 md:mt-0 md:col-span-2"
   }, react_1["default"].createElement("div", {
-    className: "px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg"
+    className: "px-4 py-5 bg-white shadow sm:rounded-lg"
   }, children))))));
 }
 
@@ -8856,7 +8856,7 @@ function Banner() {
   var message = ((_b = props.jetstream.flash) === null || _b === void 0 ? void 0 : _b.banner) || '';
   return react_1["default"].createElement("div", null, show && message ? react_1["default"].createElement("div", {
     className: (0, classnames_1["default"])({
-      'bg-indigo-500': style == 'success',
+      'bg-primary-500': style == 'success',
       'bg-red-700': style == 'danger'
     })
   }, react_1["default"].createElement("div", {
@@ -8867,7 +8867,7 @@ function Banner() {
     className: "w-0 flex-1 flex items-center min-w-0"
   }, react_1["default"].createElement("span", {
     className: (0, classnames_1["default"])('flex p-2 rounded-lg', {
-      'bg-indigo-600': style == 'success',
+      'bg-primary-600': style == 'success',
       'bg-red-600': style == 'danger'
     })
   }, function () {
@@ -8910,7 +8910,7 @@ function Banner() {
   }, react_1["default"].createElement("button", {
     type: "button",
     className: (0, classnames_1["default"])('-mr-1 flex p-2 rounded-md focus:outline-none sm:-mr-2 transition', {
-      'hover:bg-indigo-600 focus:bg-indigo-600': style == 'success',
+      'hover:bg-primary-600 focus:bg-primary-600': style == 'success',
       'hover:bg-red-600 focus:bg-red-600': style == 'danger'
     }),
     "aria-label": "Dismiss",
@@ -9044,7 +9044,7 @@ function Checkbox(props) {
   return react_1["default"].createElement("input", __assign({
     type: "checkbox"
   }, props, {
-    className: (0, classnames_1["default"])('rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50', props.className)
+    className: (0, classnames_1["default"])('rounded border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50', props.className)
   }));
 }
 
@@ -9573,6 +9573,11 @@ function Dropdown(_a) {
     }
   }();
 
+  (0, react_2.useEffect)(function () {
+    document.addEventListener('keydown', function (e) {
+      e.key === 'Escape' ? setOpen(false) : '';
+    });
+  }, []);
   return react_2["default"].createElement("div", {
     className: "relative"
   }, react_2["default"].createElement("div", {
@@ -9978,7 +9983,7 @@ function FormSection(_a) {
     title: title,
     description: description
   }), react_1["default"].createElement("div", {
-    className: "mt-5 md:mt-0 md:col-span-2"
+    className: "md:col-span-2"
   }, react_1["default"].createElement("form", {
     onSubmit: function onSubmit(e) {
       e.preventDefault();
@@ -9986,7 +9991,7 @@ function FormSection(_a) {
       _onSubmit();
     }
   }, react_1["default"].createElement("div", {
-    className: (0, classnames_1["default"])('px-4 py-5 bg-white sm:p-6 shadow', hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md')
+    className: (0, classnames_1["default"])('px-4 py-5 bg-white shadow', hasActions ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md')
   }, react_1["default"].createElement("div", {
     className: "grid grid-cols-6 gap-6"
   }, children)), hasActions && react_1["default"].createElement("div", {
@@ -10294,7 +10299,7 @@ function NavLink(_a) {
   var active = _a.active,
       href = _a.href,
       children = _a.children;
-  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-primary-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -10553,9 +10558,9 @@ function Welcome() {
   }, "Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end."), react_1["default"].createElement("a", {
     href: "https://laravel.com/docs"
   }, react_1["default"].createElement("div", {
-    className: "mt-3 flex items-center text-sm font-semibold text-indigo-700"
+    className: "mt-3 flex items-center text-sm font-semibold text-primary-700"
   }, react_1["default"].createElement("div", null, "Explore the documentation"), react_1["default"].createElement("div", {
-    className: "ml-1 text-indigo-500"
+    className: "ml-1 text-primary-500"
   }, react_1["default"].createElement("svg", {
     viewBox: "0 0 20 20",
     fill: "currentColor",
@@ -10591,9 +10596,9 @@ function Welcome() {
   }, "Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process."), react_1["default"].createElement("a", {
     href: "https://laracasts.com"
   }, react_1["default"].createElement("div", {
-    className: "mt-3 flex items-center text-sm font-semibold text-indigo-700"
+    className: "mt-3 flex items-center text-sm font-semibold text-primary-700"
   }, react_1["default"].createElement("div", null, "Start watching Laracasts"), react_1["default"].createElement("div", {
-    className: "ml-1 text-indigo-500"
+    className: "ml-1 text-primary-500"
   }, react_1["default"].createElement("svg", {
     viewBox: "0 0 20 20",
     fill: "currentColor",
@@ -10708,6 +10713,40 @@ exports["default"] = useTypedPage;
 "use strict";
 
 
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -10720,7 +10759,7 @@ Object.defineProperty(exports, "__esModule", ({
 
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
@@ -10736,11 +10775,26 @@ var DropdownMenuResponsive_1 = __importDefault(__webpack_require__(/*! @/Compone
 
 var react_hot_toast_1 = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 
+var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.esm.js");
+
 function AppLayout(_a) {
   var title = _a.title,
       renderHeader = _a.renderHeader,
       children = _a.children;
   var route = (0, useRoute_1["default"])();
+
+  var _b = (0, react_1.useState)(false),
+      isOpen = _b[0],
+      setIsOpen = _b[1];
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
   return react_1["default"].createElement("div", null, react_1["default"].createElement(inertia_react_1.Head, {
     title: title
   }), react_1["default"].createElement(Banner_1["default"], null), react_1["default"].createElement(react_hot_toast_1.Toaster, {
@@ -10767,9 +10821,68 @@ function AppLayout(_a) {
     href: route('dashboard'),
     active: route().current('dashboard')
   }, "Dashboard"))), react_1["default"].createElement("div", {
-    className: "hidden sm:flex sm:items-center sm:ml-6"
+    className: "flex items-center"
+  }, react_1["default"].createElement("button", {
+    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-white/10 bg-gray-700 rounded-xl",
+    onClick: openModal
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "#ffffff",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+  })), react_1["default"].createElement("span", {
+    className: "px-2 text-sm text-gray-200 bg-gray-800 rounded-md"
+  }, "\u2318 + /")), react_1["default"].createElement(react_2.Transition, {
+    appear: true,
+    show: isOpen,
+    as: react_1.Fragment
+  }, react_1["default"].createElement(react_2.Dialog, {
+    as: "div",
+    className: "fixed inset-0 z-10 overflow-y-auto",
+    onClose: closeModal
   }, react_1["default"].createElement("div", {
-    className: "ml-3 relative"
+    className: "min-h-screen px-4 text-center"
+  }, react_1["default"].createElement(react_2.Transition.Child, {
+    as: react_1.Fragment,
+    enter: "ease-out duration-300",
+    enterFrom: "opacity-0",
+    enterTo: "opacity-100",
+    leave: "ease-in duration-200",
+    leaveFrom: "opacity-100",
+    leaveTo: "opacity-0"
+  }, react_1["default"].createElement(react_2.Dialog.Overlay, {
+    className: "fixed inset-0 bg-gray-500/20"
+  })), react_1["default"].createElement("span", {
+    className: "inline-block h-screen align-middle",
+    "aria-hidden": "true"
+  }, "\u200B"), react_1["default"].createElement(react_2.Transition.Child, {
+    as: react_1.Fragment,
+    enter: "ease-out duration-300",
+    enterFrom: "opacity-0 scale-95",
+    enterTo: "opacity-100 scale-100",
+    leave: "ease-in duration-200",
+    leaveFrom: "opacity-100 scale-100",
+    leaveTo: "opacity-0 scale-95"
+  }, react_1["default"].createElement("div", {
+    className: "inline-block w-full sm:max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
+  }, react_1["default"].createElement(react_2.Dialog.Title, {
+    as: "h3",
+    className: "text-lg font-medium leading-6 text-gray-900"
+  }, "Payment successful"), react_1["default"].createElement("div", {
+    className: "mt-2"
+  }, react_1["default"].createElement("p", {
+    className: "text-sm text-gray-500"
+  }, "Your payment has been successfully submitted. We\u2019ve sent you an email with all of the details of your order.")), react_1["default"].createElement("div", {
+    className: "mt-4"
+  }, react_1["default"].createElement("button", {
+    type: "button",
+    className: "inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500",
+    onClick: closeModal
+  }, "Got it, thanks!"))))))), react_1["default"].createElement("div", {
+    className: "hidden sm:flex sm:items-center ml-3 relative"
   }, react_1["default"].createElement(DropdownMenu_1["default"], null))), react_1["default"].createElement("div", {
     className: "mr-2 flex items-center relative sm:hidden"
   }, react_1["default"].createElement(DropdownMenuResponsive_1["default"], null))))), renderHeader ? react_1["default"].createElement("header", {
@@ -13424,14 +13537,14 @@ function UpdateProfileInformationForm(_a) {
     }
   }, page.props.jetstream.managesProfilePhotos ? react_1["default"].createElement("div", {
     className: "col-span-6 sm:col-span-4"
-  }, react_1["default"].createElement("input", {
+  }, react_1["default"].createElement(Label_1["default"], {
+    htmlFor: "photo",
+    value: "Photo"
+  }), react_1["default"].createElement("input", {
     type: "file",
     className: "hidden",
     ref: photoRef,
     onChange: updatePhotoPreview
-  }), react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "photo",
-    value: "Photo"
   }), photoPreview ? // <!-- New Profile Photo Preview -->
   react_1["default"].createElement("div", {
     className: "mt-2"

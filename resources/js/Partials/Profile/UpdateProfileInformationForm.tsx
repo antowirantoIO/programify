@@ -99,15 +99,13 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       {page.props.jetstream.managesProfilePhotos ? (
         <div className="col-span-6 sm:col-span-4">
           {/* <!-- Profile Photo File Input --> */}
+          <Label htmlFor="photo" value="Photo" />
           <input
             type="file"
             className="hidden"
             ref={photoRef}
             onChange={updatePhotoPreview}
           />
-
-          <Label htmlFor="photo" value="Photo" />
-
           {photoPreview ? (
             // <!-- New Profile Photo Preview -->
             <div className="mt-2">
@@ -139,7 +137,6 @@ export default function UpdateProfileInformationForm({ user }: Props) {
           >
             Select A New Photo
           </SecondaryButton>
-
           {user.profile_photo_path ? (
             <SecondaryButton
               type="button"
@@ -149,7 +146,6 @@ export default function UpdateProfileInformationForm({ user }: Props) {
               Remove Photo
             </SecondaryButton>
           ) : null}
-
           <InputError message={form.errors.photo} className="mt-2" />
         </div>
       ) : null}
