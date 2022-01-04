@@ -1,6 +1,6 @@
 // @ts-ignore
 import { InertiaLink, Head } from '@inertiajs/inertia-react';
-import React, { PropsWithChildren, useEffect, useState } from 'react';
+import React, { PropsWithChildren } from 'react';
 import useRoute from '@/Hooks/useRoute';
 import ApplicationMark from '@/Components/ApplicationMark';
 import Banner from '@/Components/Banner';

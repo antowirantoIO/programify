@@ -9574,9 +9574,14 @@ function Dropdown(_a) {
   }();
 
   (0, react_2.useEffect)(function () {
-    document.addEventListener('keydown', function (e) {
-      e.key === 'Escape' ? setOpen(false) : '';
-    });
+    function onKeyDown(event) {
+      event.key === 'Escape' ? setOpen(false) : '';
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return function () {
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, []);
   return react_2["default"].createElement("div", {
     className: "relative"
@@ -10442,7 +10447,7 @@ function Search() {
     type: "text",
     placeholder: "Belajar Laravel..."
   }), react_2["default"].createElement("div", {
-    className: "absolute bg-gray-700 text-white text-sm rounded-md py-1 px-2 mr-8 right-0"
+    className: "absolute bg-gray-700 text-white text-tiny rounded-md py-1 px-2 mr-8 right-0"
   }, "ESC"))))))));
 }
 
@@ -10959,18 +10964,23 @@ function ApiTokenIndex(_a) {
   var tokens = _a.tokens,
       availablePermissions = _a.availablePermissions,
       defaultPermissions = _a.defaultPermissions;
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: 'API Tokens'
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+    className: "max-w-7xl mx-auto py-5"
   }, react_1["default"].createElement(APITokenManager_1["default"], {
     tokens: tokens,
     availablePermissions: availablePermissions,
     defaultPermissions: defaultPermissions
-  }))));
+  })));
 }
 
 exports["default"] = ApiTokenIndex;
+
+ApiTokenIndex.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: 'API Tokens'
+  });
+};
 
 /***/ }),
 
@@ -11806,23 +11816,28 @@ var Welcome_1 = __importDefault(__webpack_require__(/*! @/Components/Welcome */ 
 var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.tsx"));
 
 function Dashboard() {
+  return react_1["default"].createElement("div", {
+    className: "py-12"
+  }, react_1["default"].createElement("div", {
+    className: "max-w-7xl mx-auto sm:px-6 lg:px-8"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
+  }, react_1["default"].createElement(Welcome_1["default"], null))));
+}
+
+exports["default"] = Dashboard;
+
+Dashboard.layout = function (page) {
   return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
     title: "Dashboard",
     renderHeader: function renderHeader() {
       return react_1["default"].createElement("h2", {
         className: "font-semibold text-xl text-gray-800 leading-tight"
       }, "Dashboard");
     }
-  }, react_1["default"].createElement("div", {
-    className: "py-12"
-  }, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto sm:px-6 lg:px-8"
-  }, react_1["default"].createElement("div", {
-    className: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
-  }, react_1["default"].createElement(Welcome_1["default"], null)))));
-}
-
-exports["default"] = Dashboard;
+  });
+};
 
 /***/ }),
 
@@ -11914,14 +11929,7 @@ var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */
 function Show(_a) {
   var sessions = _a.sessions;
   var page = (0, useTypedPage_1["default"])();
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: 'Profile',
-    renderHeader: function renderHeader() {
-      return react_1["default"].createElement("div", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Profile");
-    }
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
     className: "max-w-7xl mx-auto py-5"
   }, page.props.jetstream.canUpdateProfileInformation ? react_1["default"].createElement("div", null, react_1["default"].createElement(UpdateProfileInformationForm_1["default"], {
     user: page.props.user
@@ -11935,10 +11943,22 @@ function Show(_a) {
     sessions: sessions
   })), page.props.jetstream.hasAccountDeletionFeatures ? react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
     className: "mt-10 sm:mt-0"
-  }, react_1["default"].createElement(DeleteUserForm_1["default"], null))) : null)));
+  }, react_1["default"].createElement(DeleteUserForm_1["default"], null))) : null));
 }
 
 exports["default"] = Show;
+
+Show.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: 'Profile',
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("div", {
+        className: "font-semibold text-xl text-gray-800 leading-tight"
+      }, "Profile");
+    }
+  });
+};
 
 /***/ }),
 
@@ -11968,19 +11988,24 @@ var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 function Create() {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
+  }, react_1["default"].createElement(CreateTeamForm_1["default"], null)));
+}
+
+exports["default"] = Create;
+
+Create.layout = function (page) {
   return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
     title: "Create Team",
     renderHeader: function renderHeader() {
       return react_1["default"].createElement("h2", {
         className: "font-semibold text-xl text-gray-800 leading-tight"
       }, "Create Team");
     }
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
-  }, react_1["default"].createElement(CreateTeamForm_1["default"], null))));
-}
-
-exports["default"] = Create;
+  });
+};
 
 /***/ }),
 
@@ -12019,14 +12044,7 @@ function Show(_a) {
   var team = _a.team,
       availableRoles = _a.availableRoles,
       permissions = _a.permissions;
-  return react_1["default"].createElement(AppLayout_1["default"], {
-    title: "Team Settings",
-    renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Team Settings");
-    }
-  }, react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
     className: "max-w-7xl mx-auto py-10 sm:px-6 lg:px-8"
   }, react_1["default"].createElement(UpdateTeamNameForm_1["default"], {
     team: team,
@@ -12041,10 +12059,22 @@ function Show(_a) {
     className: "mt-10 sm:mt-0"
   }, react_1["default"].createElement(DeleteTeamForm_1["default"], {
     team: team
-  }))) : null)));
+  }))) : null));
 }
 
 exports["default"] = Show;
+
+Show.layout = function (page) {
+  return react_1["default"].createElement(AppLayout_1["default"], {
+    children: page,
+    title: "Team Settings",
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("h2", {
+        className: "font-semibold text-xl text-gray-800 leading-tight"
+      }, "Team Settings");
+    }
+  });
+};
 
 /***/ }),
 

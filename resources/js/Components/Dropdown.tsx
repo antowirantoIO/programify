@@ -27,9 +27,13 @@ export default function Dropdown({
   })();
 
   useEffect(() => {
-    document.addEventListener('keydown', (e: KeyboardEvent) => {
-      e.key === 'Escape' ? setOpen(false) : '';
-    });
+    function onKeyDown(event: KeyboardEvent) {
+      event.key === 'Escape' ? setOpen(false) : '';
+    }
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, []);
 
   return (

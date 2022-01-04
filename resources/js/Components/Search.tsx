@@ -78,7 +78,7 @@ export default function Search() {
                     type="text"
                     placeholder="Belajar Laravel..."
                   />
-                  <div className="absolute bg-gray-700 text-white text-sm rounded-md py-1 px-2 mr-8 right-0">
+                  <div className="absolute bg-gray-700 text-white text-tiny rounded-md py-1 px-2 mr-8 right-0">
                     ESC
                   </div>
                 </div>
