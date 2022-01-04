@@ -9,6 +9,8 @@ class Series extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function skills()
     {
         return $this->belongsToMany(Skill::class);

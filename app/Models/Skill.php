@@ -9,6 +9,8 @@ class Skill extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'slug', 'explanation', 'icon'];
+
     public function series()
     {
         return $this->belongsToMany(Series::class);

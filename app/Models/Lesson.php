@@ -9,6 +9,8 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function episode()
     {
         return $this->belongsTo(Episode::class);

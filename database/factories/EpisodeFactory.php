@@ -14,7 +14,11 @@ class EpisodeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(120),
+            'slug' => $this->faker->slug(50),
+            'duration' => $this->faker->time('i:s'),
+            'episode' => random_int(1, 15),
+            'series_id' => random_int(1, 50),
         ];
     }
 }
