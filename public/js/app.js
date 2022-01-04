@@ -10310,6 +10310,146 @@ exports["default"] = NavLink;
 
 /***/ }),
 
+/***/ "./resources/js/Components/Search.tsx":
+/*!********************************************!*\
+  !*** ./resources/js/Components/Search.tsx ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var react_1 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.esm.js");
+
+var react_2 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var Input_1 = __importDefault(__webpack_require__(/*! ./Input */ "./resources/js/Components/Input.tsx"));
+
+function Search() {
+  var _a = (0, react_2.useState)(false),
+      isOpen = _a[0],
+      setIsOpen = _a[1];
+
+  function closeSearch() {
+    setIsOpen(false);
+  }
+
+  function openSearch() {
+    setIsOpen(true);
+  }
+
+  (0, react_2.useEffect)(function () {
+    function onKeyDown(event) {
+      event.ctrlKey && event.keyCode === 191 ? setIsOpen(true) : '';
+    }
+
+    window.addEventListener('keydown', onKeyDown);
+    return function () {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+  return react_2["default"].createElement("div", null, react_2["default"].createElement("button", {
+    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-white/10 bg-gray-700 rounded-xl",
+    onClick: openSearch
+  }, react_2["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "#ffffff",
+    viewBox: "0 0 16 16"
+  }, react_2["default"].createElement("path", {
+    d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+  })), react_2["default"].createElement("span", {
+    className: "px-2 text-sm text-gray-200 bg-gray-800 rounded-md"
+  }, "\u2318 + /")), react_2["default"].createElement(react_1.Transition, {
+    appear: true,
+    show: isOpen,
+    as: react_2.Fragment
+  }, react_2["default"].createElement(react_1.Dialog, {
+    as: "div",
+    className: "absolute inset-0 z-10 overflow-y-auto",
+    onClose: closeSearch
+  }, react_2["default"].createElement("div", {
+    className: "px-4 text-center"
+  }, react_2["default"].createElement(react_1.Transition.Child, {
+    as: react_2.Fragment,
+    enter: "ease-out duration-300",
+    enterFrom: "opacity-0",
+    enterTo: "opacity-100",
+    leave: "ease-in duration-200",
+    leaveFrom: "opacity-100",
+    leaveTo: "opacity-0"
+  }, react_2["default"].createElement(react_1.Dialog.Overlay, {
+    className: "fixed inset-0 bg-black/20"
+  })), react_2["default"].createElement(react_1.Transition.Child, {
+    as: react_2.Fragment,
+    enter: "ease-out duration-300",
+    enterFrom: "opacity-0 scale-95",
+    enterTo: "opacity-100 scale-100",
+    leave: "ease-in duration-200",
+    leaveFrom: "opacity-100 scale-100",
+    leaveTo: "opacity-0 scale-95"
+  }, react_2["default"].createElement("div", {
+    className: "inline-block w-full sm:max-w-3xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
+  }, react_2["default"].createElement("div", {
+    className: "flex items-center"
+  }, react_2["default"].createElement(Input_1["default"], {
+    className: "relative",
+    type: "text",
+    placeholder: "Belajar Laravel..."
+  }), react_2["default"].createElement("div", {
+    className: "absolute bg-gray-700 text-white text-sm rounded-md py-1 px-2 mr-8 right-0"
+  }, "ESC"))))))));
+}
+
+exports["default"] = Search;
+
+/***/ }),
+
 /***/ "./resources/js/Components/SecondaryButton.tsx":
 /*!*****************************************************!*\
   !*** ./resources/js/Components/SecondaryButton.tsx ***!
@@ -10713,40 +10853,6 @@ exports["default"] = useTypedPage;
 "use strict";
 
 
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
     "default": mod
@@ -10759,13 +10865,15 @@ Object.defineProperty(exports, "__esModule", ({
 
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
 
 var ApplicationMark_1 = __importDefault(__webpack_require__(/*! @/Components/ApplicationMark */ "./resources/js/Components/ApplicationMark.tsx"));
 
 var Banner_1 = __importDefault(__webpack_require__(/*! @/Components/Banner */ "./resources/js/Components/Banner.tsx"));
+
+var Search_1 = __importDefault(__webpack_require__(/*! @/Components/Search */ "./resources/js/Components/Search.tsx"));
 
 var NavLink_1 = __importDefault(__webpack_require__(/*! @/Components/NavLink */ "./resources/js/Components/NavLink.tsx"));
 
@@ -10775,26 +10883,11 @@ var DropdownMenuResponsive_1 = __importDefault(__webpack_require__(/*! @/Compone
 
 var react_hot_toast_1 = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 
-var react_2 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/index.esm.js");
-
 function AppLayout(_a) {
   var title = _a.title,
       renderHeader = _a.renderHeader,
       children = _a.children;
   var route = (0, useRoute_1["default"])();
-
-  var _b = (0, react_1.useState)(false),
-      isOpen = _b[0],
-      setIsOpen = _b[1];
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
   return react_1["default"].createElement("div", null, react_1["default"].createElement(inertia_react_1.Head, {
     title: title
   }), react_1["default"].createElement(Banner_1["default"], null), react_1["default"].createElement(react_hot_toast_1.Toaster, {
@@ -10822,66 +10915,7 @@ function AppLayout(_a) {
     active: route().current('dashboard')
   }, "Dashboard"))), react_1["default"].createElement("div", {
     className: "flex items-center"
-  }, react_1["default"].createElement("button", {
-    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-white/10 bg-gray-700 rounded-xl",
-    onClick: openModal
-  }, react_1["default"].createElement("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    fill: "#ffffff",
-    viewBox: "0 0 16 16"
-  }, react_1["default"].createElement("path", {
-    d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-  })), react_1["default"].createElement("span", {
-    className: "px-2 text-sm text-gray-200 bg-gray-800 rounded-md"
-  }, "\u2318 + /")), react_1["default"].createElement(react_2.Transition, {
-    appear: true,
-    show: isOpen,
-    as: react_1.Fragment
-  }, react_1["default"].createElement(react_2.Dialog, {
-    as: "div",
-    className: "fixed inset-0 z-10 overflow-y-auto",
-    onClose: closeModal
-  }, react_1["default"].createElement("div", {
-    className: "min-h-screen px-4 text-center"
-  }, react_1["default"].createElement(react_2.Transition.Child, {
-    as: react_1.Fragment,
-    enter: "ease-out duration-300",
-    enterFrom: "opacity-0",
-    enterTo: "opacity-100",
-    leave: "ease-in duration-200",
-    leaveFrom: "opacity-100",
-    leaveTo: "opacity-0"
-  }, react_1["default"].createElement(react_2.Dialog.Overlay, {
-    className: "fixed inset-0 bg-gray-500/20"
-  })), react_1["default"].createElement("span", {
-    className: "inline-block h-screen align-middle",
-    "aria-hidden": "true"
-  }, "\u200B"), react_1["default"].createElement(react_2.Transition.Child, {
-    as: react_1.Fragment,
-    enter: "ease-out duration-300",
-    enterFrom: "opacity-0 scale-95",
-    enterTo: "opacity-100 scale-100",
-    leave: "ease-in duration-200",
-    leaveFrom: "opacity-100 scale-100",
-    leaveTo: "opacity-0 scale-95"
-  }, react_1["default"].createElement("div", {
-    className: "inline-block w-full sm:max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
-  }, react_1["default"].createElement(react_2.Dialog.Title, {
-    as: "h3",
-    className: "text-lg font-medium leading-6 text-gray-900"
-  }, "Payment successful"), react_1["default"].createElement("div", {
-    className: "mt-2"
-  }, react_1["default"].createElement("p", {
-    className: "text-sm text-gray-500"
-  }, "Your payment has been successfully submitted. We\u2019ve sent you an email with all of the details of your order.")), react_1["default"].createElement("div", {
-    className: "mt-4"
-  }, react_1["default"].createElement("button", {
-    type: "button",
-    className: "inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500",
-    onClick: closeModal
-  }, "Got it, thanks!"))))))), react_1["default"].createElement("div", {
+  }, react_1["default"].createElement(Search_1["default"], null), react_1["default"].createElement("div", {
     className: "hidden sm:flex sm:items-center ml-3 relative"
   }, react_1["default"].createElement(DropdownMenu_1["default"], null))), react_1["default"].createElement("div", {
     className: "mr-2 flex items-center relative sm:hidden"
