@@ -15997,8 +15997,6 @@ var react_1 = __webpack_require__(/*! @headlessui/react */ "./node_modules/@head
 
 var react_2 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var Input_1 = __importDefault(__webpack_require__(/*! ./Input */ "./resources/js/Components/Input.tsx"));
-
 var lite_1 = __importDefault(__webpack_require__(/*! algoliasearch/lite */ "./node_modules/algoliasearch/dist/algoliasearch-lite.umd.js"));
 
 var react_instantsearch_dom_1 = __webpack_require__(/*! react-instantsearch-dom */ "./node_modules/react-instantsearch-dom/dist/es/index.js");
@@ -16009,45 +16007,67 @@ var SearchBox = function SearchBox(_a) {
   var currentRefinement = _a.currentRefinement,
       isSearchStalled = _a.isSearchStalled,
       refine = _a.refine;
-  return react_2["default"].createElement("form", {
+  return react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("form", {
     className: "w-full relative ",
     noValidate: true,
     action: "",
     role: "search"
-  }, react_2["default"].createElement(Input_1["default"], {
+  }, react_2["default"].createElement("div", {
+    className: "absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
+  }, react_2["default"].createElement("svg", {
+    className: "w-5 h-5 text-gray-700",
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor"
+  }, react_2["default"].createElement("path", {
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    "stroke-width": "2",
+    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+  }))), react_2["default"].createElement("input", {
     type: "text",
+    className: "w-full py-4 pl-12 border-b border-gray-100 focus:outline-none placeholder-gray-400",
     value: currentRefinement,
     onChange: function onChange(event) {
       return refine(event.currentTarget.value);
     }
   }), react_2["default"].createElement("div", {
-    className: "absolute inset-y-0 right-0 flex items-center pr-2"
+    className: "absolute inset-y-0 right-0 flex items-center pr-3"
   }, react_2["default"].createElement("button", {
-    className: "flex items-center p-1 uppercase font-semibold tracking-wider bg-gray-700 text-gray-200 rounded-md border border-gray-800 focus:outline-none focus:border-gray-700 text-xxs",
+    className: "flex items-center p-1.5 uppercase font-semibold tracking-wider text-gray-700 rounded-md border border-gray-200 focus:outline-none focus:border-gray-300 text-xxs",
     type: "button"
-  }, "Esc")));
+  }, "Esc"))), currentRefinement.length === 0 ? react_2["default"].createElement("p", {
+    className: "font-semibold px-5 pt-2 text-gray-800"
+  }, "Populer") : react_2["default"].createElement("div", {
+    className: "font-semibold px-5 pt-2 text-gray-800"
+  }, "You Search", ' ', react_2["default"].createElement("span", {
+    className: "text-blue-600 font-bold tracking-tighter underline underline-blue-900"
+  }, "\"", currentRefinement, "\"")));
 };
-
-var SearchBoxInput = (0, react_instantsearch_dom_1.connectSearchBox)(SearchBox);
 
 var Hits = function Hits(_a) {
   var hits = _a.hits;
   return react_2["default"].createElement("div", {
     className: "overflow-auto pt-3"
-  }, react_2["default"].createElement("ul", null, hits.map(function (hit) {
-    return react_2["default"].createElement("li", {
-      className: "flex items-center py-2.5 relative",
+  }, hits.map(function (hit) {
+    return react_2["default"].createElement("a", {
+      href: "/series/".concat(hit.slug),
+      className: "flex items-center px-5 text-md hover:text-white transition duration-200 py-3 hover:bg-primary-400 hover:rounded-md overflow-hidden",
       key: hit.objectID
     }, hit.title);
-  })));
+  }), hits.length === 0 ? react_2["default"].createElement("p", {
+    className: "p-10 text-lg text-center text-gray-400"
+  }, "No results...") : null);
 };
-
-var HitsResult = (0, react_instantsearch_dom_1.connectHits)(Hits);
 
 function Search() {
   var _a = (0, react_2.useState)(false),
       isOpen = _a[0],
       setIsOpen = _a[1];
+
+  var SearchBoxInput = (0, react_instantsearch_dom_1.connectSearchBox)(SearchBox);
+  var HitsResult = (0, react_instantsearch_dom_1.connectHits)(Hits);
 
   function closeSearch() {
     setIsOpen(false);
@@ -16086,10 +16106,10 @@ function Search() {
     as: react_2.Fragment
   }, react_2["default"].createElement(react_1.Dialog, {
     as: "div",
-    className: "absolute inset-0 z-10 overflow-y-auto",
+    className: "absolute inset-0 z-50 overflow-y-auto",
     onClose: closeSearch
   }, react_2["default"].createElement("div", {
-    className: "px-4 text-center"
+    className: "text-center px-4"
   }, react_2["default"].createElement(react_1.Transition.Child, {
     as: react_2.Fragment,
     enter: "ease-out duration-300",
@@ -16109,15 +16129,15 @@ function Search() {
     leaveFrom: "opacity-100 scale-100",
     leaveTo: "opacity-0 scale-95"
   }, react_2["default"].createElement("div", {
-    className: "inline-block w-full sm:max-w-3xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
+    className: "inline-block w-full sm:max-w-3xl my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"
   }, react_2["default"].createElement("div", {
     className: "relative"
   }, react_2["default"].createElement(react_instantsearch_dom_1.InstantSearch, {
     indexName: "series",
     searchClient: searchClient
   }, react_2["default"].createElement(SearchBoxInput, null), react_2["default"].createElement(HitsResult, null))), react_2["default"].createElement("div", {
-    className: "border-t border-gray pt-2 text-right"
-  }, "Search by ALGOLIA")))))));
+    className: "border-t border-gray py-3 pr-4 text-right"
+  }, "Powered By ALGOLIA")))))));
 }
 
 exports["default"] = Search;
