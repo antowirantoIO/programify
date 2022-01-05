@@ -16007,10 +16007,8 @@ var SearchBox = function SearchBox(_a) {
   var currentRefinement = _a.currentRefinement,
       isSearchStalled = _a.isSearchStalled,
       refine = _a.refine;
-  return react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("form", {
-    className: "w-full relative ",
-    noValidate: true,
-    action: "",
+  return react_2["default"].createElement(react_2["default"].Fragment, null, react_2["default"].createElement("div", {
+    className: "w-full relative",
     role: "search"
   }, react_2["default"].createElement("div", {
     className: "absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none"
@@ -16027,8 +16025,9 @@ var SearchBox = function SearchBox(_a) {
     d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
   }))), react_2["default"].createElement("input", {
     type: "text",
-    className: "w-full py-4 pl-12 border-b border-gray-100 focus:outline-none placeholder-gray-400",
+    className: "w-full py-4 pl-12 border-0 focus:outline-none focus:ring-0 focus:border-0 placeholder-gray-400",
     value: currentRefinement,
+    placeholder: "Belajar Apa Hari Ini?....",
     onChange: function onChange(event) {
       return refine(event.currentTarget.value);
     }
@@ -16037,25 +16036,29 @@ var SearchBox = function SearchBox(_a) {
   }, react_2["default"].createElement("button", {
     className: "flex items-center p-1.5 uppercase font-semibold tracking-wider text-gray-700 rounded-md border border-gray-200 focus:outline-none focus:border-gray-300 text-xxs",
     type: "button"
-  }, "Esc"))), currentRefinement.length === 0 ? react_2["default"].createElement("p", {
-    className: "font-semibold px-5 pt-2 text-gray-800"
+  }, "Esc")), react_2["default"].createElement("div", {
+    className: "border-b border-gray-200"
+  })), currentRefinement.length === 0 ? react_2["default"].createElement("p", {
+    className: "font-medium px-4 pt-2 text-gray-800"
   }, "Populer") : react_2["default"].createElement("div", {
-    className: "font-semibold px-5 pt-2 text-gray-800"
+    className: "font-medium px-4 pt-2 text-gray-800"
   }, "You Search", ' ', react_2["default"].createElement("span", {
-    className: "text-blue-600 font-bold tracking-tighter underline underline-blue-900"
+    className: "text-primary-600 font-bold tracking-tighter underline underline-primary-400"
   }, "\"", currentRefinement, "\"")));
 };
 
 var Hits = function Hits(_a) {
   var hits = _a.hits;
   return react_2["default"].createElement("div", {
-    className: "overflow-auto pt-3"
+    className: "overflow-auto pt-3 px-3"
   }, hits.map(function (hit) {
     return react_2["default"].createElement("a", {
       href: "/series/".concat(hit.slug),
-      className: "flex items-center px-5 text-md hover:text-white transition duration-200 py-3 hover:bg-primary-400 hover:rounded-md overflow-hidden",
+      className: "group flex items-center -mx-2 justify-between px-3 py-2.5 bg-white rounded-md hover:bg-gray-300 trasition duration-300",
       key: hit.objectID
-    }, hit.title);
+    }, react_2["default"].createElement("h4", {
+      className: "font-medium"
+    }, hit.title));
   }), hits.length === 0 ? react_2["default"].createElement("p", {
     className: "p-10 text-lg text-center text-gray-400"
   }, "No results...") : null);
@@ -16136,8 +16139,15 @@ function Search() {
     indexName: "series",
     searchClient: searchClient
   }, react_2["default"].createElement(SearchBoxInput, null), react_2["default"].createElement(HitsResult, null))), react_2["default"].createElement("div", {
-    className: "border-t border-gray py-3 pr-4 text-right"
-  }, "Powered By ALGOLIA")))))));
+    className: "flex justify-between relative border-t border-gray py-3 px-3"
+  }, react_2["default"].createElement("a", {
+    href: "#",
+    className: "inline-flex items-center px-2 py-1 bg-gray-800 border border-transparent rounded-xl font-semibold text-xxs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
+  }, "Lihat Semua"), react_2["default"].createElement("img", {
+    className: "h-9 w-auto",
+    src: "https://www.vectorlogo.zone/logos/algolia/algolia-ar21.svg",
+    alt: "algolia-logo"
+  }))))))));
 }
 
 exports["default"] = Search;

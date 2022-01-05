@@ -1,12 +1,12 @@
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react';
-import Input from './Input';
 import algoliasearch from 'algoliasearch/lite';
 import {
   InstantSearch,
   connectSearchBox,
   connectHits,
 } from 'react-instantsearch-dom';
+import Button from './Button';
 
 const searchClient = algoliasearch(
   'KU12QB6X6Z',
@@ -25,7 +25,7 @@ const SearchBox = ({
   refine,
 }: SearchBoxType) => (
   <>
-    <form className="w-full relative " noValidate action="" role="search">
+    <div className="w-full relative" role="search">
       <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
         <svg
           className="w-5 h-5 text-gray-700"
@@ -44,8 +44,9 @@ const SearchBox = ({
       </div>
       <input
         type="text"
-        className="w-full py-4 pl-12 border-b border-gray-100 focus:outline-none placeholder-gray-400"
+        className="w-full py-4 pl-12 border-0 focus:outline-none focus:ring-0 focus:border-0 placeholder-gray-400"
         value={currentRefinement}
+        placeholder="Belajar Apa Hari Ini?...."
         onChange={event => refine(event.currentTarget.value)}
       />
       <div className="absolute inset-y-0 right-0 flex items-center pr-3">
@@ -56,13 +57,14 @@ const SearchBox = ({
           Esc
         </button>
       </div>
-    </form>
+      <div className="border-b border-gray-200" />
+    </div>
     {currentRefinement.length === 0 ? (
-      <p className="font-semibold px-5 pt-2 text-gray-800">Populer</p>
+      <p className="font-medium px-4 pt-2 text-gray-800">Populer</p>
     ) : (
-      <div className="font-semibold px-5 pt-2 text-gray-800">
+      <div className="font-medium px-4 pt-2 text-gray-800">
         You Search{' '}
-        <span className="text-blue-600 font-bold tracking-tighter underline underline-blue-900">
+        <span className="text-primary-600 font-bold tracking-tighter underline underline-primary-400">
           "{currentRefinement}"
         </span>
       </div>
@@ -71,14 +73,14 @@ const SearchBox = ({
 );
 
 const Hits = ({ hits }: any) => (
-  <div className="overflow-auto pt-3">
+  <div className="overflow-auto pt-3 px-3">
     {hits.map((hit: any) => (
       <a
         href={`/series/${hit.slug}`}
-        className="flex items-center px-5 text-md hover:text-white transition duration-200 py-3 hover:bg-primary-400 hover:rounded-md overflow-hidden"
+        className="group flex items-center -mx-2 justify-between px-3 py-2.5 bg-white rounded-md hover:bg-gray-300 trasition duration-300"
         key={hit.objectID}
       >
-        {hit.title}
+        <h4 className="font-medium">{hit.title}</h4>
       </a>
     ))}
     {hits.length === 0 ? (
@@ -165,8 +167,18 @@ export default function Search() {
                     <HitsResult />
                   </InstantSearch>
                 </div>
-                <div className="border-t border-gray py-3 pr-4 text-right">
-                  Powered By ALGOLIA
+                <div className="flex justify-between relative border-t border-gray py-3 px-3">
+                  <a
+                    href="#"
+                    className="inline-flex items-center px-2 py-1 bg-gray-800 border border-transparent rounded-xl font-semibold text-xxs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
+                  >
+                    Lihat Semua
+                  </a>
+                  <img
+                    className="h-9 w-auto"
+                    src="https://www.vectorlogo.zone/logos/algolia/algolia-ar21.svg"
+                    alt="algolia-logo"
+                  />
                 </div>
               </div>
             </Transition.Child>

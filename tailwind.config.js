@@ -15,6 +15,10 @@ module.exports = {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
 
+            fontSize: {
+                xxs: ['0.65rem', {lineHeight: '1.1rem'}]
+            },
+
             colors: {
                 'primary': {
                     '50': '#f2f8ff', 
