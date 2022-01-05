@@ -1,6 +1,61 @@
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react';
 import Input from './Input';
+import algoliasearch from 'algoliasearch/lite';
+import {
+  InstantSearch,
+  connectSearchBox,
+  connectHits,
+} from 'react-instantsearch-dom';
+
+const searchClient = algoliasearch(
+  'KU12QB6X6Z',
+  'd9e0b5ab6251825c8fb4b14e9aefa6fc',
+);
+
+interface SearchBoxType {
+  currentRefinement: string;
+  isSearchStalled: boolean;
+  refine: any;
+}
+
+const SearchBox = ({
+  currentRefinement,
+  isSearchStalled,
+  refine,
+}: SearchBoxType) => (
+  <form className="w-full relative " noValidate action="" role="search">
+    <Input
+      type="text"
+      value={currentRefinement}
+      onChange={event => refine(event.currentTarget.value)}
+    />
+    <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+      <button
+        className="flex items-center p-1 uppercase font-semibold tracking-wider bg-gray-700 text-gray-200 rounded-md border border-gray-800 focus:outline-none focus:border-gray-700 text-xxs"
+        type="button"
+      >
+        Esc
+      </button>
+    </div>
+  </form>
+);
+
+const SearchBoxInput = connectSearchBox(SearchBox);
+
+const Hits = ({ hits }: any) => (
+  <div className="overflow-auto pt-3">
+    <ul>
+      {hits.map((hit: any) => (
+        <li className="flex items-center py-2.5 relative" key={hit.objectID}>
+          {hit.title}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const HitsResult = connectHits(Hits);
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,15 +127,14 @@ export default function Search() {
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full sm:max-w-3xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                <div className="flex items-center">
-                  <Input
-                    className="relative"
-                    type="text"
-                    placeholder="Belajar Laravel..."
-                  />
-                  <div className="absolute bg-gray-700 text-white text-tiny rounded-md py-1 px-2 mr-8 right-0">
-                    ESC
-                  </div>
+                <div className="relative">
+                  <InstantSearch indexName="series" searchClient={searchClient}>
+                    <SearchBoxInput />
+                    <HitsResult />
+                  </InstantSearch>
+                </div>
+                <div className="border-t border-gray pt-2 text-right">
+                  Search by ALGOLIA
                 </div>
               </div>
             </Transition.Child>
