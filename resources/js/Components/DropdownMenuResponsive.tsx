@@ -58,109 +58,127 @@ export default function DropdownMenuResponsive() {
           Dashboard
         </DropdownLink>
 
-        <div className="pt-4 pb-1 border-t border-gray-200">
-          <div className="flex items-center px-4">
-            {page.props.jetstream.managesProfilePhotos ? (
-              <div className="flex-shrink-0 mr-3">
-                <img
-                  className="h-10 w-10 rounded-full object-cover"
-                  src={page.props.user.profile_photo_url}
-                  alt={page.props.user.name}
-                />
-              </div>
-            ) : null}
+        {page.props.user ? (
+          <div className="pt-4 pb-1 border-t border-gray-200">
+            <div className="flex items-center px-4">
+              {page.props.jetstream.managesProfilePhotos ? (
+                <div className="flex-shrink-0 mr-3">
+                  <img
+                    className="h-10 w-10 rounded-full object-cover"
+                    src={page.props.user.profile_photo_url}
+                    alt={page.props.user.name}
+                  />
+                </div>
+              ) : null}
 
-            <div>
-              <div className="font-medium text-base text-gray-800">
-                {page.props.user.name}
-              </div>
-              <div className="font-medium text-sm text-gray-500">
-                {page.props.user.email}
+              <div>
+                <div className="font-medium text-base text-gray-800">
+                  {page.props.user.name}
+                </div>
+                <div className="font-medium text-sm text-gray-500">
+                  {page.props.user.email}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="mt-3 space-y-1">
-            <DropdownLink
-              href={route('profile.show')}
-              active={route().current('profile.show')}
-            >
-              Profile
-            </DropdownLink>
-
-            {page.props.jetstream.hasApiFeatures ? (
+            <div className="mt-3 space-y-1">
               <DropdownLink
-                href={route('api-tokens.index')}
-                active={route().current('api-tokens.index')}
+                href={route('profile.show')}
+                active={route().current('profile.show')}
               >
-                API Tokens
+                Profile
               </DropdownLink>
-            ) : null}
 
-            {/* <!-- Team Management --> */}
-            {page.props.jetstream.hasTeamFeatures ? (
-              <>
-                <div className="border-t border-gray-200"></div>
-
-                <div className="block px-4 py-2 text-xs text-gray-400">
-                  Manage Team
-                </div>
-
-                {/* <!-- Team Settings --> */}
+              {page.props.jetstream.hasApiFeatures ? (
                 <DropdownLink
-                  href={route('teams.show', [page.props.user.current_team!])}
-                  active={route().current('teams.show')}
+                  href={route('api-tokens.index')}
+                  active={route().current('api-tokens.index')}
                 >
-                  Team Settings
+                  API Tokens
                 </DropdownLink>
+              ) : null}
 
-                {page.props.jetstream.canCreateTeams ? (
+              {/* <!-- Team Management --> */}
+              {page.props.jetstream.hasTeamFeatures ? (
+                <>
+                  <div className="border-t border-gray-200"></div>
+
+                  <div className="block px-4 py-2 text-xs text-gray-400">
+                    Manage Team
+                  </div>
+
+                  {/* <!-- Team Settings --> */}
                   <DropdownLink
-                    href={route('teams.create')}
-                    active={route().current('teams.create')}
+                    href={route('teams.show', [page.props.user.current_team!])}
+                    active={route().current('teams.show')}
                   >
-                    Create New Team
+                    Team Settings
                   </DropdownLink>
-                ) : null}
 
-                <div className="border-t border-gray-200"></div>
-
-                {/* <!-- Team Switcher --> */}
-                <div className="block px-4 py-2 text-xs text-gray-400">
-                  Switch Teams
-                </div>
-                {page.props.user?.all_teams?.map(team => (
-                  <form onSubmit={e => switchToTeam(e, team)} key={team.id}>
-                    <DropdownLink as="button">
-                      <div className="flex items-center">
-                        {team.id == page.props.user.current_team_id && (
-                          <svg
-                            className="mr-2 h-5 w-5 text-green-400"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                          </svg>
-                        )}
-                        <div>{team.name}</div>
-                      </div>
+                  {page.props.jetstream.canCreateTeams ? (
+                    <DropdownLink
+                      href={route('teams.create')}
+                      active={route().current('teams.create')}
+                    >
+                      Create New Team
                     </DropdownLink>
-                  </form>
-                ))}
-              </>
-            ) : null}
-          </div>
-          <div className="border-t border-gray-100"></div>
+                  ) : null}
 
-          {/* <!-- Authentication --> */}
-          <form method="POST" onSubmit={logout}>
-            <DropdownLink as="button">Log Out</DropdownLink>
-          </form>
-        </div>
+                  <div className="border-t border-gray-200"></div>
+
+                  {/* <!-- Team Switcher --> */}
+                  <div className="block px-4 py-2 text-xs text-gray-400">
+                    Switch Teams
+                  </div>
+                  {page.props.user?.all_teams?.map(team => (
+                    <form onSubmit={e => switchToTeam(e, team)} key={team.id}>
+                      <DropdownLink as="button">
+                        <div className="flex items-center">
+                          {team.id == page.props.user.current_team_id && (
+                            <svg
+                              className="mr-2 h-5 w-5 text-green-400"
+                              fill="none"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                          )}
+                          <div>{team.name}</div>
+                        </div>
+                      </DropdownLink>
+                    </form>
+                  ))}
+                </>
+              ) : null}
+            </div>
+            <div className="border-t border-gray-100"></div>
+
+            {/* <!-- Authentication --> */}
+            <form method="POST" onSubmit={logout}>
+              <DropdownLink as="button">Log Out</DropdownLink>
+            </form>
+          </div>
+        ) : (
+          <>
+            <div className="border-t border-gray-100"></div>
+            <DropdownLink
+              href={route('login')}
+              active={route().current('login')}
+            >
+              Login
+            </DropdownLink>
+            <DropdownLink
+              href={route('register')}
+              active={route().current('register')}
+            >
+              Register
+            </DropdownLink>
+          </>
+        )}
       </Dropdown>
     </div>
   );
