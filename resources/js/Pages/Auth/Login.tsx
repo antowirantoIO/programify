@@ -28,10 +28,10 @@ export default function Login({ canResetPassword, status }: Props) {
     e.preventDefault();
     form.post(route('login'), {
       onFinish: () => {
-        toast.success('Welcome Back');
         form.reset('password');
       },
     });
+    toast.success('Welcome Back');
   }
 
   return (
