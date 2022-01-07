@@ -6,7 +6,6 @@ import {
   connectSearchBox,
   connectHits,
 } from 'react-instantsearch-dom';
-import Button from './Button';
 
 const searchClient = algoliasearch(
   'KU12QB6X6Z',
@@ -60,7 +59,7 @@ const SearchBox = ({
       <div className="border-b border-gray-200" />
     </div>
     {currentRefinement.length === 0 ? (
-      <p className="font-medium px-4 pt-2 text-gray-800">Populer</p>
+      <p className="font-medium px-4 pt-2 text-gray-800">Populer 🔥</p>
     ) : (
       <div className="font-medium px-4 pt-2 text-gray-800">
         You Search{' '}

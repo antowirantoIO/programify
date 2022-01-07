@@ -45,7 +45,6 @@ export default function AppLayout({
 
                 {/* <!-- Navigation Links --> */}
                 <div className="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
-                  
                   <NavLink
                     href={route('dashboard')}
                     active={route().current('dashboard')}
@@ -72,12 +71,13 @@ export default function AppLayout({
                     </InertiaLink>
                   </div>
                 )}
+                <DropdownMenuResponsive />
               </div>
 
               {/* <!-- Responsive Navigation Menu --> */}
-              <div className="mr-2 flex items-center relative sm:hidden">
-                <DropdownMenuResponsive />
-              </div>
+              {/* <div className="mr-2 flex items-center relative sm:hidden">
+                
+              </div> */}
             </div>
           </div>
         </nav>
@@ -85,7 +85,7 @@ export default function AppLayout({
         {/* <!-- Page Heading --> */}
         {renderHeader ? (
           <header className="bg-white shadow">
-            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
               {renderHeader()}
             </div>
           </header>

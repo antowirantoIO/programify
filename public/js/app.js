@@ -14265,7 +14265,7 @@ function ActionSection(_a) {
     title: title,
     description: description
   }), react_1["default"].createElement("div", {
-    className: "mt-5 md:mt-0 md:col-span-2"
+    className: "md:col-span-2"
   }, react_1["default"].createElement("div", {
     className: "px-4 py-5 bg-white shadow sm:rounded-lg"
   }, children))))));
@@ -15476,7 +15476,9 @@ function DropdownMenuResponsive() {
     inertia_1.Inertia.post(route('logout'));
   }
 
-  return react_1["default"].createElement("div", null, react_1["default"].createElement(Dropdown_1["default"], {
+  return react_1["default"].createElement("div", {
+    className: "relative sm:hidden pl-2"
+  }, react_1["default"].createElement(Dropdown_1["default"], {
     align: "right",
     renderTrigger: function renderTrigger() {
       return react_1["default"].createElement("span", {
@@ -15937,7 +15939,7 @@ function NavLink(_a) {
   var active = _a.active,
       href = _a.href,
       children = _a.children;
-  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-primary-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-primary-300 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -16048,7 +16050,7 @@ var SearchBox = function SearchBox(_a) {
     className: "border-b border-gray-200"
   })), currentRefinement.length === 0 ? react_2["default"].createElement("p", {
     className: "font-medium px-4 pt-2 text-gray-800"
-  }, "Populer") : react_2["default"].createElement("div", {
+  }, "Populer \uD83D\uDD25") : react_2["default"].createElement("div", {
     className: "font-medium px-4 pt-2 text-gray-800"
   }, "You Search", ' ', react_2["default"].createElement("span", {
     className: "text-primary-600 font-bold tracking-tighter underline underline-primary-400"
@@ -16507,12 +16509,10 @@ function AppLayout(_a) {
   }, react_1["default"].createElement(inertia_react_1.InertiaLink, {
     className: "inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition",
     href: route('login')
-  }, "Login"))), react_1["default"].createElement("div", {
-    className: "mr-2 flex items-center relative sm:hidden"
-  }, react_1["default"].createElement(DropdownMenuResponsive_1["default"], null))))), renderHeader ? react_1["default"].createElement("header", {
+  }, "Login")), react_1["default"].createElement(DropdownMenuResponsive_1["default"], null))))), renderHeader ? react_1["default"].createElement("header", {
     className: "bg-white shadow"
   }, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
+    className: "max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8"
   }, renderHeader())) : null, react_1["default"].createElement("main", null, children)));
 }
 
@@ -17401,11 +17401,7 @@ var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */
 function Dashboard() {
   return react_1["default"].createElement("div", {
     className: "py-12"
-  }, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto sm:px-6 lg:px-8"
-  }, react_1["default"].createElement("div", {
-    className: "bg-white py-10 overflow-hidden shadow-xl sm:rounded-lg"
-  }, "Home")));
+  }, "Dashboard");
 }
 
 exports["default"] = Dashboard;

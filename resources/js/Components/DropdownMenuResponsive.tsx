@@ -28,7 +28,7 @@ export default function DropdownMenuResponsive() {
     Inertia.post(route('logout'));
   }
   return (
-    <div>
+    <div className="relative sm:hidden pl-2">
       <Dropdown
         align="right"
         renderTrigger={() => (
