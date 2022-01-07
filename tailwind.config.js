@@ -14,11 +14,13 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
-
             fontSize: {
                 xxs: ['0.65rem', { lineHeight: '1.1rem' }]
             },
-
+            boxShadow: (theme) => ({
+                'underprimary': theme('colors.gray.900') + ' 0px -0.166667em 0px 0px inset, ' + theme('colors.primary.800') + ' 0px -0.333333em 0px 0px inset',
+                'underpurple': theme('colors.gray.900') + ' 0px -0.166667em 0px 0px inset, ' + theme('colors.purple.800') + ' 0px -0.333333em 0px 0px inset',
+            }),
             colors: {
                 'primary': {
                     '50': '#f2f8ff', 
