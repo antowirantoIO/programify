@@ -20,7 +20,7 @@ export default function FormSection({
 
   return (
     <div className="px-4 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1">
         <div className="lg:col-span-9 lg:order-none">
           <div className="bg-white border shadow-sm rounded-xl">
             <SectionTitle title={title} description={description} />
