@@ -14628,7 +14628,7 @@ function Button(_a) {
       props = __rest(_a, ["children"]);
 
   return react_1["default"].createElement("button", __assign({}, props, {
-    className: (0, classnames_1["default"])('inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition', props.className)
+    className: (0, classnames_1["default"])('inline-flex items-center px-6 py-[11px] bg-gray-800 border border-transparent rounded-xl font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition', props.className)
   }), children);
 }
 
@@ -14782,201 +14782,6 @@ function ConfirmationModal(_a) {
 }
 
 exports["default"] = ConfirmationModal;
-
-/***/ }),
-
-/***/ "./resources/js/Components/ConfirmsPassword.tsx":
-/*!******************************************************!*\
-  !*** ./resources/js/Components/ConfirmsPassword.tsx ***!
-  \******************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __assign = this && this.__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-
-      for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-    }
-
-    return t;
-  };
-
-  return __assign.apply(this, arguments);
-};
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
-
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
-
-var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
-
-var DialogModal_1 = __importDefault(__webpack_require__(/*! @/Components/DialogModal */ "./resources/js/Components/DialogModal.tsx"));
-
-var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
-
-var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
-
-var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @/Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
-
-function ConfirmsPassword(_a) {
-  var _b = _a.title,
-      title = _b === void 0 ? 'Confirm Password' : _b,
-      _c = _a.content,
-      content = _c === void 0 ? 'For your security, please confirm your password to continue.' : _c,
-      _d = _a.button,
-      button = _d === void 0 ? 'Confirm' : _d,
-      onConfirm = _a.onConfirm,
-      children = _a.children;
-  var route = (0, useRoute_1["default"])();
-
-  var _e = (0, react_1.useState)(false),
-      confirmingPassword = _e[0],
-      setConfirmingPassword = _e[1];
-
-  var _f = (0, react_1.useState)({
-    password: '',
-    error: '',
-    processing: false
-  }),
-      form = _f[0],
-      setForm = _f[1];
-
-  var passwordRef = (0, react_1.useRef)(null);
-
-  function startConfirmingPassword() {
-    axios_1["default"].get(route('password.confirmation')).then(function (response) {
-      if (response.data.confirmed) {
-        onConfirm();
-      } else {
-        setConfirmingPassword(true);
-        setTimeout(function () {
-          var _a;
-
-          return (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-        }, 250);
-      }
-    });
-  }
-
-  function confirmPassword() {
-    setForm(__assign(__assign({}, form), {
-      processing: true
-    }));
-    axios_1["default"].post(route('password.confirm'), {
-      password: form.password
-    }).then(function () {
-      closeModal();
-      setTimeout(function () {
-        return onConfirm();
-      }, 250);
-    })["catch"](function (error) {
-      var _a;
-
-      setForm(__assign(__assign({}, form), {
-        processing: false,
-        error: error.response.data.errors.password[0]
-      }));
-      (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-    });
-  }
-
-  function closeModal() {
-    setConfirmingPassword(false);
-    setForm({
-      processing: false,
-      password: '',
-      error: ''
-    });
-  }
-
-  return react_1["default"].createElement("span", null, react_1["default"].createElement("span", {
-    onClick: startConfirmingPassword
-  }, children), react_1["default"].createElement(DialogModal_1["default"], {
-    isOpen: confirmingPassword,
-    onClose: closeModal
-  }, react_1["default"].createElement(DialogModal_1["default"].Content, {
-    title: title
-  }, content, react_1["default"].createElement("div", {
-    className: "mt-4"
-  }, react_1["default"].createElement(Input_1["default"], {
-    type: "password",
-    className: "mt-1 block w-3/4",
-    placeholder: "Password",
-    value: form.password,
-    onChange: function onChange(e) {
-      return setForm(__assign(__assign({}, form), {
-        password: e.currentTarget.value
-      }));
-    }
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.error,
-    className: "mt-2"
-  }))), react_1["default"].createElement(DialogModal_1["default"].Footer, null, react_1["default"].createElement(SecondaryButton_1["default"], {
-    onClick: closeModal
-  }, "Cancel"), react_1["default"].createElement(Button_1["default"], {
-    className: (0, classnames_1["default"])('ml-2', {
-      'opacity-25': form.processing
-    }),
-    onClick: confirmPassword,
-    disabled: form.processing
-  }, button))));
-}
-
-exports["default"] = ConfirmsPassword;
 
 /***/ }),
 
@@ -15382,9 +15187,11 @@ function DropdownMenu() {
   }, react_1["default"].createElement("div", {
     className: "block px-4 py-2 text-xs text-gray-400"
   }, "Manage Account"), react_1["default"].createElement(DropdownLink_1["default"], {
+    href: '#'
+  }, "View Profile"), react_1["default"].createElement(DropdownLink_1["default"], {
     href: route('profile.show'),
     active: route().current('profile.show')
-  }, "Profile"), page.props.jetstream.hasApiFeatures ? react_1["default"].createElement(DropdownLink_1["default"], {
+  }, "Update Profile"), page.props.jetstream.hasApiFeatures ? react_1["default"].createElement(DropdownLink_1["default"], {
     href: route('api-tokens.index'),
     active: route().current('api-tokens.index')
   }, "API Tokens") : null, react_1["default"].createElement("div", {
@@ -15621,20 +15428,10 @@ function FormSection(_a) {
       description = _a.description,
       children = _a.children;
   var hasActions = !!renderActions;
-  return react_1["default"].createElement("div", {
-    className: "px-4 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4"
-  }, react_1["default"].createElement("div", {
-    className: "grid grid-cols-1"
-  }, react_1["default"].createElement("div", {
-    className: "lg:col-span-9 lg:order-none"
-  }, react_1["default"].createElement("div", {
-    className: "bg-white border shadow-sm rounded-xl"
-  }, react_1["default"].createElement(SectionTitle_1["default"], {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement(SectionTitle_1["default"], {
     title: title,
     description: description
-  }), react_1["default"].createElement("div", {
-    className: "md:col-span-2"
-  }, react_1["default"].createElement("form", {
+  }), react_1["default"].createElement("div", null, react_1["default"].createElement("form", {
     onSubmit: function onSubmit(e) {
       e.preventDefault();
 
@@ -15645,8 +15442,8 @@ function FormSection(_a) {
   }, react_1["default"].createElement("div", {
     className: "grid grid-cols-6 gap-6"
   }, children)), hasActions && react_1["default"].createElement("div", {
-    className: "flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md"
-  }, renderActions === null || renderActions === void 0 ? void 0 : renderActions())))))));
+    className: "px-4 py-3 sm:px-6"
+  }, renderActions === null || renderActions === void 0 ? void 0 : renderActions()))));
 }
 
 exports["default"] = FormSection;
@@ -15803,7 +15600,7 @@ function Label(_a) {
       htmlFor = _a.htmlFor,
       children = _a.children;
   return react_1["default"].createElement("label", {
-    className: "block font-medium text-sm text-gray-700",
+    className: "capitalize mb-1 block text-sm text-gray-600",
     htmlFor: htmlFor
   }, value || children);
 }
@@ -16111,7 +15908,7 @@ function Search() {
     };
   }, []);
   return react_2["default"].createElement("div", null, react_2["default"].createElement("button", {
-    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-white/10 bg-gray-700 rounded-xl",
+    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-white bg-gray-700 rounded-xl",
     onClick: openSearch
   }, react_2["default"].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
@@ -16122,6 +15919,8 @@ function Search() {
   }, react_2["default"].createElement("path", {
     d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
   })), react_2["default"].createElement("span", {
+    className: 'text-gray-200 text-xs'
+  }, "Quick Search.."), react_2["default"].createElement("span", {
     className: "px-2 text-sm text-gray-200 bg-gray-800 rounded-md"
   }, "\u2318 + /")), react_2["default"].createElement("button", {
     onClick: openSearch,
@@ -16326,13 +16125,13 @@ function SectionTitle(_a) {
   var title = _a.title,
       description = _a.description;
   return react_1["default"].createElement("div", {
-    className: "items-center px-4 py-3 border-b gap-4 sm:grid-cols-12 grid rounded-t-xl"
+    className: "items-center px-4 py-3 border-b gap-4 bg-gray-50/40 sm:grid-cols-12 grid rounded-t-xl"
   }, react_1["default"].createElement("div", {
     className: "col-span-12 sm:col-span-8"
   }, react_1["default"].createElement("div", {
-    className: "font-medium tracking-tighter lg:text-lg"
+    className: "block font-medium tracking-tighter lg:text-lg"
   }, title), react_1["default"].createElement("span", {
-    className: "text-sm tracking-tighter text-gray-500 lg:text-md"
+    className: "block text-xs tracking-tighter text-gray-500 lg:text-sm"
   }, description)));
 }
 
@@ -16490,11 +16289,11 @@ function AppLayout(_a) {
   }), react_1["default"].createElement(Banner_1["default"], null), react_1["default"].createElement(react_hot_toast_1.Toaster, {
     position: "bottom-right"
   }), react_1["default"].createElement("div", {
-    className: "min-h-screen bg-gray-100"
+    className: "min-h-screen"
   }, react_1["default"].createElement("nav", {
     className: "bg-white border-b border-gray-100"
   }, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-7"
   }, react_1["default"].createElement("div", {
     className: "flex justify-between h-16"
   }, react_1["default"].createElement("div", {
@@ -17411,7 +17210,7 @@ var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */
 function Dashboard() {
   return react_1["default"].createElement("div", {
     className: "py-12"
-  }, "Dashboard");
+  }, "Dashborad Managements");
 }
 
 exports["default"] = Dashboard;
@@ -17499,40 +17298,137 @@ Object.defineProperty(exports, "__esModule", ({
 
 var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
-var DeleteUserForm_1 = __importDefault(__webpack_require__(/*! @/Partials/Profile/DeleteUserForm */ "./resources/js/Partials/Profile/DeleteUserForm.tsx"));
-
-var LogoutOtherBrowserSessionsForm_1 = __importDefault(__webpack_require__(/*! @/Partials/Profile/LogoutOtherBrowserSessionsForm */ "./resources/js/Partials/Profile/LogoutOtherBrowserSessionsForm.tsx"));
-
-var TwoFactorAuthenticationForm_1 = __importDefault(__webpack_require__(/*! @/Partials/Profile/TwoFactorAuthenticationForm */ "./resources/js/Partials/Profile/TwoFactorAuthenticationForm.tsx"));
-
-var UpdatePasswordForm_1 = __importDefault(__webpack_require__(/*! @/Partials/Profile/UpdatePasswordForm */ "./resources/js/Partials/Profile/UpdatePasswordForm.tsx"));
-
-var UpdateProfileInformationForm_1 = __importDefault(__webpack_require__(/*! @/Partials/Profile/UpdateProfileInformationForm */ "./resources/js/Partials/Profile/UpdateProfileInformationForm.tsx"));
-
 var useTypedPage_1 = __importDefault(__webpack_require__(/*! @/Hooks/useTypedPage */ "./resources/js/Hooks/useTypedPage.ts"));
-
-var SectionBorder_1 = __importDefault(__webpack_require__(/*! @/Components/SectionBorder */ "./resources/js/Components/SectionBorder.tsx"));
 
 var AppLayout_1 = __importDefault(__webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.tsx"));
 
 function Show(_a) {
   var sessions = _a.sessions;
   var page = (0, useTypedPage_1["default"])();
-  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-5"
-  }, page.props.jetstream.canUpdateProfileInformation ? react_1["default"].createElement("div", null, react_1["default"].createElement(UpdateProfileInformationForm_1["default"], {
-    user: page.props.user
-  }), react_1["default"].createElement(SectionBorder_1["default"], null)) : null, page.props.jetstream.canUpdatePassword ? react_1["default"].createElement("div", {
-    className: "mt-10 sm:mt-0"
-  }, react_1["default"].createElement(UpdatePasswordForm_1["default"], null), react_1["default"].createElement(SectionBorder_1["default"], null)) : null, page.props.jetstream.canManageTwoFactorAuthentication ? react_1["default"].createElement("div", {
-    className: "mt-10 sm:mt-0"
-  }, react_1["default"].createElement(TwoFactorAuthenticationForm_1["default"], null), react_1["default"].createElement(SectionBorder_1["default"], null)) : null, react_1["default"].createElement("div", {
-    className: "mt-10 sm:mt-0"
-  }, react_1["default"].createElement(LogoutOtherBrowserSessionsForm_1["default"], {
-    sessions: sessions
-  })), page.props.jetstream.hasAccountDeletionFeatures ? react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
-    className: "mt-10 sm:mt-0"
-  }, react_1["default"].createElement(DeleteUserForm_1["default"], null))) : null));
+  return react_1["default"].createElement("div", {
+    className: "px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-7"
+  }, react_1["default"].createElement("div", {
+    className: "grid grid-cols-1 md:grid-cols-12 gap-6"
+  }, react_1["default"].createElement("div", {
+    className: "md:col-span-4 lg:col-span-3"
+  }, react_1["default"].createElement("ul", {
+    className: "space-y-6 lg:relative"
+  }, react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left font-medium !text-primary-500",
+    href: "/settings/profile"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-gear",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+  }), react_1["default"].createElement("path", {
+    d: "M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+  })), "Update Profile Information")), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/settings/password"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-shield",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"
+  })), "Change Password")), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/settings/catalog"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-cup",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8zM13 2H2v10.5A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V2z"
+  })), "Two Factor Authentication")), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/settings/watch-for-later"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-bookmarks",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"
+  }), react_1["default"].createElement("path", {
+    d: "M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"
+  })), "Logout Other Browser")), react_1["default"].createElement("div", {
+    className: "w-full h-px rounded-full bg-gradient-to-r from-gray-300 via-white to-white"
+  }), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/settings/subscription"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-person-check",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+  }), react_1["default"].createElement("path", {
+    fillRule: "evenodd",
+    d: "M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+  })), "Subscription Information")), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/settings/receipt"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-receipt",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
+  }), react_1["default"].createElement("path", {
+    d: "M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
+  })), "Receipt for You")), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/settings/invoice"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-receipt-cutoff",
+    viewBox: "0 0 16 16"
+  }, react_1["default"].createElement("path", {
+    d: "M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
+  }), react_1["default"].createElement("path", {
+    d: "M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z"
+  })), "Your Invoice")), react_1["default"].createElement("div", {
+    className: "w-full h-px rounded-full bg-gradient-to-r from-gray-300 via-white to-white"
+  }), react_1["default"].createElement("li", null, react_1["default"].createElement("a", {
+    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left false",
+    href: "/articles/favorite"
+  }, react_1["default"].createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    fill: "currentColor",
+    className: "bi bi-heart",
+    viewBox: "0 0 16 16"
+  }, ' ', react_1["default"].createElement("path", {
+    d: "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+  }), ' '), "Delete Account")))), react_1["default"].createElement("div", {
+    className: "md:col-span-8 lg:col-span-9"
+  }, react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
+  }))));
 }
 
 exports["default"] = Show;
@@ -18093,993 +17989,6 @@ function APITokenManager(_a) {
 }
 
 exports["default"] = APITokenManager;
-
-/***/ }),
-
-/***/ "./resources/js/Partials/Profile/DeleteUserForm.tsx":
-/*!**********************************************************!*\
-  !*** ./resources/js/Partials/Profile/DeleteUserForm.tsx ***!
-  \**********************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
-
-var ActionSection_1 = __importDefault(__webpack_require__(/*! @/Components/ActionSection */ "./resources/js/Components/ActionSection.tsx"));
-
-var DangerButton_1 = __importDefault(__webpack_require__(/*! @/Components/DangerButton */ "./resources/js/Components/DangerButton.tsx"));
-
-var DialogModal_1 = __importDefault(__webpack_require__(/*! @/Components/DialogModal */ "./resources/js/Components/DialogModal.tsx"));
-
-var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
-
-var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
-
-var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @/Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
-
-var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
-
-function DeleteUserForm() {
-  var route = (0, useRoute_1["default"])();
-
-  var _a = (0, react_1.useState)(false),
-      confirmingUserDeletion = _a[0],
-      setConfirmingUserDeletion = _a[1];
-
-  var form = (0, inertia_react_1.useForm)({
-    password: ''
-  });
-  var passwordRef = (0, react_1.useRef)(null);
-
-  function confirmUserDeletion() {
-    setConfirmingUserDeletion(true);
-    setTimeout(function () {
-      var _a;
-
-      return (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-    }, 250);
-  }
-
-  function deleteUser() {
-    form["delete"](route('current-user.destroy'), {
-      preserveScroll: true,
-      onSuccess: function onSuccess() {
-        react_hot_toast_1["default"].success('User Deleted');
-        closeModal();
-      },
-      onError: function onError() {
-        var _a;
-
-        react_hot_toast_1["default"].error('Something Wrong');
-        (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-      },
-      onFinish: function onFinish() {
-        return form.reset();
-      }
-    });
-  }
-
-  function closeModal() {
-    setConfirmingUserDeletion(false);
-    form.reset();
-  }
-
-  return react_1["default"].createElement(ActionSection_1["default"], {
-    title: 'Delete Account',
-    description: 'Permanently delete your account.'
-  }, react_1["default"].createElement("div", {
-    className: "tracking-tighter text-sm text-gray-600"
-  }, "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain."), react_1["default"].createElement("div", {
-    className: "mt-5"
-  }, react_1["default"].createElement(DangerButton_1["default"], {
-    onClick: confirmUserDeletion
-  }, "Delete Account")), react_1["default"].createElement(DialogModal_1["default"], {
-    isOpen: confirmingUserDeletion,
-    onClose: closeModal
-  }, react_1["default"].createElement(DialogModal_1["default"].Content, {
-    title: 'Delete Account'
-  }, "Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.", react_1["default"].createElement("div", {
-    className: "mt-4"
-  }, react_1["default"].createElement(Input_1["default"], {
-    type: "password",
-    className: "mt-1 block w-3/4",
-    placeholder: "Password",
-    value: form.data.password,
-    onChange: function onChange(e) {
-      return form.setData('password', e.currentTarget.value);
-    }
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.password,
-    className: "mt-2"
-  }))), react_1["default"].createElement(DialogModal_1["default"].Footer, null, react_1["default"].createElement(SecondaryButton_1["default"], {
-    onClick: closeModal
-  }, "Cancel"), react_1["default"].createElement(DangerButton_1["default"], {
-    onClick: deleteUser,
-    className: (0, classnames_1["default"])('ml-2', {
-      'opacity-25': form.processing
-    }),
-    disabled: form.processing
-  }, "Delete Account"))));
-}
-
-exports["default"] = DeleteUserForm;
-
-/***/ }),
-
-/***/ "./resources/js/Partials/Profile/LogoutOtherBrowserSessionsForm.tsx":
-/*!**************************************************************************!*\
-  !*** ./resources/js/Partials/Profile/LogoutOtherBrowserSessionsForm.tsx ***!
-  \**************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
-
-var ActionMessage_1 = __importDefault(__webpack_require__(/*! @/Components/ActionMessage */ "./resources/js/Components/ActionMessage.tsx"));
-
-var ActionSection_1 = __importDefault(__webpack_require__(/*! @/Components/ActionSection */ "./resources/js/Components/ActionSection.tsx"));
-
-var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
-
-var DialogModal_1 = __importDefault(__webpack_require__(/*! @/Components/DialogModal */ "./resources/js/Components/DialogModal.tsx"));
-
-var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
-
-var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
-
-var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @/Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
-
-var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
-
-function LogoutOtherBrowserSessions(_a) {
-  var sessions = _a.sessions;
-
-  var _b = (0, react_1.useState)(false),
-      confirmingLogout = _b[0],
-      setConfirmingLogout = _b[1];
-
-  var route = (0, useRoute_1["default"])();
-  var passwordRef = (0, react_1.useRef)(null);
-  var form = (0, inertia_react_1.useForm)({
-    password: ''
-  });
-
-  function confirmLogout() {
-    setConfirmingLogout(true);
-    setTimeout(function () {
-      var _a;
-
-      return (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-    }, 250);
-  }
-
-  function logoutOtherBrowserSessions() {
-    form["delete"](route('other-browser-sessions.destroy'), {
-      preserveScroll: true,
-      onSuccess: function onSuccess() {
-        react_hot_toast_1["default"].success('Logouted Other Session');
-        closeModal();
-      },
-      onError: function onError() {
-        var _a;
-
-        react_hot_toast_1["default"].error('Something Wrong');
-        (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-      },
-      onFinish: function onFinish() {
-        return form.reset();
-      }
-    });
-  }
-
-  function closeModal() {
-    setConfirmingLogout(false);
-    form.reset();
-  }
-
-  return react_1["default"].createElement(ActionSection_1["default"], {
-    title: 'Browser Sessions',
-    description: 'Manage and log out your active sessions on other browsers and devices.'
-  }, react_1["default"].createElement("div", {
-    className: "tracking-tighter text-sm text-gray-600"
-  }, "If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password."), sessions.length > 0 ? react_1["default"].createElement("div", {
-    className: "mt-5 space-y-6"
-  }, sessions.map(function (session, i) {
-    return react_1["default"].createElement("div", {
-      className: "flex items-center",
-      key: i
-    }, react_1["default"].createElement("div", null, session.agent.is_desktop ? react_1["default"].createElement("svg", {
-      fill: "none",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: "2",
-      viewBox: "0 0 24 24",
-      stroke: "currentColor",
-      className: "w-8 h-8 text-gray-500"
-    }, react_1["default"].createElement("path", {
-      d: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-    })) : react_1["default"].createElement("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 24 24",
-      strokeWidth: "2",
-      stroke: "currentColor",
-      fill: "none",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      className: "w-8 h-8 text-gray-500"
-    }, react_1["default"].createElement("path", {
-      d: "M0 0h24v24H0z",
-      stroke: "none"
-    }), react_1["default"].createElement("rect", {
-      x: "7",
-      y: "4",
-      width: "10",
-      height: "16",
-      rx: "1"
-    }), react_1["default"].createElement("path", {
-      d: "M11 5h2M12 17v.01"
-    }))), react_1["default"].createElement("div", {
-      className: "ml-3"
-    }, react_1["default"].createElement("div", {
-      className: "text-sm text-gray-600"
-    }, session.agent.platform, " - ", session.agent.browser), react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-      className: "text-xs text-gray-500"
-    }, session.ip_address, ",", session.is_current_device ? react_1["default"].createElement("span", {
-      className: "text-green-500 font-semibold"
-    }, "This device") : react_1["default"].createElement("span", null, "Last active ", session.last_active)))));
-  })) : null, react_1["default"].createElement("div", {
-    className: "flex items-center mt-5"
-  }, react_1["default"].createElement(Button_1["default"], {
-    onClick: confirmLogout
-  }, "Log Out Other Browser Sessions"), react_1["default"].createElement(ActionMessage_1["default"], {
-    on: form.recentlySuccessful,
-    className: "ml-3"
-  }, "Done.")), react_1["default"].createElement(DialogModal_1["default"], {
-    isOpen: confirmingLogout,
-    onClose: closeModal
-  }, react_1["default"].createElement(DialogModal_1["default"].Content, {
-    title: 'Log Out Other Browser Sessions'
-  }, "Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.", react_1["default"].createElement("div", {
-    className: "mt-4"
-  }, react_1["default"].createElement(Input_1["default"], {
-    type: "password",
-    className: "mt-1 block w-3/4",
-    placeholder: "Password",
-    ref: passwordRef,
-    value: form.data.password,
-    onChange: function onChange(e) {
-      return form.setData('password', e.currentTarget.value);
-    }
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.password,
-    className: "mt-2"
-  }))), react_1["default"].createElement(DialogModal_1["default"].Footer, null, react_1["default"].createElement(SecondaryButton_1["default"], {
-    onClick: closeModal
-  }, "Cancel"), react_1["default"].createElement(Button_1["default"], {
-    onClick: logoutOtherBrowserSessions,
-    className: (0, classnames_1["default"])('ml-2', {
-      'opacity-25': form.processing
-    }),
-    disabled: form.processing
-  }, "Log Out Other Browser Sessions"))));
-}
-
-exports["default"] = LogoutOtherBrowserSessions;
-
-/***/ }),
-
-/***/ "./resources/js/Partials/Profile/TwoFactorAuthenticationForm.tsx":
-/*!***********************************************************************!*\
-  !*** ./resources/js/Partials/Profile/TwoFactorAuthenticationForm.tsx ***!
-  \***********************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var inertia_1 = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-var axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
-
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var ActionSection_1 = __importDefault(__webpack_require__(/*! @/Components/ActionSection */ "./resources/js/Components/ActionSection.tsx"));
-
-var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
-
-var ConfirmsPassword_1 = __importDefault(__webpack_require__(/*! @/Components/ConfirmsPassword */ "./resources/js/Components/ConfirmsPassword.tsx"));
-
-var DangerButton_1 = __importDefault(__webpack_require__(/*! @/Components/DangerButton */ "./resources/js/Components/DangerButton.tsx"));
-
-var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @/Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
-
-function TwoFactorAuthenticationForm() {
-  var _a, _b;
-
-  var page = (0, inertia_react_1.usePage)();
-
-  var _c = (0, react_1.useState)(false),
-      enabling = _c[0],
-      setEnabling = _c[1];
-
-  var _d = (0, react_1.useState)(false),
-      disabling = _d[0],
-      setDisabling = _d[1];
-
-  var _e = (0, react_1.useState)(null),
-      qrCode = _e[0],
-      setQrCode = _e[1];
-
-  var _f = (0, react_1.useState)([]),
-      recoveryCodes = _f[0],
-      setRecoveryCodes = _f[1];
-
-  var twoFactorEnabled = (_b = (_a = page.props) === null || _a === void 0 ? void 0 : _a.user) === null || _b === void 0 ? void 0 : _b.two_factor_enabled;
-
-  function enableTwoFactorAuthentication() {
-    setEnabling(true);
-    axios_1["default"].post('/user/two-factor-authentication').then(function () {
-      Promise.all([showQrCode(), showRecoveryCodes()]).then(function () {
-        setEnabling(false);
-        inertia_1.Inertia.reload();
-      });
-    });
-  }
-
-  function showQrCode() {
-    return axios_1["default"].get('/user/two-factor-qr-code').then(function (response) {
-      setQrCode(response.data.svg);
-    });
-  }
-
-  function showRecoveryCodes() {
-    return axios_1["default"].get('/user/two-factor-recovery-codes').then(function (response) {
-      setRecoveryCodes(response.data);
-    });
-  }
-
-  function regenerateRecoveryCodes() {
-    axios_1["default"].post('/user/two-factor-recovery-codes').then(function (response) {
-      showRecoveryCodes();
-    });
-  }
-
-  function disableTwoFactorAuthentication() {
-    setDisabling(true);
-    axios_1["default"]["delete"]('/user/two-factor-authentication').then(function () {
-      setDisabling(false);
-      inertia_1.Inertia.reload();
-    });
-  }
-
-  return react_1["default"].createElement(ActionSection_1["default"], {
-    title: 'Two Factor Authentication',
-    description: 'Add additional security to your account using two factor authentication.'
-  }, twoFactorEnabled ? react_1["default"].createElement("h3", {
-    className: "text-lg font-medium text-gray-900"
-  }, "You have enabled two factor authentication.") : react_1["default"].createElement("h3", {
-    className: "text-lg font-medium text-gray-900"
-  }, "You have not enabled two factor authentication."), react_1["default"].createElement("div", {
-    className: "mt-3 tracking-tighter text-sm text-gray-600"
-  }, react_1["default"].createElement("p", null, "When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone's Google Authenticator application.")), twoFactorEnabled ? react_1["default"].createElement("div", null, qrCode ? react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "mt-4 max-w-xl text-sm text-gray-600"
-  }, react_1["default"].createElement("p", {
-    className: "font-semibold"
-  }, "Two factor authentication is now enabled. Scan the following QR code using your phone's authenticator application.")), react_1["default"].createElement("div", {
-    className: "mt-4",
-    dangerouslySetInnerHTML: {
-      __html: qrCode || ''
-    }
-  })) : null, recoveryCodes.length > 0 ? react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "mt-4 max-w-xl text-sm text-gray-600"
-  }, react_1["default"].createElement("p", {
-    className: "font-semibold tracking-tighter"
-  }, "Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.")), react_1["default"].createElement("div", {
-    className: "grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg"
-  }, recoveryCodes.map(function (code) {
-    return react_1["default"].createElement("div", {
-      key: code
-    }, code);
-  }))) : null) : null, react_1["default"].createElement("div", {
-    className: "mt-5"
-  }, twoFactorEnabled ? react_1["default"].createElement("div", null, recoveryCodes.length > 0 ? react_1["default"].createElement(ConfirmsPassword_1["default"], {
-    onConfirm: regenerateRecoveryCodes
-  }, react_1["default"].createElement(SecondaryButton_1["default"], {
-    className: "mr-3"
-  }, "Regenerate Recovery Codes")) : react_1["default"].createElement(ConfirmsPassword_1["default"], {
-    onConfirm: showRecoveryCodes
-  }, react_1["default"].createElement(SecondaryButton_1["default"], {
-    className: "mr-3"
-  }, "Show Recovery Codes")), react_1["default"].createElement(ConfirmsPassword_1["default"], {
-    onConfirm: disableTwoFactorAuthentication
-  }, react_1["default"].createElement(DangerButton_1["default"], {
-    className: (0, classnames_1["default"])({
-      'opacity-25': disabling
-    }),
-    disabled: disabling
-  }, "Disable"))) : react_1["default"].createElement("div", null, react_1["default"].createElement(ConfirmsPassword_1["default"], {
-    onConfirm: enableTwoFactorAuthentication
-  }, react_1["default"].createElement(Button_1["default"], {
-    type: "button",
-    className: (0, classnames_1["default"])({
-      'opacity-25': enabling
-    }),
-    disabled: enabling
-  }, "Enable")))));
-}
-
-exports["default"] = TwoFactorAuthenticationForm;
-
-/***/ }),
-
-/***/ "./resources/js/Partials/Profile/UpdatePasswordForm.tsx":
-/*!**************************************************************!*\
-  !*** ./resources/js/Partials/Profile/UpdatePasswordForm.tsx ***!
-  \**************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
-
-var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
-
-var FormSection_1 = __importDefault(__webpack_require__(/*! @/Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
-
-var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
-
-var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
-
-var Label_1 = __importDefault(__webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.tsx"));
-
-var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
-
-function UpdatePasswordForm() {
-  var route = (0, useRoute_1["default"])();
-  var form = (0, inertia_react_1.useForm)({
-    current_password: '',
-    password: '',
-    password_confirmation: ''
-  });
-  var passwordRef = (0, react_1.useRef)(null);
-  var currentPasswordRef = (0, react_1.useRef)(null);
-
-  function updatePassword() {
-    form.put(route('user-password.update'), {
-      errorBag: 'updatePassword',
-      preserveScroll: true,
-      onSuccess: function onSuccess() {
-        react_hot_toast_1["default"].success('Password Updated');
-        form.reset();
-      },
-      onError: function onError() {
-        var _a, _b;
-
-        if (form.errors.password) {
-          form.reset('password', 'password_confirmation');
-          (_a = passwordRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-        }
-
-        if (form.errors.current_password) {
-          form.reset('current_password');
-          (_b = currentPasswordRef.current) === null || _b === void 0 ? void 0 : _b.focus();
-        }
-      }
-    });
-  }
-
-  return react_1["default"].createElement(FormSection_1["default"], {
-    onSubmit: updatePassword,
-    title: 'Update Password',
-    description: 'Ensure your account is using a long, random password to stay secure.',
-    renderActions: function renderActions() {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
-        className: (0, classnames_1["default"])({
-          'opacity-25': form.processing
-        }),
-        disabled: form.processing
-      }, "Save"));
-    }
-  }, react_1["default"].createElement("div", {
-    className: "col-span-7"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "current_password"
-  }, "Current Password"), react_1["default"].createElement(Input_1["default"], {
-    id: "current_password",
-    type: "password",
-    className: "mt-1 block w-full",
-    ref: currentPasswordRef,
-    value: form.data.current_password,
-    onChange: function onChange(e) {
-      return form.setData('current_password', e.currentTarget.value);
-    },
-    autoComplete: "current-password"
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.current_password,
-    className: "mt-2"
-  })), react_1["default"].createElement("div", {
-    className: "col-span-7"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "password"
-  }, "New Password"), react_1["default"].createElement(Input_1["default"], {
-    id: "password",
-    type: "password",
-    className: "mt-1 block w-full",
-    value: form.data.password,
-    onChange: function onChange(e) {
-      return form.setData('password', e.currentTarget.value);
-    },
-    autoComplete: "new-password",
-    ref: passwordRef
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.password,
-    className: "mt-2"
-  })), react_1["default"].createElement("div", {
-    className: "col-span-7"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "password_confirmation"
-  }, "Confirm Password"), react_1["default"].createElement(Input_1["default"], {
-    id: "password_confirmation",
-    type: "password",
-    className: "mt-1 block w-full",
-    value: form.data.password_confirmation,
-    onChange: function onChange(e) {
-      return form.setData('password_confirmation', e.currentTarget.value);
-    },
-    autoComplete: "new-password"
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.password_confirmation,
-    className: "mt-2"
-  })));
-}
-
-exports["default"] = UpdatePasswordForm;
-
-/***/ }),
-
-/***/ "./resources/js/Partials/Profile/UpdateProfileInformationForm.tsx":
-/*!************************************************************************!*\
-  !*** ./resources/js/Partials/Profile/UpdateProfileInformationForm.tsx ***!
-  \************************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function get() {
-      return m[k];
-    }
-  });
-} : function (o, m, k, k2) {
-  if (k2 === undefined) k2 = k;
-  o[k2] = m[k];
-});
-
-var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
-  Object.defineProperty(o, "default", {
-    enumerable: true,
-    value: v
-  });
-} : function (o, v) {
-  o["default"] = v;
-});
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-  }
-
-  __setModuleDefault(result, mod);
-
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-
-var inertia_1 = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-
-var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-var classnames_1 = __importDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var useRoute_1 = __importDefault(__webpack_require__(/*! @/Hooks/useRoute */ "./resources/js/Hooks/useRoute.ts"));
-
-var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
-
-var FormSection_1 = __importDefault(__webpack_require__(/*! @/Components/FormSection */ "./resources/js/Components/FormSection.tsx"));
-
-var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
-
-var InputError_1 = __importDefault(__webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.tsx"));
-
-var Label_1 = __importDefault(__webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.tsx"));
-
-var SecondaryButton_1 = __importDefault(__webpack_require__(/*! @/Components/SecondaryButton */ "./resources/js/Components/SecondaryButton.tsx"));
-
-var react_hot_toast_1 = __importDefault(__webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js"));
-
-function UpdateProfileInformationForm(_a) {
-  var user = _a.user;
-  var form = (0, inertia_react_1.useForm)({
-    _method: 'PUT',
-    name: user.name,
-    email: user.email,
-    photo: null
-  });
-  var route = (0, useRoute_1["default"])();
-
-  var _b = (0, react_1.useState)(null),
-      photoPreview = _b[0],
-      setPhotoPreview = _b[1];
-
-  var photoRef = (0, react_1.useRef)(null);
-  var page = (0, inertia_react_1.usePage)();
-
-  function updateProfileInformation() {
-    form.post(route('user-profile-information.update'), {
-      errorBag: 'updateProfileInformation',
-      preserveScroll: true,
-      onSuccess: function onSuccess() {
-        react_hot_toast_1["default"].success('Profile Updated');
-        clearPhotoFileInput();
-      }
-    });
-  }
-
-  function selectNewPhoto() {
-    var _a;
-
-    (_a = photoRef.current) === null || _a === void 0 ? void 0 : _a.click();
-  }
-
-  function updatePhotoPreview() {
-    var _a, _b;
-
-    var photo = (_b = (_a = photoRef.current) === null || _a === void 0 ? void 0 : _a.files) === null || _b === void 0 ? void 0 : _b[0];
-
-    if (!photo) {
-      return;
-    }
-
-    form.setData('photo', photo);
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      var _a;
-
-      setPhotoPreview((_a = e.target) === null || _a === void 0 ? void 0 : _a.result);
-    };
-
-    reader.readAsDataURL(photo);
-  }
-
-  function deletePhoto() {
-    inertia_1.Inertia["delete"](route('current-user-photo.destroy'), {
-      preserveScroll: true,
-      onSuccess: function onSuccess() {
-        react_hot_toast_1["default"].success('Photo Profile Deleted');
-        setPhotoPreview(null);
-        clearPhotoFileInput();
-      }
-    });
-  }
-
-  function clearPhotoFileInput() {
-    var _a;
-
-    if ((_a = photoRef.current) === null || _a === void 0 ? void 0 : _a.value) {
-      photoRef.current.value = '';
-      form.setData('photo', null);
-    }
-  }
-
-  return react_1["default"].createElement(FormSection_1["default"], {
-    onSubmit: updateProfileInformation,
-    title: 'Profile Information',
-    description: "Update your account's profile information and email address.",
-    renderActions: function renderActions() {
-      return react_1["default"].createElement(react_1["default"].Fragment, null, react_1["default"].createElement(Button_1["default"], {
-        className: (0, classnames_1["default"])({
-          'opacity-25': form.processing
-        }),
-        disabled: form.processing
-      }, "Save"));
-    }
-  }, page.props.jetstream.managesProfilePhotos ? react_1["default"].createElement("div", {
-    className: "col-span-6 sm:col-span-4"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "photo",
-    value: "Photo"
-  }), react_1["default"].createElement("input", {
-    type: "file",
-    className: "hidden",
-    ref: photoRef,
-    onChange: updatePhotoPreview
-  }), photoPreview ? // <!-- New Profile Photo Preview -->
-  react_1["default"].createElement("div", {
-    className: "mt-2"
-  }, react_1["default"].createElement("span", {
-    className: "block rounded-full w-20 h-20",
-    style: {
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center center',
-      backgroundImage: "url('".concat(photoPreview, "')")
-    }
-  })) : // <!-- Current Profile Photo -->
-  react_1["default"].createElement("div", {
-    className: "mt-2"
-  }, react_1["default"].createElement("img", {
-    src: user.profile_photo_url,
-    alt: user.name,
-    className: "rounded-full h-20 w-20 object-cover"
-  })), react_1["default"].createElement(SecondaryButton_1["default"], {
-    className: "mt-2 mr-2",
-    type: "button",
-    onClick: selectNewPhoto
-  }, "Select A New Photo"), user.profile_photo_path ? react_1["default"].createElement(SecondaryButton_1["default"], {
-    type: "button",
-    className: "mt-2",
-    onClick: deletePhoto
-  }, "Remove Photo") : null, react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.photo,
-    className: "mt-2"
-  })) : null, react_1["default"].createElement("div", {
-    className: "col-span-7"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "name",
-    value: "Name"
-  }), react_1["default"].createElement(Input_1["default"], {
-    id: "name",
-    type: "text",
-    className: "mt-1 block w-full",
-    value: form.data.name,
-    onChange: function onChange(e) {
-      return form.setData('name', e.currentTarget.value);
-    },
-    autoComplete: "name"
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.name,
-    className: "mt-2"
-  })), react_1["default"].createElement("div", {
-    className: "col-span-7"
-  }, react_1["default"].createElement(Label_1["default"], {
-    htmlFor: "email",
-    value: "Email"
-  }), react_1["default"].createElement(Input_1["default"], {
-    id: "email",
-    type: "email",
-    className: "mt-1 block w-full",
-    value: form.data.email,
-    onChange: function onChange(e) {
-      return form.setData('email', e.currentTarget.value);
-    }
-  }), react_1["default"].createElement(InputError_1["default"], {
-    message: form.errors.email,
-    className: "mt-2"
-  })));
-}
-
-exports["default"] = UpdateProfileInformationForm;
 
 /***/ }),
 

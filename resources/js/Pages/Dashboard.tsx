@@ -2,7 +2,7 @@ import React from 'react';
 import AppLayout from '@/Layouts/AppLayout';
 
 export default function Dashboard() {
-  return <div className="py-12">Dashboard</div>;
+  return <div className="py-12">Dashborad Managements</div>;
 }
 
 Dashboard.layout = (page: JSX.Element) => (

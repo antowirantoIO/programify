@@ -11,7 +11,9 @@ use App\Http\Controllers\WelcomeContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
-URL::forceScheme('https');
+if (request()->getHost() != '127.0.0.1') {
+    URL::forceScheme('https');
+}
 
 Route::get('/', WelcomeContoller::class)->name('welcome');
 

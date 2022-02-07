@@ -19,39 +19,33 @@ export default function FormSection({
   const hasActions = !!renderActions;
 
   return (
-    <div className="px-4 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4">
-      <div className="grid grid-cols-1">
-        <div className="lg:col-span-9 lg:order-none">
-          <div className="bg-white border shadow-sm rounded-xl">
-            <SectionTitle title={title} description={description} />
+    <div>
+      <SectionTitle title={title} description={description} />
 
-            <div className="md:col-span-2">
-              <form
-                onSubmit={e => {
-                  e.preventDefault();
-                  onSubmit();
-                }}
-              >
-                <div
-                  className={classNames(
-                    'px-4 py-5 bg-white shadow',
-                    hasActions
-                      ? 'sm:rounded-tl-md sm:rounded-tr-md'
-                      : 'sm:rounded-md',
-                  )}
-                >
-                  <div className="grid grid-cols-6 gap-6">{children}</div>
-                </div>
-
-                {hasActions && (
-                  <div className="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
-                    {renderActions?.()}
-                  </div>
-                )}
-              </form>
-            </div>
+      <div>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            onSubmit();
+          }}
+        >
+          <div
+            className={classNames(
+              'px-4 py-5 bg-white shadow',
+              hasActions
+                ? 'sm:rounded-tl-md sm:rounded-tr-md'
+                : 'sm:rounded-md',
+            )}
+          >
+            <div className="grid grid-cols-6 gap-6">{children}</div>
           </div>
-        </div>
+
+          {hasActions && (
+            <div className="px-4 py-3 sm:px-6">
+              {renderActions?.()}
+            </div>
+          )}
+        </form>
       </div>
     </div>
   );

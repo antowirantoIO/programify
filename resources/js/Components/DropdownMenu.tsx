@@ -61,10 +61,16 @@ export default function DropdownMenu() {
         </div>
 
         <DropdownLink
+          href={'#'}
+        >
+          View Profile
+        </DropdownLink>
+
+        <DropdownLink
           href={route('profile.show')}
           active={route().current('profile.show')}
         >
-          Profile
+          Update Profile
         </DropdownLink>
 
         {page.props.jetstream.hasApiFeatures ? (

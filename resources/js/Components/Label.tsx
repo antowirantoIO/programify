@@ -12,7 +12,7 @@ export default function Label({
 }: PropsWithChildren<Props>) {
   return (
     <label
-      className="block font-medium text-sm text-gray-700"
+      className="capitalize mb-1 block text-sm text-gray-600"
       htmlFor={htmlFor}
     >
       {value || children}
