@@ -5,7 +5,6 @@ import TwoFactorAuthenticationForm from '@/Partials/Profile/TwoFactorAuthenticat
 import UpdatePasswordForm from '@/Partials/Profile/UpdatePasswordForm';
 import UpdateProfileInformationForm from '@/Partials/Profile/UpdateProfileInformationForm';
 import useTypedPage from '@/Hooks/useTypedPage';
-import SectionBorder from '@/Components/SectionBorder';
 import AppLayout from '@/Layouts/AppLayout';
 import { Session } from '@/types';
 import { Tab } from '@headlessui/react';
@@ -19,7 +18,7 @@ export default function Show({ sessions }: Props) {
   const page = useTypedPage();
 
   return (
-    <div className="px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-7">
+    <div className="px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-9 xl:px-8">
       <Tab.Group as={'div'} className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <Tab.List className="md:col-span-4 lg:col-span-3">
           <div className="space-y-6 lg:relative">
@@ -27,7 +26,7 @@ export default function Show({ sessions }: Props) {
               <Tab as={Fragment}>
                 {({ selected }) => (
                   <div
-                    className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                    className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                       selected ? 'text-primary-500' : ''
                     }`}
                   >
@@ -48,10 +47,10 @@ export default function Show({ sessions }: Props) {
               </Tab>
             ) : null}
             {page.props.jetstream.canUpdatePassword ? (
-              <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+              <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
                 {({ selected }) => (
                   <div
-                    className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                    className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                       selected ? 'text-primary-500' : ''
                     }`}
                   >
@@ -71,10 +70,10 @@ export default function Show({ sessions }: Props) {
               </Tab>
             ) : null}
             {page.props.jetstream.canManageTwoFactorAuthentication ? (
-              <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+              <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
                 {({ selected }) => (
                   <div
-                    className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                    className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                       selected ? 'text-primary-500' : ''
                     }`}
                   >
@@ -93,10 +92,10 @@ export default function Show({ sessions }: Props) {
                 )}
               </Tab>
             ) : null}
-            <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+            <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
               {({ selected }) => (
                 <div
-                  className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                  className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                     selected ? 'text-primary-500' : ''
                   }`}
                 >
@@ -116,10 +115,10 @@ export default function Show({ sessions }: Props) {
               )}
             </Tab>
             <div className="w-full h-px rounded-full bg-gradient-to-r from-gray-300 via-white to-white" />
-            <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+            <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
               {({ selected }) => (
                 <div
-                  className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                  className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                     selected ? 'text-primary-500' : ''
                   }`}
                 >
@@ -141,10 +140,10 @@ export default function Show({ sessions }: Props) {
                 </div>
               )}
             </Tab>
-            <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+            <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
               {({ selected }) => (
                 <div
-                  className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                  className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                     selected ? 'text-primary-500' : ''
                   }`}
                 >
@@ -163,10 +162,10 @@ export default function Show({ sessions }: Props) {
                 </div>
               )}
             </Tab>
-            <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+            <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
               {({ selected }) => (
                 <div
-                  className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                  className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                     selected ? 'text-primary-500' : ''
                   }`}
                 >
@@ -187,10 +186,10 @@ export default function Show({ sessions }: Props) {
             </Tab>
             <div className="w-full h-px rounded-full bg-gradient-to-r from-gray-300 via-white to-white" />
             {page.props.jetstream.hasAccountDeletionFeatures ? (
-              <Tab className="group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
+              <Tab className="group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left">
                 {({ selected }) => (
                   <div
-                    className={`group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
+                    className={`group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ${
                       selected ? 'text-primary-500' : ''
                     }`}
                   >
@@ -248,46 +247,6 @@ export default function Show({ sessions }: Props) {
           ) : null}
         </Tab.Panels>
       </Tab.Group>
-
-      {/* <div className="max-w-7xl mx-auto py-5">
-        {page.props.jetstream.canUpdateProfileInformation ? (
-          <div>
-            <UpdateProfileInformationForm user={page.props.user} />
-
-            <SectionBorder />
-          </div>
-        ) : null}
-
-        {page.props.jetstream.canUpdatePassword ? (
-          <div className="mt-10 sm:mt-0">
-            <UpdatePasswordForm />
-
-            <SectionBorder />
-          </div>
-        ) : null}
-
-        {page.props.jetstream.canManageTwoFactorAuthentication ? (
-          <div className="mt-10 sm:mt-0">
-            <TwoFactorAuthenticationForm />
-
-            <SectionBorder />
-          </div>
-        ) : null}
-
-        <div className="mt-10 sm:mt-0">
-          <LogoutOtherBrowserSessions sessions={sessions} />
-        </div>
-
-        {page.props.jetstream.hasAccountDeletionFeatures ? (
-          <>
-            <SectionBorder />
-
-            <div className="mt-10 sm:mt-0">
-              <DeleteUserForm />
-            </div>
-          </>
-        ) : null}
-      </div> */}
     </div>
   );
 }
@@ -295,10 +254,45 @@ export default function Show({ sessions }: Props) {
 Show.layout = (page: JSX.Element) => (
   <AppLayout
     children={page}
-    title={'Profile'}
+    title={'Update Profile Information'}
     renderHeader={() => (
-      <div className="font-semibold text-xl text-gray-800 leading-tight">
-        Profile
+      <div className="mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl">
+        <div className="flex items-center gap-x-2">
+          <a className="flex items-center" href="/antowiranto">
+            <img
+              className="w-7 h-7 rounded-full sm:mr-2"
+              src={page.props.user.profile_photo_url}
+              alt="Anto Wiranto"
+            />
+            <span className="hidden sm:inline">{page.props.user.name}</span>
+          </a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="inline w-4 h-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Settings
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="inline w-4 h-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <span className="text-gray-400 capitalize">Profile Information</span>
+        </div>
       </div>
     )}
   />

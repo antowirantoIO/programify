@@ -44,13 +44,19 @@ export default function AppLayout({
                 </div>
 
                 {/* <!-- Navigation Links --> */}
-                <div className="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
-                  <NavLink
+                <div className="hidden sm:-my-px sm:ml-10 sm:flex">
+                  <NavLink href={'#'}>Home</NavLink>
+                  <NavLink href={'#'}>Series</NavLink>
+                  <NavLink href={'#'}>Topics</NavLink>
+                  <NavLink href={'#'}>Articles</NavLink>
+                  <NavLink className="hidden lg:block" href={'#'}>Forum</NavLink>
+                  <NavLink className="hidden lg:block" href={'#'}>Premium</NavLink>
+                  {/* <NavLink
                     href={route('dashboard')}
                     active={route().current('dashboard')}
                   >
                     Dashboard
-                  </NavLink>
+                  </NavLink> */}
                 </div>
               </div>
 
@@ -73,18 +79,13 @@ export default function AppLayout({
                 )}
                 <DropdownMenuResponsive />
               </div>
-
-              {/* <!-- Responsive Navigation Menu --> */}
-              {/* <div className="mr-2 flex items-center relative sm:hidden">
-                
-              </div> */}
             </div>
           </div>
         </nav>
 
         {/* <!-- Page Heading --> */}
         {renderHeader ? (
-          <header className="bg-white shadow">
+          <header className="bg-white shadow-xl shadow-primary-300/30">
             <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
               {renderHeader()}
             </div>

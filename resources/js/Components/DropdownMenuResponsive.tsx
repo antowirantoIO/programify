@@ -51,12 +51,12 @@ export default function DropdownMenuResponsive() {
           </span>
         )}
       >
-        <DropdownLink
-          href={route('dashboard')}
-          active={route().current('dashboard')}
-        >
-          Dashboard
-        </DropdownLink>
+        <DropdownLink href={'#'}>Home</DropdownLink>
+        <DropdownLink href={'#'}>Series</DropdownLink>
+        <DropdownLink href={'#'}>Topics</DropdownLink>
+        <DropdownLink href={'#'}>Articles</DropdownLink>
+        <DropdownLink href={'#'}>Forum</DropdownLink>
+        <DropdownLink href={'#'}>Premiun</DropdownLink>
 
         {page.props.user ? (
           <div className="pt-4 pb-1 border-t border-gray-200">

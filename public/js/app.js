@@ -15504,9 +15504,18 @@ function DropdownMenuResponsive() {
       }))));
     }
   }, react_1["default"].createElement(DropdownLink_1["default"], {
-    href: route('dashboard'),
-    active: route().current('dashboard')
-  }, "Dashboard"), page.props.user ? react_1["default"].createElement("div", {
+    href: '#'
+  }, "Home"), react_1["default"].createElement(DropdownLink_1["default"], {
+    href: '#'
+  }, "Series"), react_1["default"].createElement(DropdownLink_1["default"], {
+    href: '#'
+  }, "Topics"), react_1["default"].createElement(DropdownLink_1["default"], {
+    href: '#'
+  }, "Articles"), react_1["default"].createElement(DropdownLink_1["default"], {
+    href: '#'
+  }, "Forum"), react_1["default"].createElement(DropdownLink_1["default"], {
+    href: '#'
+  }, "Premiun"), page.props.user ? react_1["default"].createElement("div", {
     className: "pt-4 pb-1 border-t border-gray-200"
   }, react_1["default"].createElement("div", {
     className: "flex items-center px-4"
@@ -15934,8 +15943,9 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 function NavLink(_a) {
   var active = _a.active,
       href = _a.href,
+      className = _a.className,
       children = _a.children;
-  var classes = active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-primary-300 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+  var classes = active ? className + ' text-gray-700 focus:outline-none font-medium border border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200' : className + ' text-gray-500 hover:text-gray-700 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -16097,18 +16107,18 @@ function Search() {
     };
   }, []);
   return react_2["default"].createElement("div", null, react_2["default"].createElement("button", {
-    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-white bg-gray-700 rounded-xl",
+    className: "items-center hidden gap-2 px-3 py-2 border md:flex border-gray-500/40 rounded-xl",
     onClick: openSearch
   }, react_2["default"].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
-    fill: "#ffffff",
+    fill: "#1f2937",
     viewBox: "0 0 16 16"
   }, react_2["default"].createElement("path", {
     d: "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
   })), react_2["default"].createElement("span", {
-    className: 'text-gray-200 text-xs'
+    className: 'text-gray-800 text-sm'
   }, "Quick Search.."), react_2["default"].createElement("span", {
     className: "px-2 text-sm text-gray-200 bg-gray-800 rounded-md"
   }, "\u2318 + /")), react_2["default"].createElement("button", {
@@ -16494,11 +16504,22 @@ function AppLayout(_a) {
   }, react_1["default"].createElement(ApplicationMark_1["default"], {
     className: "block h-9 w-auto"
   }))), react_1["default"].createElement("div", {
-    className: "hidden space-x-4 sm:-my-px sm:ml-10 sm:flex"
+    className: "hidden sm:-my-px sm:ml-10 sm:flex"
   }, react_1["default"].createElement(NavLink_1["default"], {
-    href: route('dashboard'),
-    active: route().current('dashboard')
-  }, "Dashboard"))), react_1["default"].createElement("div", {
+    href: '#'
+  }, "Home"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Series"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Topics"), react_1["default"].createElement(NavLink_1["default"], {
+    href: '#'
+  }, "Articles"), react_1["default"].createElement(NavLink_1["default"], {
+    className: "hidden lg:block",
+    href: '#'
+  }, "Forum"), react_1["default"].createElement(NavLink_1["default"], {
+    className: "hidden lg:block",
+    href: '#'
+  }, "Premium"))), react_1["default"].createElement("div", {
     className: "flex items-center"
   }, react_1["default"].createElement(Search_1["default"], null), page.props.user ? react_1["default"].createElement("div", {
     className: "hidden sm:flex sm:items-center ml-3 relative"
@@ -16508,7 +16529,7 @@ function AppLayout(_a) {
     className: "inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition",
     href: route('login')
   }, "Login")), react_1["default"].createElement(DropdownMenuResponsive_1["default"], null))))), renderHeader ? react_1["default"].createElement("header", {
-    className: "bg-white shadow"
+    className: "bg-white shadow-xl shadow-primary-300/30"
   }, react_1["default"].createElement("div", {
     className: "max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8"
   }, renderHeader())) : null, react_1["default"].createElement("main", null, children)));
@@ -17509,7 +17530,7 @@ function Show(_a) {
   var sessions = _a.sessions;
   var page = (0, useTypedPage_1["default"])();
   return react_1["default"].createElement("div", {
-    className: "px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-7"
+    className: "px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-9 xl:px-8"
   }, react_1["default"].createElement(react_2.Tab.Group, {
     as: 'div',
     className: "grid grid-cols-1 md:grid-cols-12 gap-6"
@@ -17522,7 +17543,7 @@ function Show(_a) {
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17536,11 +17557,11 @@ function Show(_a) {
       d: "M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
     })), "Update Profile Information");
   }) : null, page.props.jetstream.canUpdatePassword ? react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17552,11 +17573,11 @@ function Show(_a) {
       d: "M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"
     })), "Change Password");
   }) : null, page.props.jetstream.canManageTwoFactorAuthentication ? react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17568,11 +17589,11 @@ function Show(_a) {
       d: "M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8zM13 2H2v10.5A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V2z"
     })), "Two Factor Authentication");
   }) : null, react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17588,11 +17609,11 @@ function Show(_a) {
   }), react_1["default"].createElement("div", {
     className: "w-full h-px rounded-full bg-gradient-to-r from-gray-300 via-white to-white"
   }), react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17607,11 +17628,11 @@ function Show(_a) {
       d: "M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
     })), "Subscription Information");
   }), react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17625,11 +17646,11 @@ function Show(_a) {
       d: "M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
     })), "Receipt for You");
   }), react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17645,11 +17666,11 @@ function Show(_a) {
   }), react_1["default"].createElement("div", {
     className: "w-full h-px rounded-full bg-gradient-to-r from-gray-300 via-white to-white"
   }), page.props.jetstream.hasAccountDeletionFeatures ? react_1["default"].createElement(react_2.Tab, {
-    className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
+    className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left"
   }, function (_a) {
     var selected = _a.selected;
     return react_1["default"].createElement("div", {
-      className: "group focus:outline-none flex items-center gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
+      className: "group focus:outline-none gap-x-2 truncate text-sm text-gray-600 flex items-center w-full text-left hover:text-blue-500 ".concat(selected ? 'text-primary-500' : '')
     }, react_1["default"].createElement("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: 16,
@@ -17678,11 +17699,42 @@ exports["default"] = Show;
 Show.layout = function (page) {
   return react_1["default"].createElement(AppLayout_1["default"], {
     children: page,
-    title: 'Profile',
+    title: 'Update Profile Information',
     renderHeader: function renderHeader() {
       return react_1["default"].createElement("div", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Profile");
+        className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+      }, react_1["default"].createElement("div", {
+        className: "flex items-center gap-x-2"
+      }, react_1["default"].createElement("a", {
+        className: "flex items-center",
+        href: "/antowiranto"
+      }, react_1["default"].createElement("img", {
+        className: "w-7 h-7 rounded-full sm:mr-2",
+        src: page.props.user.profile_photo_url,
+        alt: "Anto Wiranto"
+      }), react_1["default"].createElement("span", {
+        className: "hidden sm:inline"
+      }, page.props.user.name)), react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), "Settings", react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), react_1["default"].createElement("span", {
+        className: "text-gray-400 capitalize"
+      }, "Profile Information")));
     }
   });
 };
