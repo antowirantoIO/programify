@@ -1919,6 +1919,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity));
 }
+.text-primary-800 {
+  --tw-text-opacity: 1;
+  color: rgb(0 63 153 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2165,6 +2169,14 @@ select {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.hover\:text-blue-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+.hover\:text-blue-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
   z-index: 10;
@@ -2617,6 +2629,10 @@ select {
     grid-column: span 8 / span 8;
   }
 
+  .md\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+
   .md\:mt-0 {
     margin-top: 0px;
   }
@@ -2762,6 +2778,11 @@ select {
   .xl\:px-7 {
     padding-left: 1.75rem;
     padding-right: 1.75rem;
+  }
+
+  .xl\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
