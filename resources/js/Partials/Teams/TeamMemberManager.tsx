@@ -132,6 +132,7 @@ export default function TeamMemberManager({
           <SectionBorder />
 
           {/* <!-- Add Team Member --> */}
+          <div className="bg-white border shadow-sm rounded-xl">
           <FormSection
             onSubmit={addTeamMember}
             title={'Add Team Member'}
@@ -253,6 +254,7 @@ export default function TeamMemberManager({
               </div>
             ) : null}
           </FormSection>
+          </div>
         </div>
       ) : null}
 

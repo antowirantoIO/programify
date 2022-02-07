@@ -100,7 +100,7 @@ export default function APITokenManager({
   }
 
   return (
-    <div>
+    <div className="bg-white border shadow-sm rounded-xl">
       {/* <!-- Generate API Token --> */}
       <FormSection
         onSubmit={createApiToken}

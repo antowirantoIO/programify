@@ -28,6 +28,7 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
   }
 
   return (
+    <div className="bg-white border shadow-sm rounded-xl">
     <FormSection
       onSubmit={updateTeamName}
       title={'Team Name'}
@@ -81,5 +82,6 @@ export default function UpdateTeamNameForm({ team, permissions }: Props) {
         <InputError message={form.errors.name} className="mt-2" />
       </div>
     </FormSection>
+    </div>
   );
 }

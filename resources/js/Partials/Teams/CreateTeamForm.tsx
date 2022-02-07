@@ -22,6 +22,7 @@ export default function CreateTeamForm() {
   }
 
   return (
+    <div className="bg-white border shadow-sm rounded-xl">
     <FormSection
       onSubmit={createTeam}
       title={'Team Details'}
@@ -57,5 +58,6 @@ export default function CreateTeamForm() {
         <InputError message={form.errors.name} className="mt-2" />
       </div>
     </FormSection>
+    </div>
   );
 }

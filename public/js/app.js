@@ -15945,7 +15945,7 @@ function NavLink(_a) {
       href = _a.href,
       className = _a.className,
       children = _a.children;
-  var classes = active ? className + ' text-gray-700 focus:outline-none font-medium border border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200' : className + ' text-gray-500 hover:text-gray-700 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200';
+  var classes = active ? className + ' text-gray-600 focus:outline-none font-medium border border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200' : className + ' text-gray-500 hover:text-gray-600 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -16582,7 +16582,43 @@ exports["default"] = ApiTokenIndex;
 ApiTokenIndex.layout = function (page) {
   return react_1["default"].createElement(AppLayout_1["default"], {
     children: page,
-    title: 'API Tokens'
+    title: 'API Tokens',
+    renderHeader: function renderHeader() {
+      return react_1["default"].createElement("div", {
+        className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+      }, react_1["default"].createElement("div", {
+        className: "flex items-center gap-x-2"
+      }, react_1["default"].createElement("a", {
+        className: "flex items-center",
+        href: "/antowiranto"
+      }, react_1["default"].createElement("img", {
+        className: "w-7 h-7 rounded-full sm:mr-2",
+        src: page.props.user.profile_photo_url,
+        alt: "Anto Wiranto"
+      }), react_1["default"].createElement("span", {
+        className: "hidden sm:inline"
+      }, page.props.user.name)), react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), "API", react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), react_1["default"].createElement("span", {
+        className: "text-gray-400 capitalize"
+      }, "Create API Token")));
+    }
   });
 };
 
@@ -17779,9 +17815,40 @@ Create.layout = function (page) {
     children: page,
     title: "Create Team",
     renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Create Team");
+      return react_1["default"].createElement("div", {
+        className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+      }, react_1["default"].createElement("div", {
+        className: "flex items-center gap-x-2"
+      }, react_1["default"].createElement("a", {
+        className: "flex items-center",
+        href: "/antowiranto"
+      }, react_1["default"].createElement("img", {
+        className: "w-7 h-7 rounded-full sm:mr-2",
+        src: page.props.user.profile_photo_url,
+        alt: "Anto Wiranto"
+      }), react_1["default"].createElement("span", {
+        className: "hidden sm:inline"
+      }, page.props.user.name)), react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), "Teams", react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), react_1["default"].createElement("span", {
+        className: "text-gray-400 capitalize"
+      }, "Craete Team")));
     }
   });
 };
@@ -17848,9 +17915,40 @@ Show.layout = function (page) {
     children: page,
     title: "Team Settings",
     renderHeader: function renderHeader() {
-      return react_1["default"].createElement("h2", {
-        className: "font-semibold text-xl text-gray-800 leading-tight"
-      }, "Team Settings");
+      return react_1["default"].createElement("div", {
+        className: "mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl"
+      }, react_1["default"].createElement("div", {
+        className: "flex items-center gap-x-2"
+      }, react_1["default"].createElement("a", {
+        className: "flex items-center",
+        href: "/antowiranto"
+      }, react_1["default"].createElement("img", {
+        className: "w-7 h-7 rounded-full sm:mr-2",
+        src: page.props.user.profile_photo_url,
+        alt: "Anto Wiranto"
+      }), react_1["default"].createElement("span", {
+        className: "hidden sm:inline"
+      }, page.props.user.name)), react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), "Teams", react_1["default"].createElement("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        className: "inline w-4 h-4",
+        viewBox: "0 0 20 20",
+        fill: "currentColor"
+      }, react_1["default"].createElement("path", {
+        fillRule: "evenodd",
+        d: "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z",
+        clipRule: "evenodd"
+      })), react_1["default"].createElement("span", {
+        className: "text-gray-400 capitalize"
+      }, "Teams Setting")));
     }
   });
 };
@@ -18130,7 +18228,9 @@ function APITokenManager(_a) {
     });
   }
 
-  return react_1["default"].createElement("div", null, react_1["default"].createElement(FormSection_1["default"], {
+  return react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
+  }, react_1["default"].createElement(FormSection_1["default"], {
     onSubmit: createApiToken,
     title: 'Create API Token',
     description: 'API tokens allow third-party services to authenticate with our application on your behalf.',
@@ -19548,7 +19648,9 @@ function CreateTeamForm() {
     });
   }
 
-  return react_1["default"].createElement(FormSection_1["default"], {
+  return react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
+  }, react_1["default"].createElement(FormSection_1["default"], {
     onSubmit: createTeam,
     title: 'Team Details',
     description: 'Create a new team to collaborate with others on projects.'
@@ -19583,7 +19685,7 @@ function CreateTeamForm() {
   }), react_1["default"].createElement(InputError_1["default"], {
     message: form.errors.name,
     className: "mt-2"
-  })));
+  }))));
 }
 
 exports["default"] = CreateTeamForm;
@@ -19904,7 +20006,9 @@ function TeamMemberManager(_a) {
     })) === null || _a === void 0 ? void 0 : _a.name;
   }
 
-  return react_1["default"].createElement("div", null, userPermissions.canAddTeamMembers ? react_1["default"].createElement("div", null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement(FormSection_1["default"], {
+  return react_1["default"].createElement("div", null, userPermissions.canAddTeamMembers ? react_1["default"].createElement("div", null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
+  }, react_1["default"].createElement(FormSection_1["default"], {
     onSubmit: addTeamMember,
     title: 'Add Team Member',
     description: 'Add a new team member to your team, allowing them to collaborate with you.',
@@ -19983,7 +20087,7 @@ function TeamMemberManager(_a) {
     })) : null), react_1["default"].createElement("div", {
       className: "mt-2 text-xs text-gray-600"
     }, role.description)));
-  }))) : null)) : null, team.team_invitations.length > 0 && userPermissions.canAddTeamMembers ? react_1["default"].createElement("div", null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
+  }))) : null))) : null, team.team_invitations.length > 0 && userPermissions.canAddTeamMembers ? react_1["default"].createElement("div", null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
     className: "mt-10 sm:mt-0"
   }), react_1["default"].createElement(ActionSection_1["default"], {
     title: 'Pending Team Invitations',
@@ -20187,7 +20291,9 @@ function UpdateTeamNameForm(_a) {
     });
   }
 
-  return react_1["default"].createElement(FormSection_1["default"], {
+  return react_1["default"].createElement("div", {
+    className: "bg-white border shadow-sm rounded-xl"
+  }, react_1["default"].createElement(FormSection_1["default"], {
     onSubmit: updateTeamName,
     title: 'Team Name',
     description: "The team's name and owner information.",
@@ -20230,7 +20336,7 @@ function UpdateTeamNameForm(_a) {
   }), react_1["default"].createElement(InputError_1["default"], {
     message: form.errors.name,
     className: "mt-2"
-  })));
+  }))));
 }
 
 exports["default"] = UpdateTeamNameForm;
