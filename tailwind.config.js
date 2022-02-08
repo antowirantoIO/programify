@@ -13,13 +13,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                cabin: ['Cabin', ...defaultTheme.fontFamily.sans],
             },
             fontSize: {
                 xxs: ['0.65rem', { lineHeight: '1.1rem' }]
             },
-            // maxWidth : {
-            //     '7xl': '85rem',
-            // },
             colors: {
                 'primary': {
                     '50': '#f2f8ff', 

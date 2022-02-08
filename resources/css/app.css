@@ -8,3 +8,57 @@
   --tw-shadow-colored: inset 0px -0.166667em 0px 0px var(--tw-shadow-color),
     inset 0px -0.333333em 0px 0px var(--tw-shadow-color);
 }
+
+.footer-wrap {
+  background-image: radial-gradient(circle at 15% -3%, #365280, #080e17 116%);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.section,
+section {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1700px;
+  padding: 20px;
+  position: relative;
+}
+
+.btn-blue,
+.btn-primary {
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  background-color: rgb(50 138 241 / var(--tw-bg-opacity));
+  border-color: rgb(50 138 241 / var(--tw-border-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.btn {
+  --tw-text-opacity: 1;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  color: rgb(34 41 47 / var(--tw-text-opacity));
+  display: block;
+  font-size: 0.834rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  max-width: 30rem;
+  padding: 1.25rem 1rem;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.footer-section {
+  background: url(https://laracasts.com//images/mic-drop@2x.webp) no-repeat 0 0;
+}
