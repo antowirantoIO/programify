@@ -16,7 +16,7 @@ export default function ApiTokenIndex({
 }: Props) {
   return (
     <div>
-      <div className="max-w-7xl mx-auto py-5">
+      <div className="max-w-7xl mx-auto py-5 px-5 lg:px-9 xl:px-8">
         <APITokenManager
           tokens={tokens}
           availablePermissions={availablePermissions}

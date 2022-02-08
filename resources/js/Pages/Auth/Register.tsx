@@ -32,6 +32,7 @@ export default function Register() {
   return (
     <AuthenticationCard>
       <Head title="Register" />
+      <h1 className="mb-6 font-medium text-gray-900 sm:text-lg">Create Your Programify Account</h1>
 
       <ValidationErrors className="mb-4" />
 
@@ -106,7 +107,7 @@ export default function Register() {
                   <a
                     target="_blank"
                     href={route('terms.show')}
-                    className="underline text-sm text-gray-600 hover:text-gray-900"
+                    className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
                   >
                     Terms of Service
                   </a>
@@ -114,7 +115,7 @@ export default function Register() {
                   <a
                     target="_blank"
                     href={route('policy.show')}
-                    className="underline text-sm text-gray-600 hover:text-gray-900"
+                    className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
                   >
                     Privacy Policy
                   </a>
@@ -127,7 +128,7 @@ export default function Register() {
         <div className="flex items-center justify-end mt-4">
           <InertiaLink
             href={route('login')}
-            className="underline text-sm text-gray-600 hover:text-gray-900"
+            className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
           >
             Already registered?
           </InertiaLink>

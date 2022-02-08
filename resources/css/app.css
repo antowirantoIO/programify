@@ -1,3 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.shadow-down-strike {
+  --tw-shadow: #fff 0px -0.166667em 0px 0px inset,
+    #cfe2ff 0px -0.333333em 0px 0px inset;
+  --tw-shadow-colored: inset 0px -0.166667em 0px 0px var(--tw-shadow-color),
+    inset 0px -0.333333em 0px 0px var(--tw-shadow-color);
+}

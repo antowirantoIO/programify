@@ -45,12 +45,21 @@ export default function AppLayout({
 
                 {/* <!-- Navigation Links --> */}
                 <div className="hidden sm:-my-px sm:ml-10 sm:flex">
-                  <NavLink href={'#'}>Home</NavLink>
+                  <NavLink
+                    href={route('welcome')}
+                    active={route().current('welcome')}
+                  >
+                    Home
+                  </NavLink>
                   <NavLink href={'#'}>Series</NavLink>
                   <NavLink href={'#'}>Topics</NavLink>
                   <NavLink href={'#'}>Articles</NavLink>
-                  <NavLink className="hidden lg:block" href={'#'}>Forum</NavLink>
-                  <NavLink className="hidden lg:block" href={'#'}>Premium</NavLink>
+                  <NavLink className="hidden lg:block" href={'#'}>
+                    Forum
+                  </NavLink>
+                  <NavLink className="hidden lg:block" href={'#'}>
+                    Premium
+                  </NavLink>
                   {/* <NavLink
                     href={route('dashboard')}
                     active={route().current('dashboard')}
@@ -70,10 +79,16 @@ export default function AppLayout({
                 ) : (
                   <div className="pl-4 hidden sm:flex">
                     <InertiaLink
-                      className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition"
+                      className="text-gray-500 hover:text-gray-600 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-2 rounded-lg transition-colors duration-200"
                       href={route('login')}
                     >
                       Login
+                    </InertiaLink>
+                    <InertiaLink
+                      className="text-gray-500 hover:text-gray-600 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 rounded-lg transition-colors duration-200"
+                      href={route('register')}
+                    >
+                      Register
                     </InertiaLink>
                   </div>
                 )}

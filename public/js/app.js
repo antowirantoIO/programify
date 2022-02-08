@@ -14360,9 +14360,9 @@ var AuthenticationCardLogo_1 = __importDefault(__webpack_require__(/*! @/Compone
 function AuthenticationCard(_a) {
   var children = _a.children;
   return react_1["default"].createElement("div", {
-    className: "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
+    className: "min-h-screen flex flex-col sm:justify-center items-center pt-6 px-4 sm:pt-0 bg-gray-300"
   }, react_1["default"].createElement("div", null, react_1["default"].createElement(AuthenticationCardLogo_1["default"], null)), react_1["default"].createElement("div", {
-    className: "w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
+    className: "w-full sm:max-w-lg mt-6 px-6 py-4 bg-white shadow-md overflow-hidden rounded-2xl"
   }, children));
 }
 
@@ -15361,7 +15361,7 @@ function DropdownMenu() {
         className: "inline-flex rounded-md"
       }, react_1["default"].createElement("button", {
         type: "button",
-        className: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
+        className: "inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
       }, page.props.user.name, react_1["default"].createElement("svg", {
         className: "ml-2 -mr-0.5 h-4 w-4",
         xmlns: "http://www.w3.org/2000/svg",
@@ -15945,7 +15945,7 @@ function NavLink(_a) {
       href = _a.href,
       className = _a.className,
       children = _a.children;
-  var classes = active ? className + ' text-gray-600 focus:outline-none font-medium border border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200' : className + ' text-gray-500 hover:text-gray-600 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200';
+  var classes = active ? className + ' text-gray-700 focus:outline-none test-md font-medium border border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200' : className + ' text-gray-500 hover:text-gray-700 focus:outline-none text-md font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-3 rounded-lg transition-colors duration-200';
   return react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: href,
     className: classes
@@ -16506,7 +16506,8 @@ function AppLayout(_a) {
   }))), react_1["default"].createElement("div", {
     className: "hidden sm:-my-px sm:ml-10 sm:flex"
   }, react_1["default"].createElement(NavLink_1["default"], {
-    href: '#'
+    href: route('welcome'),
+    active: route().current('welcome')
   }, "Home"), react_1["default"].createElement(NavLink_1["default"], {
     href: '#'
   }, "Series"), react_1["default"].createElement(NavLink_1["default"], {
@@ -16526,9 +16527,12 @@ function AppLayout(_a) {
   }, react_1["default"].createElement(DropdownMenu_1["default"], null)) : react_1["default"].createElement("div", {
     className: "pl-4 hidden sm:flex"
   }, react_1["default"].createElement(inertia_react_1.InertiaLink, {
-    className: "inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition",
+    className: "text-gray-500 hover:text-gray-600 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 px-2 rounded-lg transition-colors duration-200",
     href: route('login')
-  }, "Login")), react_1["default"].createElement(DropdownMenuResponsive_1["default"], null))))), renderHeader ? react_1["default"].createElement("header", {
+  }, "Login"), react_1["default"].createElement(inertia_react_1.InertiaLink, {
+    className: "text-gray-500 hover:text-gray-600 focus:outline-none font-medium hover:border-gray-400/50 lg:mx-0.5 flex items-center gap-x-2 relative tracking-tight py-2 rounded-lg transition-colors duration-200",
+    href: route('register')
+  }, "Register")), react_1["default"].createElement(DropdownMenuResponsive_1["default"], null))))), renderHeader ? react_1["default"].createElement("header", {
     className: "bg-white shadow-xl shadow-primary-300/30"
   }, react_1["default"].createElement("div", {
     className: "max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8"
@@ -16569,7 +16573,7 @@ function ApiTokenIndex(_a) {
       availablePermissions = _a.availablePermissions,
       defaultPermissions = _a.defaultPermissions;
   return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
-    className: "max-w-7xl mx-auto py-5"
+    className: "max-w-7xl mx-auto py-5 px-5 lg:px-9 xl:px-8"
   }, react_1["default"].createElement(APITokenManager_1["default"], {
     tokens: tokens,
     availablePermissions: availablePermissions,
@@ -16859,7 +16863,9 @@ function Login(_a) {
 
   return react_1["default"].createElement(AuthenticationCard_1["default"], null, react_1["default"].createElement(inertia_react_1.Head, {
     title: "login"
-  }), react_1["default"].createElement(ValidationErrors_1["default"], {
+  }), react_1["default"].createElement("h1", {
+    className: "mb-6 font-medium text-gray-900 sm:text-lg"
+  }, "Signin Your Programify Account"), react_1["default"].createElement(ValidationErrors_1["default"], {
     className: "mb-4"
   }), status && react_1["default"].createElement("div", {
     className: "mb-4 font-medium text-sm text-green-600"
@@ -16907,12 +16913,12 @@ function Login(_a) {
     className: "flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4"
   }, canResetPassword && react_1["default"].createElement("div", null, react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: route('password.request'),
-    className: "underline text-sm text-gray-600 hover:text-gray-900"
+    className: "text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
   }, "Forgot your password?")), react_1["default"].createElement("div", {
     className: "flex items-center justify-end"
   }, react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: route('register'),
-    className: "underline text-sm text-gray-600 hover:text-gray-900"
+    className: "text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
   }, "Need an account?"), react_1["default"].createElement(Button_1["default"], {
     className: (0, classnames_1["default"])('ml-4', {
       'opacity-25': form.processing
@@ -16988,7 +16994,9 @@ function Register() {
 
   return react_1["default"].createElement(AuthenticationCard_1["default"], null, react_1["default"].createElement(inertia_react_1.Head, {
     title: "Register"
-  }), react_1["default"].createElement(ValidationErrors_1["default"], {
+  }), react_1["default"].createElement("h1", {
+    className: "mb-6 font-medium text-gray-900 sm:text-lg"
+  }, "Create Your Programify Account"), react_1["default"].createElement(ValidationErrors_1["default"], {
     className: "mb-4"
   }), react_1["default"].createElement("form", {
     onSubmit: onSubmit
@@ -17064,16 +17072,16 @@ function Register() {
   }, "I agree to the", react_1["default"].createElement("a", {
     target: "_blank",
     href: route('terms.show'),
-    className: "underline text-sm text-gray-600 hover:text-gray-900"
+    className: "text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
   }, "Terms of Service"), "and", react_1["default"].createElement("a", {
     target: "_blank",
     href: route('policy.show'),
-    className: "underline text-sm text-gray-600 hover:text-gray-900"
+    className: "text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
   }, "Privacy Policy"))))), react_1["default"].createElement("div", {
     className: "flex items-center justify-end mt-4"
   }, react_1["default"].createElement(inertia_react_1.InertiaLink, {
     href: route('login'),
-    className: "underline text-sm text-gray-600 hover:text-gray-900"
+    className: "text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
   }, "Already registered?"), react_1["default"].createElement(Button_1["default"], {
     className: (0, classnames_1["default"])('ml-4', {
       'opacity-25': form.processing
@@ -17569,7 +17577,7 @@ function Show(_a) {
     className: "px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-9 xl:px-8"
   }, react_1["default"].createElement(react_2.Tab.Group, {
     as: 'div',
-    className: "grid grid-cols-1 md:grid-cols-12 gap-6"
+    className: "grid grid-cols-1 md:grid-cols-12 gap-3"
   }, react_1["default"].createElement(react_2.Tab.List, {
     className: "md:col-span-4 lg:col-span-3"
   }, react_1["default"].createElement("div", {
@@ -18228,7 +18236,7 @@ function APITokenManager(_a) {
     });
   }
 
-  return react_1["default"].createElement("div", {
+  return react_1["default"].createElement("div", null, react_1["default"].createElement("div", {
     className: "bg-white border shadow-sm rounded-xl"
   }, react_1["default"].createElement(FormSection_1["default"], {
     onSubmit: createApiToken,
@@ -18284,7 +18292,7 @@ function APITokenManager(_a) {
     }), react_1["default"].createElement("span", {
       className: "ml-2 text-sm text-gray-600"
     }, permission)));
-  })))), tokens.length > 0 ? react_1["default"].createElement("div", null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
+  }))))), tokens.length > 0 ? react_1["default"].createElement("div", null, react_1["default"].createElement(SectionBorder_1["default"], null), react_1["default"].createElement("div", {
     className: "mt-10 sm:mt-0"
   }, react_1["default"].createElement(ActionSection_1["default"], {
     title: 'Manage API Tokens',

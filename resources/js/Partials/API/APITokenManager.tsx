@@ -100,8 +100,10 @@ export default function APITokenManager({
   }
 
   return (
-    <div className="bg-white border shadow-sm rounded-xl">
+    <div>
       {/* <!-- Generate API Token --> */}
+      
+      <div className="bg-white border shadow-sm rounded-xl">
       <FormSection
         onSubmit={createApiToken}
         title={'Create API Token'}
@@ -121,69 +123,70 @@ export default function APITokenManager({
           </>
         )}
       >
-        {/* <!-- Token Name --> */}
-        <div className="col-span-6 sm:col-span-4">
-          <Label htmlFor="name">Name</Label>
-          <Input
-            id="name"
-            type="text"
-            className="mt-1 block w-full"
-            value={createApiTokenForm.data.name}
-            onChange={e =>
-              createApiTokenForm.setData('name', e.currentTarget.value)
-            }
-            autoFocus
-          />
-          <InputError
-            message={createApiTokenForm.errors.name}
-            className="mt-2"
-          />
-        </div>
-
-        {/* <!-- Token Permissions --> */}
-        {availablePermissions.length > 0 && (
-          <div className="col-span-6">
-            <Label htmlFor="permissions">Permissions</Label>
-
-            <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {availablePermissions.map(permission => (
-                <div key={permission}>
-                  <label className="flex items-center">
-                    <Checkbox
-                      value={permission}
-                      checked={createApiTokenForm.data.permissions.includes(
-                        permission,
-                      )}
-                      onChange={e => {
-                        if (
-                          createApiTokenForm.data.permissions.includes(
-                            e.currentTarget.value,
-                          )
-                        ) {
-                          createApiTokenForm.setData(
-                            'permissions',
-                            createApiTokenForm.data.permissions.filter(
-                              p => p !== e.currentTarget.value,
-                            ),
-                          );
-                        } else {
-                          createApiTokenForm.setData('permissions', [
-                            e.currentTarget.value,
-                            ...createApiTokenForm.data.permissions,
-                          ]);
-                        }
-                      }}
-                    />
-                    <span className="ml-2 text-sm text-gray-600">
-                      {permission}
-                    </span>
-                  </label>
-                </div>
-              ))}
-            </div>
+          {/* <!-- Token Name --> */}
+          <div className="col-span-6 sm:col-span-4">
+            <Label htmlFor="name">Name</Label>
+            <Input
+              id="name"
+              type="text"
+              className="mt-1 block w-full"
+              value={createApiTokenForm.data.name}
+              onChange={e =>
+                createApiTokenForm.setData('name', e.currentTarget.value)
+              }
+              autoFocus
+            />
+            <InputError
+              message={createApiTokenForm.errors.name}
+              className="mt-2"
+            />
           </div>
-        )}
+
+          {/* <!-- Token Permissions --> */}
+          {availablePermissions.length > 0 && (
+            <div className="col-span-6">
+              <Label htmlFor="permissions">Permissions</Label>
+
+              <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {availablePermissions.map(permission => (
+                  <div key={permission}>
+                    <label className="flex items-center">
+                      <Checkbox
+                        value={permission}
+                        checked={createApiTokenForm.data.permissions.includes(
+                          permission,
+                        )}
+                        onChange={e => {
+                          if (
+                            createApiTokenForm.data.permissions.includes(
+                              e.currentTarget.value,
+                            )
+                          ) {
+                            createApiTokenForm.setData(
+                              'permissions',
+                              createApiTokenForm.data.permissions.filter(
+                                p => p !== e.currentTarget.value,
+                              ),
+                            );
+                          } else {
+                            createApiTokenForm.setData('permissions', [
+                              e.currentTarget.value,
+                              ...createApiTokenForm.data.permissions,
+                            ]);
+                          }
+                        }}
+                      />
+                      <span className="ml-2 text-sm text-gray-600">
+                        {permission}
+                      </span>
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
       </FormSection>
+      </div>
 
       {tokens.length > 0 ? (
         <div>

@@ -37,6 +37,7 @@ export default function Login({ canResetPassword, status }: Props) {
   return (
     <AuthenticationCard>
       <Head title="login" />
+      <h1 className="mb-6 font-medium text-gray-900 sm:text-lg">Signin Your Programify Account</h1>
 
       <ValidationErrors className="mb-4" />
 
@@ -89,7 +90,7 @@ export default function Login({ canResetPassword, status }: Props) {
             <div>
               <InertiaLink
                 href={route('password.request')}
-                className="underline text-sm text-gray-600 hover:text-gray-900"
+                className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
               >
                 Forgot your password?
               </InertiaLink>
@@ -99,7 +100,7 @@ export default function Login({ canResetPassword, status }: Props) {
           <div className="flex items-center justify-end">
             <InertiaLink
               href={route('register')}
-              className="underline text-sm text-gray-600 hover:text-gray-900"
+              className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
             >
               Need an account?
             </InertiaLink>

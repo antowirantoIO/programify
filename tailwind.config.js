@@ -17,6 +17,9 @@ module.exports = {
             fontSize: {
                 xxs: ['0.65rem', { lineHeight: '1.1rem' }]
             },
+            // maxWidth : {
+            //     '7xl': '85rem',
+            // },
             colors: {
                 'primary': {
                     '50': '#f2f8ff', 

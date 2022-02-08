@@ -19,7 +19,7 @@ export default function Show({ sessions }: Props) {
 
   return (
     <div className="px-5 pt-10 mx-auto max-w-screen-lg lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-9 xl:px-8">
-      <Tab.Group as={'div'} className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <Tab.Group as={'div'} className="grid grid-cols-1 md:grid-cols-12 gap-3">
         <Tab.List className="md:col-span-4 lg:col-span-3">
           <div className="space-y-6 lg:relative">
             {page.props.jetstream.canUpdateProfileInformation ? (
