@@ -28,14 +28,14 @@ export default function DropdownMenuResponsive() {
     Inertia.post(route('logout'));
   }
   return (
-    <div className="relative sm:hidden pl-2">
+    <div className="relative pl-2 sm:hidden">
       <Dropdown
         align="right"
         renderTrigger={() => (
           <span className="inline-flex rounded-md">
             <button
               type="button"
-              className="inline-flex items-center text-sm leading-4 font-medium"
+              className="inline-flex items-center text-sm font-medium leading-4"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ export default function DropdownMenuResponsive() {
               {page.props.jetstream.managesProfilePhotos ? (
                 <div className="flex-shrink-0 mr-3">
                   <img
-                    className="h-10 w-10 rounded-full object-cover"
+                    className="object-cover w-10 h-10 rounded-full"
                     src={page.props.user.profile_photo_url}
                     alt={page.props.user.name}
                   />
@@ -72,10 +72,10 @@ export default function DropdownMenuResponsive() {
               ) : null}
 
               <div>
-                <div className="font-medium text-base text-gray-800">
+                <div className="text-base font-medium text-gray-800">
                   {page.props.user.name}
                 </div>
-                <div className="font-medium text-sm text-gray-500">
+                <div className="text-sm font-medium text-gray-500">
                   {page.props.user.email}
                 </div>
               </div>
@@ -83,10 +83,19 @@ export default function DropdownMenuResponsive() {
 
             <div className="mt-3 space-y-1">
               <DropdownLink
+                href={route('dashboard', {
+                  username: page.props.user.username,
+                })}
+                active={route().current('dashboard')}
+              >
+                View Profile
+              </DropdownLink>
+
+              <DropdownLink
                 href={route('profile.show')}
                 active={route().current('profile.show')}
               >
-                Profile
+                Update Profile
               </DropdownLink>
 
               {page.props.jetstream.hasApiFeatures ? (
@@ -136,7 +145,7 @@ export default function DropdownMenuResponsive() {
                         <div className="flex items-center">
                           {team.id == page.props.user.current_team_id && (
                             <svg
-                              className="mr-2 h-5 w-5 text-green-400"
+                              className="w-5 h-5 mr-2 text-green-400"
                               fill="none"
                               strokeLinecap="round"
                               strokeLinejoin="round"

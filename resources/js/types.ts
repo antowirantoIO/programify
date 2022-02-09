@@ -13,7 +13,17 @@ export interface Team {
 export interface User {
   id: number;
   name: string;
+  username: string;
   email: string;
+  bio: Nullable<Text>;
+  job_title: Nullable<string>;
+  at_job: Nullable<string>;
+  website_personal: Nullable<string>;
+  github: Nullable<string>;
+  twitter: Nullable<string>;
+  instagram: Nullable<string>;
+  facebook: Nullable<string>;
+  is_private: Nullable<boolean>;
   current_team_id: Nullable<number>;
   profile_photo_path: Nullable<string>;
   profile_photo_url: string;

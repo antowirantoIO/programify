@@ -54,7 +54,7 @@ export default function AppLayout({
             <div className="flex justify-between h-16">
               <div className="flex items-center">
                 {/* <!-- Logo --> */}
-                <div className="flex items-center flex-shrink-0 ml-2">
+                <div className="flex items-center flex-shrink-0 ml-0 md:ml-2">
                   <InertiaLink href={route('welcome')}>
                     <svg
                       className="mr-0.5 inline text-gray-900"
@@ -140,7 +140,7 @@ export default function AppLayout({
         <main>{children}</main>
 
         <footer className="py-6 mt-5 text-sm border-t border-gray-200 footer-wrap print:hidden lg:mt-10 md:py-8 lg:py-16">
-          <div className="px-4 md:w-4/5 lg:w-[40rem] mx-auto text-center pb-20 font-cabin">
+          <div className="px-4 md:w-4/5 lg:w-[40rem] mx-auto text-center md:pb-20 font-cabin">
             <div>
               <h1 className="mb-8 text-2xl font-medium tracking-tight text-white md:text-3xl">
                 Want us to email you occasionally with Programify news?
@@ -181,7 +181,7 @@ export default function AppLayout({
                     </svg>
                     <span className="text-gray-300 dark:text-white">™</span>
                   </div>
-                  <p className="pt-5 mb-4 capitalize md:mb-6 lg:mb-12">
+                  <p className="mb-4 capitalize md:pt-5 md:mb-6 lg:mb-12">
                     <strong className="font-semibold">Programify</strong> adalah
                     platform pembelajaran online yang berbentuk screencast yang
                     ditujukan untuk para pengembang web. Melalui seri-seri
@@ -424,7 +424,7 @@ export default function AppLayout({
               Programify is a Trademark of Anto Wiranto. Copyright © 2021 -{' '}
               {new Date().getFullYear()} All rights reserved.
             </div>
-            <div className="flex items-center justify-center max-w-screen-lg px-4 pt-2 mx-auto text-gray-200 lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4">
+            <div className="flex justify-center max-w-screen-lg px-4 pt-2 mx-auto text-gray-200 lg:max-w-screen-2xl xl:max-w-screen-xl lg:px-8 xl:px-4">
               Proudly inspired design by
               <a
                 href="https://parsinta.com"

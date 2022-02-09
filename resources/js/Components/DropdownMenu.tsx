@@ -35,7 +35,7 @@ export default function DropdownMenu() {
           <span className="inline-flex rounded-md">
             <button
               type="button"
-              className="inline-flex items-center px-3 py-2 border border-transparent text-md leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
+              className="inline-flex items-center px-3 py-2 font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md text-md hover:text-gray-700 focus:outline-none"
             >
               {page.props.user.name}
 
@@ -61,7 +61,8 @@ export default function DropdownMenu() {
         </div>
 
         <DropdownLink
-          href={'#'}
+          href={route('dashboard', { username: page.props.user.username })}
+          active={route().current('dashboard')}
         >
           View Profile
         </DropdownLink>
@@ -122,7 +123,7 @@ export default function DropdownMenu() {
                     <div className="flex items-center">
                       {team.id == page.props.user.current_team_id && (
                         <svg
-                          className="mr-2 h-5 w-5 text-green-400"
+                          className="w-5 h-5 mr-2 text-green-400"
                           fill="none"
                           strokeLinecap="round"
                           strokeLinejoin="round"

@@ -62,3 +62,29 @@ section {
 .footer-section {
   background: url(https://laracasts.com//images/mic-drop@2x.webp) no-repeat 0 0;
 }
+
+.bg-banner {
+  background-image: radial-gradient(circle at 0 2%, #283e63, #172337 99%);
+}
+
+.after\:bg-blue:after {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 138 241 / var(--tw-bg-opacity));
+  content: var(--tw-content);
+}
+.after\:rounded-full:after {
+  border-radius: 9999px;
+  content: var(--tw-content);
+}
+.after\:w-full:after {
+  content: var(--tw-content);
+  width: 100%;
+}
+.after\:h-1:after {
+  content: var(--tw-content);
+  height: 0.25rem;
+}
+.after\:block:after {
+  content: var(--tw-content);
+  display: block;
+}
