@@ -15,7 +15,7 @@ export interface User {
   name: string;
   username: string;
   email: string;
-  bio: Nullable<Text>;
+  bio: Nullable<string>;
   job_title: Nullable<string>;
   at_job: Nullable<string>;
   website_personal: Nullable<string>;
@@ -23,7 +23,7 @@ export interface User {
   twitter: Nullable<string>;
   instagram: Nullable<string>;
   facebook: Nullable<string>;
-  is_private: Nullable<boolean>;
+  is_private: boolean;
   current_team_id: Nullable<number>;
   profile_photo_path: Nullable<string>;
   profile_photo_url: string;

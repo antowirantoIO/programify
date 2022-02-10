@@ -151,7 +151,7 @@ export default function AppLayout({
                 <div className="flex flex-col justify-center max-w-sm mx-auto mb-6 md:flex-row lg:mb-0 lg:max-w-full lg:mx-0">
                   <input
                     type="text"
-                    className="md:w-[22rem] rounded-2xl px-4 py-4 md:py-4 mb-4 md:mb-0 text-center md:text-left text-md md:text-sm md:-mr-8"
+                    className="md:w-[22rem] rounded-2xl px-4 md:py-4 mb-4 md:mb-0 text-center md:text-left text-md md:text-sm md:-mr-8"
                     placeholder="Email Address"
                   />
                   <button className="btn btn-primary py-5 md:py-4 md:w-32 !text-white">

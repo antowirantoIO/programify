@@ -41,9 +41,7 @@ export default function FormSection({
           </div>
 
           {hasActions && (
-            <div className="px-4 py-3 sm:px-6">
-              {renderActions?.()}
-            </div>
+            <div className="px-4 py-3 sm:px-6">{renderActions?.()}</div>
           )}
         </form>
       </div>

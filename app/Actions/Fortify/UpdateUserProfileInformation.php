@@ -9,51 +9,79 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
-    /**
-     * Validate and update the given user's profile information.
-     *
-     * @param  mixed  $user
-     * @param  array  $input
-     * @return void
-     */
-    public function update($user, array $input)
-    {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-        ])->validateWithBag('updateProfileInformation');
+  /**
+   * Validate and update the given user's profile information.
+   *
+   * @param  mixed  $user
+   * @param  array  $input
+   * @return void
+   */
+  public function update($user, array $input)
+  {
+    Validator::make($input, [
+      'name' => ['required', 'string', 'max:255'],
+      'email' => [
+        'required',
+        'email',
+        'max:255',
+        Rule::unique('users')->ignore($user->id),
+      ],
+      'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+    ])->validateWithBag('updateProfileInformation');
 
-        if (isset($input['photo'])) {
-            $user->updateProfilePhoto($input['photo']);
-        }
-
-        if ($input['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
-            $this->updateVerifiedUser($user, $input);
-        } else {
-            $user->forceFill([
-                'name' => $input['name'],
-                'email' => $input['email'],
-            ])->save();
-        }
+    if (isset($input['photo'])) {
+      $user->updateProfilePhoto($input['photo']);
     }
 
-    /**
-     * Update the given verified user's profile information.
-     *
-     * @param  mixed  $user
-     * @param  array  $input
-     * @return void
-     */
-    protected function updateVerifiedUser($user, array $input)
-    {
-        $user->forceFill([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'email_verified_at' => null,
-        ])->save();
-
-        $user->sendEmailVerificationNotification();
+    if ($input['email'] !== $user->email && $user instanceof MustVerifyEmail) {
+      $this->updateVerifiedUser($user, $input);
+    } else {
+      $user
+        ->forceFill([
+          'name' => $input['name'],
+          'email' => $input['email'],
+          'bio' => $input['bio'],
+          'username' => $input['username'],
+          'job_title' => $input['job_title'],
+          'at_job' => $input['at_job'],
+          'website_personal' => $input['website_personal'],
+          'github' => $input['github'],
+          'twitter' => $input['twitter'],
+          'instagram' => $input['instagram'],
+          'facebook' => $input['facebook'],
+          'is_private' => $input['is_private'],
+        ])
+        ->save();
     }
+  }
+
+  /**
+   * Update the given verified user's profile information.
+   *
+   * @param  mixed  $user
+   * @param  array  $input
+   * @return void
+   */
+  protected function updateVerifiedUser($user, array $input)
+  {
+    $user
+      ->forceFill([
+        'name' => $input['name'],
+        'email' => $input['email'],
+        'bio' => $input['bio'],
+        'username' => $input['username'],
+        'job_title' => $input['job_title'],
+        'at_job' => $input['at_job'],
+        'website_personal' => $input['website_personal'],
+        'github' => $input['github'],
+        'twitter' => $input['twitter'],
+        'instagram' => $input['instagram'],
+        'facebook' => $input['facebook'],
+        'is_private' => $input['is_private'],
+        'email_verified_at' => null,
+      ])
+      ->save();
+
+    $user->sendEmailVerificationNotification();
+  }
 }

@@ -19,11 +19,7 @@ export default function Welcome({
   const route = useRoute();
   const page = useTypedPage();
 
-  return (
-    <div>
-    Hello World Anto
-    </div>
-  );
+  return <div>Hello World Anto</div>;
 }
 
 Welcome.layout = (page: JSX.Element) => (

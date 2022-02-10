@@ -22,6 +22,16 @@ export default function UpdateProfileInformationForm({ user }: Props) {
     _method: 'PUT',
     name: user.name,
     email: user.email,
+    username: user.username,
+    bio: user.bio,
+    job_title: user.job_title,
+    at_job: user.at_job,
+    website_personal: user.website_personal,
+    github: user.github,
+    twitter: user.twitter,
+    instagram: user.instagram,
+    facebook: user.facebook,
+    is_private: user.is_private,
     photo: null as File | null,
   });
   const route = useRoute();
@@ -111,7 +121,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
             // <!-- New Profile Photo Preview -->
             <div className="mt-2">
               <span
-                className="block rounded-full w-20 h-20"
+                className="block w-20 h-20 rounded-full"
                 style={{
                   backgroundSize: 'cover',
                   backgroundRepeat: 'no-repeat',
@@ -126,7 +136,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
               <img
                 src={user.profile_photo_url}
                 alt={user.name}
-                className="rounded-full h-20 w-20 object-cover"
+                className="object-cover w-20 h-20 rounded-full"
               />
             </div>
           )}
@@ -158,7 +168,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
             <Input
               id="name"
               type="text"
-              className="mt-1 block w-full"
+              className="block w-full mt-1"
               value={form.data.name}
               onChange={e => form.setData('name', e.currentTarget.value)}
               autoComplete="name"
@@ -166,7 +176,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
             <InputError message={form.errors.name} className="mt-2" />
           </div>
           <div className="mb-2">
-            <label className="capitalize mb-1 block text-sm text-gray-600 undefined">
+            <label className="block mb-1 text-sm text-gray-600 capitalize undefined">
               Username
             </label>
             <div className="selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300">
@@ -179,7 +189,8 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 placeholder="janedoe"
                 name="username"
                 id="username"
-                defaultValue="antowiranto"
+                value={form.data.username}
+                onChange={e => form.setData('username', e.currentTarget.value)}
               />
             </div>
           </div>
@@ -192,7 +203,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
         <Input
           id="email"
           type="email"
-          className="mt-1 block w-full"
+          className="block w-full mt-1"
           value={form.data.email}
           onChange={e => form.setData('email', e.currentTarget.value)}
         />
@@ -200,13 +211,16 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       </div>
 
       <div className="col-span-7 mb-2">
-        <Label htmlFor="about" value="A bit about you" />
+        <Label htmlFor="bio" value="A bit about you" />
         <textarea
-          className="selection:bg-primary-100 resize-none selection:text-primary-700 form-text w-full shadow-sm focus:shadow-none focus:outline-none focus:ring focus:ring-primary-100/60 focus:border-primary-400 border-gray-200 rounded-xl transition duration-200"
+          className="w-full transition duration-200 border-gray-200 shadow-sm resize-none selection:bg-primary-100 selection:text-primary-700 form-text focus:shadow-none focus:outline-none focus:ring focus:ring-primary-100/60 focus:border-primary-400 rounded-xl"
           placeholder="Tell us about your self . . ."
-          name="about"
-          id="about"
-        />
+          name="bio"
+          id="bio"
+          onInput={e => form.setData('bio', e.currentTarget.value as string)}
+        >
+          {form.data.bio}
+        </textarea>
       </div>
 
       <div className="col-span-7">
@@ -236,12 +250,13 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 placeholder="Software Engineer"
                 name="job_title"
                 id="job_title"
-                defaultValue=""
+                value={form.data.job_title ?? ''}
+                onChange={e => form.setData('job_title', e.currentTarget.value)}
               />
             </div>
           </div>
           <div className="mb-2">
-            <Label htmlFor="city" value="At" />
+            <Label htmlFor="at_job" value="At" />
             <div className="selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300">
               <span className="flex items-center h-12 px-4 border-r border-gray-200 bg-gray-50">
                 <svg
@@ -263,9 +278,11 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 type="text"
                 className="w-full border-0 form-text focus:outline-none focus:ring-0"
                 placeholder="Somewhere"
-                name="city"
-                id="city"
+                name="at_job"
+                id="at_job"
                 defaultValue=""
+                value={form.data.at_job ?? ''}
+                onChange={e => form.setData('at_job', e.currentTarget.value)}
               />
             </div>
           </div>
@@ -275,7 +292,7 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       <div className="col-span-7">
         <div className="grid md:grid-cols-2 gap-x-6">
           <div className="mb-2">
-            <Label htmlFor="website" value="Website" />
+            <Label htmlFor="personal_website" value="Website" />
             <div className="selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300">
               <span className="flex items-center h-12 px-4 border-r border-gray-200 bg-gray-50">
                 https://
@@ -284,9 +301,12 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 type="text"
                 className="w-full border-0 form-text focus:outline-none focus:ring-0"
                 placeholder="programify.tech"
-                name="website"
-                id="website"
-                defaultValue=""
+                name="personal_website"
+                id="personal_website"
+                value={form.data.website_personal ?? ''}
+                onChange={e =>
+                  form.setData('website_personal', e.currentTarget.value)
+                }
               />
             </div>
           </div>
@@ -311,7 +331,8 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 placeholder="janedoe"
                 name="github"
                 id="github"
-                defaultValue=""
+                value={form.data.github ?? ''}
+                onChange={e => form.setData('github', e.currentTarget.value)}
               />
             </div>
           </div>
@@ -341,7 +362,8 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 placeholder="janedoe"
                 name="twitter"
                 id="twitter"
-                defaultValue=""
+                value={form.data.twitter ?? ''}
+                onChange={e => form.setData('twitter', e.currentTarget.value)}
               />
             </div>
           </div>
@@ -370,12 +392,13 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 placeholder="janedoe"
                 name="instagram"
                 id="instagram"
-                defaultValue=""
+                value={form.data.instagram ?? ''}
+                onChange={e => form.setData('instagram', e.currentTarget.value)}
               />
             </div>
           </div>
           <div className="mb-2">
-           <Label htmlFor="facebook" value="Facebook" />
+            <Label htmlFor="facebook" value="Facebook" />
             <div className="selection:bg-primary-100 shadow-sm selection:text-primary-700 flex items-center h-11 py-0.5 border border-gray-200 rounded-xl overflow-hidden transition duration-200 focus-within:shadow-none focus-within:outline-none focus-within:ring focus-within:ring-primary-100 focus-within:border-primary-300">
               <span className="flex items-center h-12 px-4 border-r border-gray-200 bg-gray-50">
                 <svg
@@ -395,16 +418,22 @@ export default function UpdateProfileInformationForm({ user }: Props) {
                 placeholder="janedoe"
                 name="facebook"
                 id="facebook"
-                defaultValue=""
+                value={form.data.facebook ?? ''}
+                onChange={e => form.setData('facebook', e.currentTarget.value)}
               />
             </div>
           </div>
         </div>
       </div>
       <div className="col-span-7">
-        <div className="flex mb-2 gap-x-3 items-center">
-          <Checkbox/>
-          <label htmlFor="public" className="select-none">
+        <div className="flex items-center mb-2 gap-x-3">
+          {/* @ts-ignore */}
+          <Checkbox
+            name="is_private"
+            checked={form.data.is_private ? 'checked' : ''}
+            onChange={e => form.setData('is_private', e.currentTarget.checked)}
+          />
+          <label htmlFor="is_private" className="select-none">
             <span className="font-medium text-gray-800">Pribadi</span>
             <div className="text-sm text-gray-600">
               Akun tidak akan bisa dilihat oleh siapapun kecuali diri Anda
