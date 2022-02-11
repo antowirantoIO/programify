@@ -428,11 +428,11 @@ export default function UpdateProfileInformationForm({ user }: Props) {
       <div className="col-span-7">
         <div className="flex items-center mb-2 gap-x-3">
           {/* @ts-ignore */}
-          <Checkbox
+          {/* <Checkbox
             name="is_private"
             checked={form.data.is_private ? 'checked' : ''}
             onChange={e => form.setData('is_private', e.currentTarget.checked)}
-          />
+          /> */}
           <label htmlFor="is_private" className="select-none">
             <span className="font-medium text-gray-800">Pribadi</span>
             <div className="text-sm text-gray-600">

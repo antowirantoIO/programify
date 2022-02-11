@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
 if (
-  request()->getHost() != '127.0.0.1' ||
-  request()->getHost() != 'localhost'
+  request()->getHost() != '127.0.0.1'
 ) {
   URL::forceScheme('https');
 }

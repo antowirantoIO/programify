@@ -86,7 +86,7 @@ export default function DropdownMenuResponsive() {
                 href={route('dashboard', {
                   username: page.props.user.username,
                 })}
-                active={route().current('dashboard')}
+                active={route().current('dashboard', { username: page.props.user.username })}
               >
                 View Profile
               </DropdownLink>

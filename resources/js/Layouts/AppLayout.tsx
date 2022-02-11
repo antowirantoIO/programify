@@ -89,12 +89,6 @@ export default function AppLayout({
                     Forum
                   </NavLink>
                   <NavLink href={'#'}>Premium</NavLink>
-                  {/* <NavLink
-                    href={route('dashboard')}
-                    active={route().current('dashboard')}
-                  >
-                    Dashboard
-                  </NavLink> */}
                 </div>
               </div>
 
