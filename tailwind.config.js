@@ -20,6 +20,9 @@ module.exports = {
         xxs: ['0.65rem', { lineHeight: '1.1rem' }],
       },
       colors: {
+        gray: {
+          900: '#111827',
+        },
         primary: {
           50: '#f2f8ff',
           100: '#e6f0ff',

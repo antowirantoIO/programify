@@ -11,7 +11,10 @@ use App\Http\Controllers\WelcomeContoller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
-if (request()->getHost() != '127.0.0.1') {
+if (
+  request()->getHost() != '127.0.0.1' ||
+  request()->getHost() != 'localhost'
+) {
   URL::forceScheme('https');
 }
 
@@ -19,7 +22,6 @@ Route::get('/', WelcomeContoller::class)->name('welcome');
 Route::get('/{user:username}', DashboardContoller::class)->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-
   Route::prefix('path')
     ->name('path.')
     ->group(function () {
