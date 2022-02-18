@@ -1,19 +1,18 @@
 <?php
 
-use App\Http\Controllers\DashboardContoller;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PathController;
 use App\Http\Controllers\SkillController;
-use App\Http\Controllers\SeriesController;
-use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\LessonController;
-use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\WelcomeContoller;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\DashboardContoller;
+use App\Http\Controllers\ExerciseController;
 
-if (
-  request()->getHost() != '127.0.0.1'
-) {
+if (request()->getHost() != '127.0.0.1') {
   URL::forceScheme('https');
 }
 

@@ -36,6 +36,12 @@ module.exports = {
           900: '#00337d',
         },
       },
+      boxShadow: theme => ({
+        'primary-strike':
+          '#fff 0px -0.166667em 0px 0px inset, ' +
+          theme('colors.primary.300') +
+          ' 0px -0.333333em 0px 0px inset',
+      }),
     },
   },
 

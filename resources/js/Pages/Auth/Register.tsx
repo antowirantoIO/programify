@@ -10,6 +10,7 @@ import Checkbox from '@/Components/Checkbox';
 import Input from '@/Components/Input';
 import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
+import InputError from '@/Components/InputError';
 
 export default function Register() {
   const page = useTypedPage();
@@ -32,9 +33,11 @@ export default function Register() {
   return (
     <AuthenticationCard>
       <Head title="Register" />
-      <h1 className="mb-6 font-medium text-gray-900 sm:text-lg">Create Your Programify Account</h1>
+      <h1 className="mb-6 font-medium text-gray-900 sm:text-lg">
+        Create Your Programify Account
+      </h1>
 
-      <ValidationErrors className="mb-4" />
+      {/* <ValidationErrors className="mb-4" /> */}
 
       <form onSubmit={onSubmit}>
         <div>
@@ -61,6 +64,7 @@ export default function Register() {
             onChange={e => form.setData('email', e.currentTarget.value)}
             required
           />
+          <InputError>{form.errors.email}</InputError>
         </div>
 
         <div className="mt-4">
@@ -74,6 +78,7 @@ export default function Register() {
             required
             autoComplete="new-password"
           />
+          <InputError>{form.errors.password}</InputError>
         </div>
 
         <div className="mt-4">
@@ -89,6 +94,7 @@ export default function Register() {
             required
             autoComplete="new-password"
           />
+          <InputError>{form.errors.password_confirmation}</InputError>
         </div>
 
         {page.props.jetstream.hasTermsAndPrivacyPolicyFeature && (
@@ -103,32 +109,33 @@ export default function Register() {
                 />
 
                 <div className="ml-2">
-                  I agree to the
+                  I agree to the{' '}
                   <a
                     target="_blank"
                     href={route('terms.show')}
-                    className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
+                    className="text-sm text-primary-500 hover:text-primary-600 shadow-primary-strike shadow-sm"
                   >
                     Terms of Service
                   </a>
-                  and
+                  and{' '}
                   <a
                     target="_blank"
                     href={route('policy.show')}
-                    className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
+                    className="text-sm text-primary-500 hover:text-primary-600 shadow-primary-strike shadow-sm"
                   >
                     Privacy Policy
                   </a>
                 </div>
               </div>
             </Label>
+            <InputError>{form.errors.terms}</InputError>
           </div>
         )}
 
         <div className="flex items-center justify-end mt-4">
           <InertiaLink
             href={route('login')}
-            className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
+            className="text-sm text-primary-500 hover:text-primary-600 shadow-primary-strike shadow-sm"
           >
             Already registered?
           </InertiaLink>

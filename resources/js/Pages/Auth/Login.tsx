@@ -10,6 +10,7 @@ import Input from '@/Components/Input';
 import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import toast from 'react-hot-toast';
+import InputError from '@/Components/InputError';
 
 interface Props {
   canResetPassword: boolean;
@@ -37,9 +38,11 @@ export default function Login({ canResetPassword, status }: Props) {
   return (
     <AuthenticationCard>
       <Head title="login" />
-      <h1 className="mb-6 font-medium text-gray-900 sm:text-lg">Signin Your Programify Account</h1>
+      <h1 className="mb-6 font-medium text-gray-900 sm:text-lg">
+        Signin Your Programify Account
+      </h1>
 
-      <ValidationErrors className="mb-4" />
+      {/* <ValidationErrors className="mb-4" /> */}
 
       {status && (
         <div className="mb-4 font-medium text-sm text-green-600">{status}</div>
@@ -57,6 +60,7 @@ export default function Login({ canResetPassword, status }: Props) {
             required
             autoFocus
           />
+          <InputError>{form.errors.email}</InputError>
         </div>
 
         <div className="mt-4">
@@ -72,7 +76,7 @@ export default function Login({ canResetPassword, status }: Props) {
           />
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 flex justify-between">
           <label className="flex items-center">
             <Checkbox
               name="remember"
@@ -83,35 +87,38 @@ export default function Login({ canResetPassword, status }: Props) {
             />
             <span className="ml-2 text-sm text-gray-600">Remember me</span>
           </label>
-        </div>
-
-        <div className="flex flex-col space-y-2 md:flex-row md:items-center md:justify-between md:space-y-0 mt-4">
           {canResetPassword && (
             <div>
               <InertiaLink
                 href={route('password.request')}
-                className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
+                className="text-sm text-primary-500 hover:text-primary-600 shadow-primary-strike shadow-sm"
               >
-                Forgot your password?
+                Forgot password?
               </InertiaLink>
             </div>
           )}
+        </div>
 
-          <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end mt-4">
+          <span className="text-sm leading-relaxed text-gray-600 mr-2 hidden sm:flex">
+            Dont Have An Account
+          </span>
+          <div className="text-sm leading-relaxed text-gray-600">
             <InertiaLink
               href={route('register')}
-              className="text-sm text-primary-500 hover:text-primary-600 shadow-down-strike shadow-sm"
+              className="text-sm text-primary-500 hover:text-primary-600 shadow-primary-strike shadow-sm"
             >
-              Need an account?
+              Register Here
             </InertiaLink>
-
-            <Button
-              className={classNames('ml-4', { 'opacity-25': form.processing })}
-              disabled={form.processing}
-            >
-              Log in
-            </Button>
           </div>
+          <Button
+            className={classNames('ml-4 ', {
+              'opacity-25': form.processing,
+            })}
+            disabled={form.processing}
+          >
+            Log in
+          </Button>
         </div>
       </form>
     </AuthenticationCard>
