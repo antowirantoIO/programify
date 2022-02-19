@@ -63,7 +63,7 @@ const SearchBox = ({
     ) : (
       <div className="font-medium px-4 pt-2 text-gray-800">
         You Search{' '}
-        <span className="text-primary-600 font-bold tracking-tighter underline underline-primary-400">
+        <span className="text-primary-500 font-semibold tracking-tighter shadow shadow-primary-strike">
           "{currentRefinement}"
         </span>
       </div>
@@ -76,10 +76,12 @@ const Hits = ({ hits }: any) => (
     {hits.map((hit: any) => (
       <a
         href={`/series/${hit.slug}`}
-        className="group flex items-center -mx-2 justify-between px-3 py-2.5 bg-white rounded-md hover:bg-gray-300 trasition duration-300"
+        className="group flex mb-1.5 items-center -mx-2 justify-between px-3 py-2.5 bg-white hover:border-primary-500 rounded-lg hover:bg-primary-500 hover:text-white transition-colors duration-3000"
         key={hit.objectID}
       >
-        <h4 className="font-medium">{hit.title}</h4>
+        <span className="font-medium space-y-1">
+          <h4>{hit.title}</h4>
+        </span>
       </a>
     ))}
     {hits.length === 0 ? (
@@ -114,13 +116,13 @@ export default function Search() {
   return (
     <div>
       <button
-        className="items-center hidden gap-2 px-3 py-2 border md:flex border-gray-500/40 rounded-xl"
+        className="items-center hidden gap-2 px-3 py-2 border xl:flex border-gray-500/40 rounded-xl"
         onClick={openSearch}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={16}
-          height={16}
+          width="16"
+          height="16"
           fill="#1f2937"
           viewBox="0 0 16 16"
         >
@@ -131,40 +133,40 @@ export default function Search() {
           ⌘ + /
         </span>
       </button>
-
       <button
         onClick={openSearch}
-        className="flex items-center md:hidden gap-4 px-3 py-2 border border-white/10 bg-gray-800 rounded-xl"
+        className="flex items-center xl:hidden gap-4 px-3 py-2 border border-white/10 bg-gray-300 rounded-xl"
       >
         <svg
-          className="text-gray-300"
+          className="text-gray-800"
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width={16}
+          height={16}
           fill="currentColor"
           viewBox="0 0 16 16"
         >
-          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg>
         <svg
-          className="w-5 h-5"
+          className="w-5 h-5 text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
+          fill="currentColor"
         >
           <path
             d="M238.7 220.73a110.36 110.36 0 1 1 110.36-110.37A110.49 110.49 0 0 1 238.7 220.73Zm0-216.94a106.57 106.57 0 1 0 106.57 106.57A106.69 106.69 0 0 0 238.7 3.79Z"
             className="fill-current text-primary-300"
-          ></path>
+          />
           <circle
             cx="238.7"
             cy="110.37"
             r="57.53"
             className="fill-current text-primary-400"
-          ></circle>
+          />
           <path
             d="M444.4 302.82a29.41 29.41 0 0 0-58.82 0v-22.55a29.41 29.41 0 0 0-58.82 0V267a29.41 29.41 0 0 0-58.82 0V119.93a29.41 29.41 0 1 0-58.82 0v205.88c0 16.24-14.4 35.63-29.41 29.41-20.38-8.44-62.39-62.39-62.39-62.39a29.41 29.41 0 0 0-41.59 0c-11.49 11.49-10.1 28.87 0 41.59C112 380.22 187.57 475 249.05 498.95c48.28 18.78 124.6 21.54 163.28-20.51 27.17-29.54 31.32-62.84 32-120.93 0-32.5.12-54.69.12-54.69Z"
-            className="text-gray-300 fill-current"
-          ></path>
+            className="text-gray-500 fill-current"
+          />
         </svg>
       </button>
 
@@ -203,18 +205,28 @@ export default function Search() {
                     <HitsResult />
                   </InstantSearch>
                 </div>
-                <div className="flex justify-between relative border-t border-gray py-3 px-3">
+                <div className="py-2 mt-2 mb-2 text-xs px-4 font-medium flex justify-between items-center text-gray-500 capitalize">
                   <a
-                    href="#"
-                    className="inline-flex items-center px-2 py-1 bg-gray-800 border border-transparent rounded-xl font-semibold text-xxs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
+                    className="bg-gray-100 hover:bg-primary-500 hover:text-white rounded-lg text-black px-2.5 transition duration-300 py-1"
+                    href="/series?filter=popular"
                   >
-                    Lihat Semua
+                    Lihat semua
                   </a>
-                  <img
-                    className="h-9 w-auto"
-                    src="https://www.vectorlogo.zone/logos/algolia/algolia-ar21.svg"
-                    alt="algolia-logo"
-                  />
+                  <div className="shadow-undersky">Hello</div>
+                  <a
+                    href="http://algolia.com?ref=programify.tech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Power By{' '}
+                    <span className="text-indigo-500 shadow-indigo-down-strike">
+                      <img
+                        src="/images/logo/algolia-logo.svg"
+                        className="w-auto h-5"
+                        alt=""
+                      />
+                    </span>
+                  </a>
                 </div>
               </div>
             </Transition.Child>

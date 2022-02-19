@@ -10,7 +10,7 @@ export default function AuthenticationCard({
         <AuthenticationCardLogo />
       </div>
 
-      <div className="w-full sm:max-w-lg mt-6 px-6 py-4 bg-white shadow-md overflow-hidden rounded-2xl">
+      <div className="w-full sm:max-w-lg mt-6 px-7 py-4 bg-white shadow-md overflow-hidden rounded-2xl">
         {children}
       </div>
     </div>

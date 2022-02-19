@@ -5750,6 +5750,7 @@
         },
         {
             "name": "sebastian/global-state",
+<<<<<<< HEAD
             "version": "5.0.5",
             "source": {
                 "type": "git",
@@ -5760,6 +5761,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/0ca8db5a5fc9c8646244e629625ac486fa286bf2",
                 "reference": "0ca8db5a5fc9c8646244e629625ac486fa286bf2",
+=======
+            "version": "5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/global-state.git",
+                "reference": "19c519631c5a511b7ed0ad64a6713fdb3fd25fe4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/19c519631c5a511b7ed0ad64a6713fdb3fd25fe4",
+                "reference": "19c519631c5a511b7ed0ad64a6713fdb3fd25fe4",
+>>>>>>> 5e340e92bea6d7a08c13c113f1a2e789ed1de272
                 "shasum": ""
             },
             "require": {
@@ -5802,7 +5815,11 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.5"
+=======
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.4"
+>>>>>>> 5e340e92bea6d7a08c13c113f1a2e789ed1de272
             },
             "funding": [
                 {
@@ -5810,7 +5827,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-02-14T08:28:10+00:00"
+=======
+            "time": "2022-02-10T07:01:19+00:00"
+>>>>>>> 5e340e92bea6d7a08c13c113f1a2e789ed1de272
         },
         {
             "name": "sebastian/lines-of-code",

@@ -15,7 +15,7 @@ export default function InputError({
   }
   return (
     <div className={className}>
-      <p className="text-sm text-red-600">{message || children}</p>
+      <p className="text-sm mt-1 text-red-600">{message || children}</p>
     </div>
   );
 }
