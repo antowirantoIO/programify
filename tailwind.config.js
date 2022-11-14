@@ -12,7 +12,13 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                'primary': {  DEFAULT: '#0068DF',  '50': '#98C8FF',  '100': '#83BDFF',  '200': '#5AA7FF',  '300': '#3291FF',  '400': '#097CFF',  '500': '#1c86ff    ',  '600': '#0068df',  '700': '#00346F',  '800': '#001A37',  '900': '#000000'},
+                'slate': {
+                    1000: '#0b1120',
+                }
             },
         },
     },

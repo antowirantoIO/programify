@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
+import AuthCard from '@/Components/AuthCard';
+import Checkbox from '@/Components/Checkbox';
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
+import InputGroup from '@/Components/InputGroup';
+import Meta from '@/Components/Meta';
+import ProgramifyLink from '@/Components/ProgramifyLink';
 import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import GuestLayout from '@/Layouts/GuestLayout';
+import { useForm } from '@inertiajs/inertia-react';
+import { IconAt, IconLoader, IconPassword, IconSignature } from '@tabler/icons';
+import React, { useEffect } from 'react';
+
+import InputLabel from '../../Components/InputLabel';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,6 +18,7 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        acceptance: '',
     });
 
     useEffect(() => {
@@ -27,88 +34,133 @@ export default function Register() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'));
+        post('/register');
     };
 
     return (
-        <GuestLayout>
-            <Head title="Register" />
+        <>
+            <Meta
+                {...{
+                    title: 'Parsinta: Register',
+                    description:
+                        'Dengan mendaftar di Parsinta, Anda akan lebih produktif. Karena Anda bisa melihat produktivitas Anda dalam mempelajari hal-hal yang baru ataupun pun yang Anda ingin pelajari saat ini.',
+                }}
+            />
+            <>
+                <AuthCard
+                    header='Daftar'
+                    subheader={
+                        <>
+                            Sudah Mendaftar ? <ProgramifyLink href='/login'>Masuk</ProgramifyLink>{' '}
+                            Ke Akun Anda.
+                        </>
+                    }>
+                    <form onSubmit={submit}>
+                        <div>
+                            <InputLabel forInput='name'>Name</InputLabel>
+                            <InputGroup
+                                label={<IconSignature />}
+                                type='text'
+                                name='name'
+                                value={data.name}
+                                autoComplete='name'
+                                isFocused
+                                onChange={onHandleChange}
+                                placeholder={'Jane Doe'}
+                                required
+                                error={errors.name}
+                            />
+                        </div>
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel forInput="name" value="Name" />
+                        <div className='mt-5'>
+                            <InputLabel forInput='email'>Email</InputLabel>
+                            <InputGroup
+                                label={<IconAt />}
+                                type='email'
+                                name='email'
+                                value={data.email}
+                                autoComplete='username'
+                                onChange={onHandleChange}
+                                placeholder={'jane@domain.com'}
+                                required
+                                error={errors.email}
+                            />
+                        </div>
 
-                    <TextInput
-                        type="text"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        handleChange={onHandleChange}
-                        required
-                    />
+                        <div className='mt-5'>
+                            <InputLabel forInput='password'>Kata Sandi</InputLabel>
+                            <InputGroup
+                                eye
+                                type='password'
+                                name='password'
+                                label={<IconPassword />}
+                                value={data.password}
+                                autoComplete='new-password'
+                                onChange={onHandleChange}
+                                required
+                                error={errors.password}
+                            />
+                        </div>
 
-                    <InputError message={errors.name} className="mt-2" />
-                </div>
+                        <div className='mt-5'>
+                            <InputLabel forInput='password_confirmation'>Konfirmasi Kata Sandi</InputLabel>
+                            <InputGroup
+                                eye
+                                label={<IconPassword />}
+                                type='password'
+                                name='password_confirmation'
+                                value={data.password_confirmation}
+                                onChange={onHandleChange}
+                                required
+                            />
+                        </div>
 
-                <div className="mt-4">
-                    <InputLabel forInput="email" value="Email" />
+                        <div className='mt-5'>
+                            <div className='flex cursor-pointer items-start sm:items-center'>
+                                <Checkbox
+                                    id='acceptance'
+                                    name='acceptance'
+                                    className={'mt-1 sm:mt-0'}
+                                    required={true}
+                                    value={data.acceptance}
+                                    onChange={(e) =>
+                                        setData({
+                                            ...data,
+                                            acceptance: e.target.checked,
+                                        })
+                                    }
+                                />
+                                <label
+                                    htmlFor='acceptance'
+                                    className='ml-2 select-none text-sm text-slate-600 dark:text-slate-200'>
+                                    Saya Setuju Dengan{' '}
+                                    <ProgramifyLink href='/terms'>Terms Of Service </ProgramifyLink>{' '}
+                                    dan{' '}
+                                    <ProgramifyLink href='/privacy'>Privacy Policy </ProgramifyLink>.
+                                </label>
+                            </div>
+                            <InputError message={errors.acceptance} />
+                        </div>
 
-                    <TextInput
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        handleChange={onHandleChange}
-                        required
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel forInput="password" value="Password" />
-
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        handleChange={onHandleChange}
-                        required
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel forInput="password_confirmation" value="Confirm Password" />
-
-                    <TextInput
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        handleChange={onHandleChange}
-                        required
-                    />
-
-                    <InputError message={errors.password_confirmation} className="mt-2" />
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
-                        Already registered?
-                    </Link>
-
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Register
-                    </PrimaryButton>
-                </div>
-            </form>
-        </GuestLayout>
+                        <div className='mt-5 flex flex-col justify-between sm:flex-row sm:items-center'>
+                            <PrimaryButton
+                                processing={processing}
+                                type='submit'
+                                className='mt-5 flex w-full items-center justify-center gap-x-1.5 md:w-40'>
+                                {processing ? (
+                                    <>
+                                        <IconLoader className='h-5 w-5 shrink-0 animate-spin' /> Registering...
+                                    </>
+                                ) : (
+                                    'Daftar'
+                                )}
+                            </PrimaryButton>
+                        </div>
+                    </form>
+                </AuthCard>
+            </>
+        </>
     );
 }
+
+Register.layout = (page) => <GuestLayout {...{ children: page, title: 'Parsinta: Register' }} />;

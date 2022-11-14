@@ -1,17 +1,21 @@
-import React from 'react';
-import { Link } from '@inertiajs/inertia-react';
+import { InertiaLink } from '@inertiajs/inertia-react';
+import clsx from 'clsx';
 
-export default function NavLink({ href, active, children }) {
+export default function NavLink({ active = false, link, children, className = '' }) {
     return (
-        <Link
-            href={href}
-            className={
-                active
-                    ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'
-                    : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out'
-            }
-        >
-            {children}
-        </Link>
+        <InertiaLink
+            href={link}
+            className={clsx(
+                'relative flex items-center gap-x-2 py-4 px-0.5 font-medium tracking-tight transition-colors duration-200 focus:outline-none'
+            )}>
+            <span
+                className={clsx(
+                    className,
+                    active ? 'text-primary-500' : 'text-slate-600 dark:text-slate-300 hover:text-primary-500',
+                    'inline-block py-1.5 px-4'
+                )}>
+                {children}
+            </span>
+        </InertiaLink>
     );
 }

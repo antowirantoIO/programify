@@ -1,13 +1,15 @@
+import clsx from 'clsx';
 import React from 'react';
 
-export default function Checkbox({ name, value, handleChange }) {
+export default function Checkbox({ className, ...props }) {
     return (
         <input
-            type="checkbox"
-            name={name}
-            value={value}
-            className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            onChange={(e) => handleChange(e)}
+            type='checkbox'
+            className={clsx(
+                className,
+                'h-[18px] w-[18px] rounded border-slate-200 text-primary-500 shadow-sm ring-offset-0 checked:text-primary-500 focus:shadow-none focus:outline-none focus:ring-0 focus:ring-offset-0 dark:border-slate-600/50 dark:bg-slate-700/50'
+            )}
+            {...props}
         />
     );
 }
