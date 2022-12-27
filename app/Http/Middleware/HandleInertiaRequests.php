@@ -40,6 +40,14 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'locale' => function () {
+                return app()->getLocale();
+            },
+            'language' => function () {
+                return getTranslations(
+                    base_path('/lang/'. app()->getLocale())
+                );
+            },
         ]);
     }
 }

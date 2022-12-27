@@ -1,5 +1,45 @@
-/*@tailwind base;*/
-/*@tailwind components;*/
-/*@tailwind utilities;*/
-
 @import url('https://laracasts.com/css/app.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+select {
+    border: none;
+}
+
+.bg-blue\/7 {
+    background-color: rgba(50, 138, 241, 0.07);
+}
+
+.billing > .switch {
+    display: inline-block;
+    height: 19px;
+    position: relative;
+    width: 47px;
+}
+
+.billing > .switch > .slider::before {
+    background-color: rgb(255, 255, 255);
+    bottom: 2px;
+    content: '';
+    height: 15px;
+    left: 1.5px;
+    width: 16px;
+}
+
+.billing > .switch > input:checked + .slider:before {
+    transform: translateX(11px);
+}
+
+@media (min-width: 768px) {
+    .billing > .switch {
+        display: inline-block;
+        height: 19px;
+        position: relative;
+        width: 34px;
+    }
+    .billing > .switch > input:checked + .slider:before {
+        transform: translateX(14px);
+    }
+}
