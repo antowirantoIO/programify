@@ -3,6 +3,7 @@ import React, { PropsWithChildren } from 'react';
 import Hero from '@/Components/Hero';
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
+import { Toaster } from 'react-hot-toast';
 
 interface Props {
     title: string;
@@ -22,6 +23,9 @@ export default function AppLayout({
     return (
         <div>
             <Head title={title} />
+            <div>
+                <Toaster position="bottom-right" reverseOrder={false} />
+            </div>
 
             {isPlaying ? (
                 <div className="page page-dark">

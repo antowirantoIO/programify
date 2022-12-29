@@ -1,19 +1,37 @@
-import HowToPay from '@/Components/HowToPay';
-import IconButton from '@/Components/IconButton';
-import ArrowRight from '@/Components/Icons/ArrowRight';
-import Mark from '@/Components/Icons/Mark';
 import MascotText from '@/Components/Icons/MascotText';
-import { Play } from '@/Components/Icons/Play';
 import SOS from '@/Components/Icons/SOS';
 import Time from '@/Components/Icons/Time';
 import { PaymentCodeDetailed } from '@/Components/PaymentCodeDetailed';
 import PaymentMethod from '@/Components/PaymentMethod';
 import PaymentPricing from '@/Components/PaymentPricing';
 import AppLayout from '@/Layouts/AppLayout';
+import classNames from 'classnames';
 import React, { useState } from 'react';
+import Countdown from 'react-countdown';
 
-const Index = () => {
-    const [paymentSelected, setPaymentSelected] = useState(true);
+interface Props {
+    plan: object;
+}
+
+const renderer = ({ hours, minutes, seconds, completed }: any) => {
+    if (completed) {
+        // Render a completed state
+        return <span>You are good to go!</span>;
+    } else {
+        // Render a countdown
+        return (
+            <span>
+                {hours} hr {minutes} m {seconds} s
+            </span>
+        );
+    }
+};
+
+const Index = ({ plan }: Props) => {
+    const [paymentSelected, setPaymentSelected] = useState({
+        vendor: '',
+        state: false,
+    });
 
     const paymentMethod = [
         {
@@ -21,37 +39,37 @@ const Index = () => {
             vendor: [
                 {
                     name: 'Bank BCA',
-                    logo: '/images/payment/bank/bca.svg',
+                    logo: '/images/payment/bca.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Bank Mandiri',
-                    logo: '/images/payment/bank/mandiri.svg',
+                    logo: '/images/payment/mandiri.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Bank BNI',
-                    logo: '/images/payment/bank/bni.svg',
+                    logo: '/images/payment/bni.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Bank Permata',
-                    logo: '/images/payment/bank/permata.svg',
+                    logo: '/images/payment/permata.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Bank BRI',
-                    logo: '/images/payment/bank/bri.svg',
+                    logo: '/images/payment/bri.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Bank JAGO',
-                    logo: '/images/payment/bank/jago.svg',
+                    logo: '/images/payment/jago.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Other Bank',
-                    logo: 'https://d2f3dnusg0rbp7.cloudfront.net/snap/assets/other-va-0ae529ff327082913f3ce3d25634f81b146cf3f40c9541365de11fdea57fc173.svg',
+                    logo: '/images/payment/default.svg',
                     paymentFee: '0.00',
                 },
             ],
@@ -61,27 +79,27 @@ const Index = () => {
             vendor: [
                 {
                     name: 'OVO',
-                    logo: '/images/payment/ewallet/ovo.svg',
+                    logo: '/images/payment/ovo.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'DANA',
-                    logo: '/images/payment/ewallet/dana.svg',
+                    logo: '/images/payment/dana.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'LinkAja',
-                    logo: '/images/payment/ewallet/linkaja.svg',
+                    logo: '/images/payment/linkaja.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Shopeepay',
-                    logo: '/images/payment/ewallet/shopeepay.svg',
+                    logo: '/images/payment/shopeepay.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'QRIS',
-                    logo: '/images/payment/ewallet/qris.svg',
+                    logo: '/images/payment/qris.svg',
                     paymentFee: '0.00',
                 },
             ],
@@ -91,22 +109,22 @@ const Index = () => {
             vendor: [
                 {
                     name: 'Visa',
-                    logo: '/images/payment/card/visa.svg',
+                    logo: '/images/payment/visa.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'Mastercard',
-                    logo: '/images/payment/card/mastercard.svg',
+                    logo: '/images/payment/mastercard.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'American Express',
-                    logo: '/images/payment/card/american-express.svg',
+                    logo: '/images/payment/american-express.svg',
                     paymentFee: '0.00',
                 },
                 {
                     name: 'JCB',
-                    logo: '/images/payment/card/jcb.svg',
+                    logo: '/images/payment/jcb.svg',
                     paymentFee: '0.00',
                 },
             ],
@@ -117,17 +135,24 @@ const Index = () => {
             <section>
                 <div className="container" style={{ maxWidth: '1200px' }}>
                     <div className="flex flex-col-reverse gap-x-12 text-white lg:flex-row lg:justify-center xl:gap-x-20">
-                        <PaymentPricing />
+                        <PaymentPricing plan={plan} />
                         <div>
-                            {paymentSelected && (
+                            {paymentSelected.state && (
                                 <div className="container flex items-center justify-center">
-                                    <PaymentCodeDetailed />
+                                    <PaymentCodeDetailed
+                                        paymentMethod={paymentSelected.vendor}
+                                    />
                                 </div>
                             )}
                             <div className="mt-8">
                                 <div className="flex-1">
                                     <div
-                                        className="panel relative transition-colors duration-300 light text-black py-4 rounded-2xl bg-tooling mb-4 px-4"
+                                        className={
+                                            'panel relative transition-colors duration-300 light text-black py-4 rounded-2xl bg-tooling mb-4 px-4 ' +
+                                            classNames({
+                                                hidden: !paymentSelected.state,
+                                            })
+                                        }
                                         id="series-details"
                                     >
                                         <div className="container">
@@ -136,10 +161,21 @@ const Index = () => {
                                                     <div className="flex items-center font-medium">
                                                         <Time
                                                             width={25}
-                                                            className="mr-2"
+                                                            className={'mr-2'}
                                                         />
                                                         <span className="text-xl font-semibold">
-                                                            24 Jam 15 Menit
+                                                            <Countdown
+                                                                date={
+                                                                    Date.now() +
+                                                                    24 *
+                                                                        60 *
+                                                                        60 *
+                                                                        1000
+                                                                }
+                                                                renderer={
+                                                                    renderer
+                                                                }
+                                                            />
                                                         </span>
                                                     </div>
                                                 </div>
@@ -162,7 +198,12 @@ const Index = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <PaymentMethod method={paymentMethod} />
+                                        <PaymentMethod
+                                            method={paymentMethod}
+                                            setPaymentSelected={
+                                                setPaymentSelected
+                                            }
+                                        />
                                     </div>
                                     <section className="hidden md:block">
                                         <MascotText text="Series still in development. Check back often for updates" />

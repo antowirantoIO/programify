@@ -48,6 +48,7 @@ class HandleInertiaRequests extends Middleware
                     base_path('/lang/'. app()->getLocale())
                 );
             },
+            'APP_KEY' => env('APP_KEY'),
         ]);
     }
 }

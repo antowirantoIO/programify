@@ -11,9 +11,22 @@ interface Props {
             paymentFee: string;
         }[];
     }[];
+    setPaymentSelected: ({
+        vendor,
+        state,
+    }: {
+        vendor: string;
+        state: boolean;
+    }) => void;
 }
 
-const PaymentMethod = ({ method }: Props) => {
+const PaymentMethod = ({ method, setPaymentSelected }: Props) => {
+    const handlePayment = (name: string) => {
+        setPaymentSelected({
+            vendor: name,
+            state: true,
+        });
+    };
     return (
         <>
             {method.map((method, index) => (
@@ -47,53 +60,52 @@ const PaymentMethod = ({ method }: Props) => {
                                 leaveTo="transform scale-95 opacity-0"
                             >
                                 {method.vendor.map((ven, index) => (
-                                    <Disclosure.Panel
-                                        style={{
-                                            height: '72px',
-                                        }}
-                                        className="panel relative transition-colors duration-300 dark text-white bg-panel-800 hover:bg-panel-700 rounded-2xl episode-list-item flex cursor-pointer mb-[10px] !border-deep-black/4 py-4 px-8 is-tooling"
+                                    <div
+                                        onClick={() => handlePayment(ven.name)}
                                     >
-                                        <div className="flex-center relative pr-0 font-bold mr-6">
-                                            <div className="circle flex items-center">
-                                                <div
-                                                    className="flex items-center justify-center"
-                                                    style={{
-                                                        width: '4rem',
-                                                        height: '3rem',
-                                                    }}
-                                                >
-                                                    {typeof ven.logo ===
-                                                    'string' ? (
-                                                        <img
-                                                            src={ven.logo}
-                                                            alt=""
-                                                            className="w-full h-full object-contain rounded-xl"
-                                                        />
-                                                    ) : (
-                                                        ven.logo
-                                                    )}
+                                        <Disclosure.Panel
+                                            key={index}
+                                            style={{
+                                                height: '72px',
+                                            }}
+                                            className="panel relative transition-colors duration-300 dark text-white bg-panel-800 hover:bg-panel-700 rounded-2xl episode-list-item flex cursor-pointer mb-[10px] !border-deep-black/4 py-4 px-8 is-tooling"
+                                        >
+                                            <div className="flex-center relative pr-0 font-bold mr-6">
+                                                <div className="circle flex items-center">
+                                                    <div
+                                                        className="flex items-center justify-center"
+                                                        style={{
+                                                            width: '4rem',
+                                                            height: '3rem',
+                                                        }}
+                                                    >
+                                                        {typeof ven.logo ===
+                                                        'string' ? (
+                                                            <img
+                                                                src={ven.logo}
+                                                                alt=""
+                                                                className="w-full h-full object-contain rounded-xl"
+                                                            />
+                                                        ) : (
+                                                            ven.logo
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="episode-list-details flex flex-1 mobile:border-b-0">
-                                            <div>
+                                            <div className="episode-list-details flex flex-1 mobile:border-b-0">
                                                 <div className="items-center justify-between mb-3">
                                                     <h4 className="episode-list-title flex items-center link inherits-color text-xl font-bold md:text-lg lg:text-xl lg:leading-none">
-                                                        <a
-                                                            className="md:clamp one-line leading-normal inherits-color"
-                                                            title="Why Neovim?"
-                                                            href="/episodes/2617"
-                                                        >
+                                                        <span className="md:clamp one-line leading-normal inherits-color">
                                                             {ven.name}
-                                                        </a>
+                                                        </span>
                                                     </h4>
                                                     <p className="text-2xs font-semibold normal-case text-grey-600">
                                                         Fee : {ven.paymentFee}
                                                     </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </Disclosure.Panel>
+                                        </Disclosure.Panel>
+                                    </div>
                                 ))}
                             </Transition>
                         </>
